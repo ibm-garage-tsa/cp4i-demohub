@@ -1,12 +1,6 @@
 - title: Overview
   pages:
     - path: /overview/
-- title: Early Sales Demos
-  pages:
-    - title: Videos
-      path: /esd/videos
-    - title: QwikDemos
-      path: /esd/qwikdemos
 - title: Get Started with CP4I on ROKS
   pages:
     - title: One-click install
