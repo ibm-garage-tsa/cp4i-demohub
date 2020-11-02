@@ -1,0 +1,64 @@
+- title: Overview
+  pages:
+    - path: /overview/
+- title: Early Sales Demos
+  pages:
+    - title: Videos
+      path: /esd/videos
+    - title: QwikDemos
+      path: /esd/qwikdemos
+- title: Get Started with CP4I on ROKS
+  pages:
+    - title: One-click install
+      path: /cp4i-on-roks/
+    - title: Manual install
+      path: /cp4i-install/
+- title: Integrated Demos
+  pages:
+    - title: Integrated Car Repair
+      path: /salesdemos/carrepairdemo/
+    - title: Driveway Dent Deletion
+      path: /salesdemos/ddd/
+    - title: Weather Chatbot
+      path: /salesdemos/chatbot/
+    - title: Mapping Assist
+      path: /salesdemos/mappingassist/
+    - title: Event Enabled Insurance
+      path: /salesdemos/eventenabled/
+    - title: Data with Integrity
+      path: /salesdemos/mq/
+- title: DTE Hands on Labs
+  pages:
+    - title: Build and Deploy APIs
+      path: /tutorials/BuildDeployAPIs
+    - title: Access Backend Systems
+      path: /tutorials/AccessBackendSystems
+    - title: Create Engaging Experiences
+      path: /tutorials/CreateEngagingExperiences
+    - title: Drive Digital Transformation
+      path: /tutorials/DriveDigitalTransformation
+    - title: Getting Started with Event Streams
+      path: /tutorials/GettingstartedwithEventStreams
+- title: APIC DevJam
+  pages:
+    - title: APIC DevJam
+      path: /APICDevJam
+    - title: Lab 1 - Create and Secure an API
+      path: /APICDevJam/Lab1
+    - title: Lab 2 - The Developer Portal Experienace
+      path: /APICDevJam/Lab2
+    - title: Lab 3 - Add OAuth Security to your API
+      path: /APICDevJam/Lab3
+    - title: Lab 4 - Use Lifecycle Controls to Version your API
+      path: /APICDevJam/Lab4
+    - title: Lab 5 - Advanced API Assembly
+      path: /APICDevJam/Lab5
+    - title: Lab 6 - Working with API Products
+      path: /APICDevJam/Lab6
+    - title: Lab 7 - The Consumer Experience
+      path: /APICDevJam/Lab7
+    - title: Lab 8 -- Creating GraphQL Proxy API
+      path: /APICDevJam/Lab8
+- title: Resources
+  pages:
+    - path: /resources/
