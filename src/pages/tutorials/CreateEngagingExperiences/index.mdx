@@ -4,12 +4,11 @@ title: Augment existing business functions with new applications using Kafka
 
 import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/ArticleDetails'
 
-<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="October 2020" readTimeMinutes="60" />
+<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="January 2021" readTimeMinutes="60" />
 
-In this tutorial, you use the Cloud Pak for Integration 2020.3.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.4 .
+In this tutorial, you use the Cloud Pak for Integration 2020.4.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.6.
 
 <AnchorLinks>
-  <AnchorLink>Starting the Environment</AnchorLink>
   <AnchorLink>Event Streams Topic</AnchorLink>
   <AnchorLink>Configuring App Connect Enterprise</AnchorLink>
   <AnchorLink>Deploying App Connect Enterprise</AnchorLink>
@@ -18,7 +17,7 @@ In this tutorial, you use the Cloud Pak for Integration 2020.3.1 to create an Ap
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
-## Introduction
+### Introduction
 
 Augment existing business functions with new applications using Kafka.
 
@@ -27,9 +26,8 @@ The most interesting and impactful new applications in an enterprise are those t
 In this tutorial, you create a topic in Kafka, modify an integration flow to call an API, emit an event onto the topic, and use the tracing tool to verify the message from App Connect Enterprise to Event Streams.
 The Cloud Pak for Integration - Operations Dashboard Add-on provides cross-component monitoring and tracing capabilities that enable IT personnel to quickly analyze performance bottlenecks and latency problems across integration components to help ensure high levels of service.
 
-## Takeaways
+### Takeaways
 
-- Starting IBM Cloud Pak for Integration Environment
 - Creating and Configuring an Event Streams Topic
 - Configure App Connect Enterprise message flow using App Connect Enterprise toolkit
 - Configuring App Connect Enterprise service
@@ -38,59 +36,10 @@ The Cloud Pak for Integration - Operations Dashboard Add-on provides cross-compo
 - Checking this message using Operations Dashboard (tracing).
 
 
-## Starting the Environment
-
-### Task 1 - Start IBM Cloud Pak for Integration Environment
-
-This is a new deployment of the Cloud Pak for Integration, you must execute some steps to prepare the environment. Initial setup steps are only needed for a fresh installation of the platform.
-All work for this lab is done in your workstation (MAC OSX).
-
-1.In your workstation open a browser and enter http://cloud.ibm.com and enter your **ibmid** and click continue and password to login IBM Cloud.
-
-![](images/ibmcloud-login.png)
-
-2.Enter your IBM userid and the password and then enter the verify code.
-
-![](images/ibmcloud-login-w3.png)
-
-3.In the IBM Cloud Dashboard. You see all information about the infrastructure. On the **Resource summary**. Observe if you have one cluster and click **Cluster** link .
-
-![](images/ibmcloud-select-cluster.png)
-
-4.You see the available resources for your cluster. Select Clusters arrow and click your cluster line.
-
-![](images/ibmcloud-access-cluster.png)
-
-5.In the cluster page, you see the status of your cluster infrastructure,. such as worker node, CPU and Memory usage. Click **OpenShift Web Console**.
-
-![](images/ibmcloud-cluster.png)
-
-6.In the OpenShift console. Select the following:
-
-```
-1.Networking
-2.Routes
-3.Drill down the Project to Integration
-
-```
-
-![](images/cloudpak-navigator.png)
-
-7.You might need to login screen for IBM Cloud Pak might be displayed. Click **Default authentication**.
-
-![](images/cloudpak-default-login.png)
-
-8.Enter the username: **admin** and Password (**Enter the 32 characters password that you created when you made the Cloud Pak provisioning**) and Click **Log in**.
-
-![](images/cloudpak-login.png)
-
-9.In the Welcome to IBM Cloud Pak for Integration. You see Capabilities and Runtime installed for your labs.
-
-![](images/cloudpak-welcome.png)
 
 ## Event Streams Topic
 
-### Task 2 – Creating and Configuring an Event Streams Topic
+### Task 1 – Creating and Configuring an Event Streams Topic
 
 Creating an Event Streams topic in the existing Event Streams instance.
 
@@ -213,7 +162,7 @@ For this lab you use external listener to verify how to access Event Streams as 
 
 ## Configuring App Connect Enterprise
 
-### Task 3 - Configuring App Connect Enterprise flow using App Connect Enterprise Toolkit
+### Task 2 - Configuring App Connect Enterprise flow using App Connect Enterprise Toolkit
 
 
 Before you start the lab, make sure that you have installed **IBM App Connect Enterprise toolkit**. Go to  this link https://www-01.ibm.com/marketing/iwm/mrs/DirectDownload?source=swg-wmbfd&lang=en_US and make the installation.
@@ -335,7 +284,7 @@ You have created a topic in Event Streams created. App Connect Enterprise produc
 
 ## Deploying App Connect Enterprise
 
-### Task 4 – Deploying App Connect BAR file on App Connect Enterprise Server
+### Task 3 – Deploying App Connect BAR file on App Connect Enterprise Server
 
 The App Connect Enterprise toolkit generated a BAR file. The BAR file has all information to run an App Connect Enterprise instance.
 This release introduces a new Operator-based approach for packaging, deploying, and managing App Connect in a containerized environment. The IBM App Connect Enterprise certified container is now deployed to a Red Hat OpenShift cluster by using the new IBM App Connect Operator. This Operator is distributed through the IBM Entitled Registry, and can be installed from the Red Hat OpenShift OperatorHub. We’ve updated the look of our user interfaces to help improve the way you work.
@@ -435,7 +384,7 @@ This release introduces a new Operator-based approach for packaging, deploying, 
 
 ## Testing App Connect Enterprise
 
-### Task 5  – Testing App Connect Enterprise API sending a message to Event Streams
+### Task 4  – Testing App Connect Enterprise API sending a message to Event Streams
 
 You verify if the message you created in App Connect Dashboard (Integration server) arrived in Event Streams topics.
 
@@ -485,7 +434,7 @@ You verify if the message you created in App Connect Dashboard (Integration serv
 
 ## Operations Dashboard (tracing)
 
-### Task 6 - Using Operations Dashboard (tracing)
+### Task 5 - Using Operations Dashboard (tracing)
 
 The Operations Dashboard collects data from all the registered capabilities (such as MQ) in real time. By default, and for this lab, 10 percent of traffic is sampled.
 
