@@ -105,6 +105,10 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 
 ![](images/ace-mq-projectinterchange.png)
 
+6.Select ace-mq.zip in Downloads folder and then click Ok.
+
+![](images/lab2-task2.6.png)
+
 7.Verify **neworder** project is checked and click **Finish**. To view the integration flow that you deploy, click **neworder -> Resources -> Subflows -> getid.subflow**.
 
 ![](images/ace-mq-opengetid.png)
@@ -121,21 +125,20 @@ In this task, take an existing integration flow in ACE and modify it to send onl
   3.	Queue manager hostname: **172.30.152.157**. (When you entered **oc get svc**)
   4.	Listener: **1414**.
   5.	Channel name: **SYSTEM.DEF.SRVCONN** (Server Connection).
+  6.  Save the flow (**CRTL+S**)
 
 ```
 ![](images/ace-mq-mqconnection.png)
 
-10.Save your flow. Click the **save button** .
-
-11.Now, you need to generate a bar (broker archive) file. The App Connect Enterprise server uses BAR (Broker Archive) files to save compiled message flows, libraries, etc. We have created a file **neworder.bar** for this lab. In the Application Development window in the upper-left, on **neworder application**, right-click and select New then **BAR** file.
+10.Now, you need to generate a bar (broker archive) file. The App Connect Enterprise server uses BAR (Broker Archive) files to save compiled message flows, libraries, etc. We have created a file **neworder.bar** for this lab. In the Application Development window in the upper-left, on **neworder application**, right-click and select New then **BAR** file.
 
 ![](images/ace-mq-create-bar-file.png)
 
-12.On the Window New Bar file, type the name of bar file: **neworder**.
+11.On the Window New Bar file, type the name of bar file: **neworder**.
 
 ![](images/ace-mq-neworder-bar-file.png)
 
-13.	App Connect Enterprise opens a window: **Prepare window** .
+12.	App Connect Enterprise opens a window: **Prepare window** .
 
 ```
 
