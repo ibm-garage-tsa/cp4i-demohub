@@ -6,11 +6,10 @@ import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/Artic
 
 <ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="September 2020" readTimeMinutes="45" />
 
-In this tutorial, you use the Cloud Pak for Integration 2020.2.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.4 .
+In this tutorial, you use the Cloud Pak for Integration 2020.4.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.6.
 
 <AnchorLinks>
   <AnchorLink>Introduction</AnchorLink>
-  <AnchorLink>Prepare the environment</AnchorLink>
   <AnchorLink>Configure IBM MQ</AnchorLink>
   <AnchorLink>Working with App Connect Enterprise toolkit</AnchorLink>
   <AnchorLink>Deploying a BAR file</AnchorLink>
@@ -18,100 +17,20 @@ In this tutorial, you use the Cloud Pak for Integration 2020.2.1 to create an Ap
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
-## Introduction
+### Takeaways
 
-Implement enterprise grade messaging that is secure and reliable for any application across your backend integration architecture. Modern applications and APIs all need the ability to communicate data reliably between mission critical systems across internal/external data sources, networks, and regions. In mission critical environments your messaging infrastructure must be robust, reliable, and secure with the ability to integrate into your applications and APIs at pace and scale. In this tutorial, you create a message queue that receives order data from an API call to a retail ordering system. The red box in the diagram shows what you are creating and where it fits in the overall architecture of a mobile retail buying application.
 
-## Takeaways
-
-- Exploring multiple integration capabilities within a single platform
 - Configuring IBM MQ
 - Creating an integration flow that connects to a message queue
 - Deploy the integration flow as a container in Kubernetes
 - Checking the message using MQ Web Console
 - Checking this message using Operational Dashboard (tracing)
 
-
-## Preparing the environment
-
-**Note: If your using this tutorial in a multi-user ROKS setup, the environment is already prepared for you. Please login to the cluster using LDAP authentication and the credentials provided by your instructor and jump to [Configuring IBM MQ](#configuring-ibm-mq). Also, maske sure that you use a prefix provided by the instructor for queue, topic and server names.**
-
-As this is a new deployment of the Cloud Pak for Integration, you must execute some steps to prepare the environment. Initial setup steps are only needed for a fresh installation of the platform. They do not need to be repeated.
-You can use your workstation (MAC OSX) for working in this lab.
-
-In your workstation open a browser and enter http://cloud.ibm.com and enter your ibmid  and click continue and password to login IBM Cloud.
-
-![](images/tutorial_html_4684368ee9aef605.png)
-
-Use the password specified in parenthesis to login to VNC
-
-![](images/tutorial_html_dcc3a9fa250b6267.png)
-
-1.In your workstation open a browser and enter http://cloud.ibm.com and enter your **ibmid** and click continue and password to login IBM Cloud.
-
-![](images/tutorial_html_40856922adb9fae5.png)
-
-2.Enter your IBM userid  and the password and then enter the verify code.
-
-![](images/tutorial_html_e00b9a6736f7e923.png)
-
-3.In the IBM Cloud Dashboard. You see all information about the infrastructure. On the Resource summary. Observe if you have one cluster and click **Cluster** link.
-
-![](images/tutorial_html_43ece9238189e0a4.png)
-
-4.You see the  available resources for your cluster. Select Clusters arrow and click your cluster line.
-
-![](images/tutorial_html_dd756ffd9ce473bb.png)
-
-5.In the cluster page, you see the status of your cluster infrastructure,. such as worker node, CPU and Memory usage. Click **OpenShift Web Console**.
-
-![](images/tutorial_html_d22a349be88c0a4f.png)
-
-6.In the OpenShift console. Select the following:
-
-```
-    1. **Networking**
-
-    2. **Routes**
-
-    3. Drill down the Project to **Integration**
-
-    5. Click the **Navigator** link.
-
-```
-![](images/tutorial_html_ff17543331daf722.png)
-
-7.Select **Default authentication** as authentication type.
-
-![](images/login_cloud_pak_admin_default.png)
-
-8.You might need to login screen for IBM Cloud Pak might be displayed, enter the username: admin and Password (Enter the 32 characters password that you created when you made the Cloud Pak provisioning) and Click Log in.
-Tip: You might need to use the password. You can use the Clipboard to save the password.
-
-![](images/login_cloud_pak_userid_password.png)
-
-9.In the Cloud Pak Welcome page, you see Capabilities and Runtimes instances.
-
-![](images/Welcome_IBM_Cloud_Pak.png)
-
-10.You need to have access to Openshift cluster. In a browser go to **Openshift Console** and right top click **IAM#(your userid)** and click **Copy Login Command**.
-
-![](images/ocp-console-login.png)
-
-11.Click Display Token link and then copy the log in command:
-
-![](images/ocp-display-token.png)
-
-12.Open a terminal window and Paste the oc command.
-
-![](images/ocp-paste-ocp-terminal.png)
-
-
 ## Configuring IBM MQ
 
-IBM Cloud Pak for Integration provides a single solution for all of your enterprise integration needs. The platform provides a comprehensive set of industry-leading capabilities. Combine powerful integration capabilities to create, manage, and monitor all of your integrations across applications, messaging, events, APIs, and more.
+### Task 1 - Configure Message Queue (IBM MQ) to Authorize and Accept Data
 
-In this task, you create a local queue using MQ Console and check the MQ configuration. You create the queue, which accepts the resulting data from the call to the "NEWORDER" API.
+As this is a brand-new deployment of the Cloud Pak for Integration, all instances of integrations, message queues, and APIs are deployed as microservices. You need to authorize the Message Queue service to accept incoming data from the integration running on a separate server.
 
 1.Open a browser and enter https://github.com/ibm-cloudintegration/dte-labs .You need to configure the MQ security.
 
