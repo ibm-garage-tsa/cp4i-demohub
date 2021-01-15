@@ -87,44 +87,40 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 
 1.Open a terminal window by right-clicking on the desktop and selecting Open Terminal.
 
-2.Enter **ace toolkit** to open the App Connect Enterprise Toolkit.
+2.Before starting App Connect Enterprise toolkit, let’s check IBM MQ IP address. In th terminal window, enter the OpenShift command, **oc get svc -n cp4i | grep mq** to get a list of services in the namespaces. and copy the IP address (**172.30.152.157**) which the port is **1414**.
+
+![](images/lab2-task2.2.png)
+
+3.Enter **ace toolkit** to open the App Connect Enterprise Toolkit.
 
 ![](images/ace-mq-acetoolkit.png)
 
-3.In the Workspace Launcher window, create the workspace **/home/student/IBM/ACET11/workspace/ace-mq**. Click **OK**.
+4.In the Workspace Launcher window, create the workspace **/IBM/ACET11/workspace/ace-mq**. Click **OK**.
 
 ![](images/ace-mq-create-ace-mq-workspace.png)
 
-4.Import App Connect Enterprise project. Click **File -> Import**.
+5.The toolkit opens the project. Import the ace-mq.zip file that you downloaded ( see ~/Downloads/ace-mq.zip ). Select **File->Import->Project Interchange** and click **Next**.
 
 ![](images/ace-mq-import-zipfile.png)
 
-5.Select Project Interchange and click **Next** .
+6.From zip file, click **Browse** and select **ace-mq.zip** in **Downloads** folder and then click **Ok** .
 
 ![](images/ace-mq-projectinterchange.png)
 
-6.Go to **/home/student/mq-lab** and select **ace-mq.zip**.
-
-![](images/ace-mq-ace-mq-file.png)
-
-7.Check the project name **neworder** and click **Finish**.
-
-![](images/ace-mq-confirm-neworder.png)
-
-8.Click **neworder > Resources > Subflows > getId.subflow** on the left pane.
+7.Verify **neworder** project is checked and click **Finish**. To view the integration flow that you deploy, click **neworder -> Resources -> Subflows -> getid.subflow**.
 
 ![](images/ace-mq-opengetid.png)
 
-9.Click the **MQ Output** tile. In the lower-right of the Properties pane, open the Properties tab and click **Basic**. Enter the queue name: **NEWORDER**.
+8.Click the **MQ Output** tile. In the lower-right of the Properties pane, open the Properties tab and click **Basic**. Enter the queue name: **NEWORDER**.
 
 ![](images/ace-mq-basci-neworder.png)
 
-10.	Click the MQ Connection parameter and enter the following settings:
+9.Click the MQ Connection parameter and enter the following settings:
 
 ```
   1.	Connection*: Select **MQ client connection properties** from the drop-down.
   2.	Destination queue manager name: **QUICKSTART** (case-sensitive).
-  3.	Queue manager hostname: **172.21.26.194**. (When you entered **oc get svc**)
+  3.	Queue manager hostname: **172.30.152.157**. (When you entered **oc get svc**)
   4.	Listener: **1414**.
   5.	Channel name: **SYSTEM.DEF.SRVCONN** (Server Connection).
 
@@ -157,6 +153,9 @@ App Connect Enterprise Toolkit saves and compile message flows, sub flows into a
 ![](images/ace-mq-save-bar-file.png)
 
 ## Deploying a BAR file
+
+### Task 3 - Deploy Integration BAR file as containers
+
 
 In this task, deploy the integration flow as App Connect Enterprise containers running in Kubernetes on the Cloud Pak for Integration. You then test the integration API by calling the API to create a new order and confirm the response payload and data in the queue.
 
