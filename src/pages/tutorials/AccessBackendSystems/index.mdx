@@ -34,75 +34,54 @@ As this is a brand-new deployment of the Cloud Pak for Integration, all instance
 
 1.Open a browser and enter https://github.com/ibm-cloudintegration/dte-labs .You need to configure the MQ security.
 
-![](images/ace-mq-github.png)
+![](images/lab2-task1.1.png)
 
-2.Select and click **Lab2-AccessBackendSystem** folder.
+2.Click **Download** for both zip files.
 
-![](images/ace-mq-download-git.png)
+![](images/lab2-task1.2.png)
 
-3.Download two zip files (**ace-mq.zip and mqconf.zip**). Click over the **ace-mq.zip** file.
+3.Open a terminal window and enter unzip es-mq.zip. Unzip creates a directory mqconf.zip ~/Downloads/ directory. Do not unzip ace-mq.zip (this is a App Connect project).
 
-![](images/ace-mq-ace-mqfile.png)
+![](images/lab2-task1.3.png))
 
-4.Click **Download** and save to your download directory (**/home/student/Downloads** ).
+4.In terminal window, find the mq pods, using this command: **oc get pods | grep mq**. Copy the mq pods (mq-quickstart-ibm-mq-0).
+
+![](images/lab2-task1.4.png))
+
+5.Execute the shell script to run MQ configuration (update the channel and security). Go to ~/Downloads/mqconf directory and enter ./loadmq.sh mq-quickstart-ibm-mq-0. The MQ configuration will be updated for this lab.
 
 ![](images/ace-mq-download-ace-mq.png)
 
-5.Download **mqconf.zip** and save in **/home/student/Downloads**.
+6.Open a browser and select on the Bookmark Bar (IBM Cloud Pak for Integration). From here, you are able to navigate to all the integration and development technology contained within the platform. Today, this technology Capabilities and Runtimes instances. Capabilities include: API Connect, App Connect Dashboard, App Connect Designer , Asset Repository and Operations Dashboard. To access IBM MQ click the Runtimes link. This task covers administering and creating a new queue in IBM MQ. IBM MQ for Cloud Pak for Integration has a web GUI, which the Integration Developer, with security authorization, is able to manage the different IBM MQ objects (queues, channels, topics and so on).
 
-6.You need to configure IBM MQ permissions in MQ Runtime, before creating a local queue. Open a terminal window.
+![](images/lab2-task1.6.png))
 
-![](images/es-command_line.png)
+You might see this warning (Potential Security Risk Ahead). Click Advance.  And then click the link, Accept the Risk and Continue). Don’t worry there is no Risk for your workstation.
 
-7.In **/home/student** directory, create a work directory **mq-lab**. Use **mkdir -p mq-lab** .
-
-![](images/ace-mq-mkdir.png)
-
-8.Move the two files(**ace-mq.zip** and **mqconf.zip**) from **/home/student/Downloads** to **/home/student/mq-lab**. Use mv **/home/student/Downloads/ace-mq.zip /home/student/mq-lab** and **mv /home/student/Downloads/ace-mqconfig.zip /home/student/mq-lab**.
-
-![](images/ace-mq-move-two-file.png)
-
-9.Go to **/home/student/mq-lab** directory and uncompressing the **mqconfig.zip** . (**Do not uncompress ace-mq.zip**)
-
-10.The uncompressing process creates a directory **mqconf**. This directory contains IBM MQ Queue Manager security configuration. Go to **/home/student/mq-lab/mqconfig** and enter **./loadmq.sh** shell script.
-
-![](images/ace-mq-unzip-mqconfig.png)
-
-11.You have the MQ server configured to be accessed by App Connect Enterprise.
-
-![](images/ace-mq-after-loadmq.png)
-
-12.Open browser and go to **Welcome IBM Cloud Pak for Integration**. Select **Runtimes** and click **mq-demo** to work with IBM MQ.
-
-![](images/ace-mq-start-mq.png)
-
-13.You might see this warning (Potential Security Risk Ahead). Click Advance.  And then click the link, Accept the Risk and Continue). Don’t worry there is no Risk for your workstation.
-
-14.In the **Welcome IBM MQ page** (**QUICKSTART** is the name of queue manager). This page, you can manage queue manager, create queues, learn MQ basics, and get more information about IBM MQ. Click **Create a queue**.
+7.You see the IBM MQ Welcome Page and an important tile that can help you learn about MQ technology. Click **Create a queue**.
 
 ![](images/ace-mq-createaqueue.png)
 
-15.In Create a queue page. You can choose queue type: Local, Alias, Remote, and Model. Click **Local** to create a queue.
+8.In Create a queue page. You can choose queue type: Local, Alias, Remote, and Model. Click **Local** to create a queue.
 
 ![](images/ace-mq-localqueue.png)
 
-16.Enter the queue name: **NEWORDER** and keep the default values and the click **Create**.
+9.Enter the queue name: **NEWORDER** and keep the default values and the click **Create**.
 
 ![](images/ace-mq-neworder.png)
 
-17.In the **Manage** page, locate the queues and click **NEWORDER** queue link.
+10.In the **Manage** page, locate the queues and click **NEWORDER** queue link.
 
 ![](images/ace-mq-check-neworder.png)
 
-18.You see that the **NEWORDER** queue is empty. Click **QUICKSTART** link (the queue manager).
+11.You see that the **NEWORDER** queue is empty. Click **QUICKSTART** link (the queue manager).
 
 ![](images/ace-mq-neworder-empty.png)
 
-19.Verify MQ Server hostname. Open a terminal window and enter **oc get svc** . Locate the **mq-demo-ibm-mq**  **ClusterIP address**. In this case is: 172.21.26.194.
-
-![](images/ace-mq-get-mq-address.png)
 
 ## Working with App Connect Enterprisa Toolkit (integration)
+
+###Task 2 - Configuring the app integration flow
 
 In this task, take an existing integration flow in ACE and modify it to send only the payload data to the NEWORDER queue.
 
