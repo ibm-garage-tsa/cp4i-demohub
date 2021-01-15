@@ -103,8 +103,6 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 
 ![](images/ace-mq-import-zipfile.png)
 
-6.From zip file, click **Browse** and select **ace-mq.zip** in **Downloads** folder and then click **Ok** .
-
 ![](images/ace-mq-projectinterchange.png)
 
 7.Verify **neworder** project is checked and click **Finish**. To view the integration flow that you deploy, click **neworder -> Resources -> Subflows -> getid.subflow**.
@@ -113,7 +111,7 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 
 8.Click the **MQ Output** tile. In the lower-right of the Properties pane, open the Properties tab and click **Basic**. Enter the queue name: **NEWORDER**.
 
-![](images/ace-mq-basci-neworder.png)
+![](images/ace-mq-basic-neworder.png)
 
 9.Click the MQ Connection parameter and enter the following settings:
 
@@ -127,17 +125,17 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 ```
 ![](images/ace-mq-mqconnection.png)
 
-11.Save your flow. Click the **save button** .
+10.Save your flow. Click the **save button** .
 
-12.Now, you need to generate a bar (broker archive) file. The App Connect Enterprise server uses BAR (Broker Archive) files to save compiled message flows, libraries, etc. We have created a file **neworder.bar** for this lab. In the Application Development window in the upper-left, on **neworder application**, right-click and select New then **BAR** file.
+11.Now, you need to generate a bar (broker archive) file. The App Connect Enterprise server uses BAR (Broker Archive) files to save compiled message flows, libraries, etc. We have created a file **neworder.bar** for this lab. In the Application Development window in the upper-left, on **neworder application**, right-click and select New then **BAR** file.
 
 ![](images/ace-mq-create-bar-file.png)
 
-13.On the Window New Bar file, type the name of bar file: **neworder**.
+12.On the Window New Bar file, type the name of bar file: **neworder**.
 
 ![](images/ace-mq-neworder-bar-file.png)
 
-14.	App Connect Enterprise opens a window: **Prepare window** .
+13.	App Connect Enterprise opens a window: **Prepare window** .
 
 ```
 
