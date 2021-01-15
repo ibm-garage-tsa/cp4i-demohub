@@ -160,9 +160,9 @@ App Connect Enterprise Toolkit saves and compile message flows, sub flows into a
 
 In this task, deploy the integration flow as App Connect Enterprise containers running in Kubernetes on the Cloud Pak for Integration. You then test the integration API by calling the API to create a new order and confirm the response payload and data in the queue.
 
-1.In your browser, return to the IBM Cloud Pak for Integration.Under **Capabilities**, select the **App Connect Dashboard** line and click **db-demo** instance.
+1.In your browser, return to the IBM Cloud Pak for Integration.Under **Capabilities**, select the **App Connect Dashboard** line and click the instance.
 
-![](images/ace-mq-open-db-demo.png)
+![](images/lab2-task3.1)
 
 2.When you deploy a BAR file, you create a new instance of App Connect Enterprise. Click **Create Server**.
 
@@ -193,14 +193,12 @@ In this task, deploy the integration flow as App Connect Enterprise containers r
 ```
 
   1.	Enter Integration Server name: **neworder**.
-  2.	Change the replicas to: **1** . (This is a lab and do not need more replicas)
-  3.	Switch to **ON** to use **Operational Dashboard (tracing)**.
-  4.	Enter Operational Dashboard instance namespace: **cp4i**.
-  5.	Update the App Connect Enterprise version to the latest: **11.0.0.9 r3** .
-  6.	Click **Create** .
+  2.	Switch to **ON** to use **Operational Dashboard (tracing)**.
+  3.	Enter Operational Dashboard instance namespace: **cp4i**.
+  4.	Click **Create** .
 
 ```
-![](images/ace-mq-configure-integration-server.png)
+![](images/lab2-task3.8.png)
 
 9.You see the **App Connect Enterprise Dashboard** with the Integration Server **neworder** deployed and started. Click the **neworder** server icon.
 
