@@ -1,0 +1,56 @@
+---
+title: Overview
+description: Demo Overview Page
+tabs: [ 'Overview', 'Understand', 'Deliver']
+---
+
+export const Title = () => <span>Driveway Dent Deletion - Accelerate Delivery</span>
+
+<FeatureCard
+  title="Driveway Dent Deletion Demo"
+  color="dark"
+  >
+
+![banner](images/car-dent.jpg)
+
+</FeatureCard>
+
+## Driveway Dent Deletion Demo
+
+**Demo Overview**: Accelerate delivery with a more agile integration architecture. This demo shows an integration made up of multiple components, all deployed using a full CI/CD pipeline.
+
+**Demo Description**: This demo shows the 'Scatter Gather' pattern being used to create an API which exposes three independent integration services being called in parallel from one request, with the result being combined into a single response to the user.
+
+This pattern is often used in buying comparison sites e.g. for Hotels, Air Fares, Insurance, Financial Products etc.
+
+The demo uses a full CI/CD pipeline built on OpenShift pipelines which builds containers for each of the components and then deploys them all together with all the correct credentials and bindings.
+
+It also shows live deployment updates of integrations with zero downtime.
+
+It shows live fixpack application with zero downtime - also showing that CP4i can run multiple versions of products at the same time and patch/upgrade them independently.
+
+Shows tracing/Operational Dashboard to show the flow of the request through the system allowing performance bottlenecks to be applied.
+
+**Key Demo Points**:
+  - Deployments using a fully automated CI/CD pipeline
+  - Multiple components being deployed and bound together automatically
+  - Updating integration code with zero downtime
+  - Applying fixpacks with zero downtime
+  - Cross-Component Tracing through the stack (Coming)
+  - Different environments (Dev, Test) showing route to live and isolation of environments
+  - Environment-Specific Configuration and Policy overrides.
+
+**Product Capabilties**:
+  - App Connect Toolkit and Runtime
+  - MQ Messaging
+  - API Connect Management and Gateway
+  - API Connect Portal
+  - Tracing / Operational Dashboard
+  - OpenShift Pipelines
+
+**Product Version**: CP4I 4.1 on OCP 4.6
+
+Here you will be able to prepare yourself to deliver this demo. To deliver this demo, follow the steps below:
+
+- [Understand the Demo](/demos/car-repair/understand): Learn the Demo Scenario, check the Demo Video and review the Demo Sequence
+- [Deliver the Demo](/demos/car-repair/setup): Check the different delivery options and be ready to deliver the demo
