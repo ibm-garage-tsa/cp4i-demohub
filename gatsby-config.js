@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'DemoHub - Cloud Pak for Integration',
     description: 'DemoHub - Cloud Pak for Integration',
-    keywords: 'ibm,mcm,carbon',
+    keywords: 'ibm,cp4i,carbon',
   },
   plugins: ['gatsby-theme-carbon',
     'gatsby-transformer-json',

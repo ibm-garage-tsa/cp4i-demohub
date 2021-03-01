@@ -1,6 +1,6 @@
 
 div[class*='page-header'] {
-    --height: 6rem;
+    --height: 8rem;
 }
 
 div[class*='Footer-module--grid--8uMdA'] {
@@ -94,5 +94,4 @@ div[class*='Code-module--row']{
 .kubeIcon {
     background-image: url("/images/kubernetes.png");
     background-repeat: no-repeat;
-    alignment: center;
 }

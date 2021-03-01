@@ -7,21 +7,19 @@
       path: /cp4i-on-roks/
     - title: Manual install
       path: /cp4i-install/
-- title: Integrated Demos
+- title: Sales Demos
   pages:
     - title: Integrated Car Repair
       path: /salesdemos/carrepairdemo/
-    - title: Driveway Dent Deletion
-      path: /salesdemos/ddd/
     - title: Weather Chatbot
       path: /salesdemos/chatbot/
+    - title: Driveway Dent Deletion
+      path: /salesdemos/ddd/
     - title: Mapping Assist
       path: /salesdemos/mappingassist/
-    - title: Event Enabled Insurance
-      path: /salesdemos/eventenabled/
-    - title: Data with Integrity
-      path: /salesdemos/mq/
-- title: DTE Hands on Labs
+    - title: Car Repair *Updated*
+      path: /salesdemos/carrepair-new/overview
+- title: CP4I Labs
   pages:
     - title: Build and Deploy APIs
       path: /tutorials/BuildDeployAPIs
@@ -31,9 +29,7 @@
       path: /tutorials/CreateEngagingExperiences
     - title: Drive Digital Transformation
       path: /tutorials/DriveDigitalTransformation
-    - title: Getting Started with Event Streams
-      path: /tutorials/GettingstartedwithEventStreams
-- title: APIC DevJam
+- title: APIC Labs
   pages:
     - title: APIC DevJam
       path: /APICDevJam
@@ -53,6 +49,10 @@
       path: /APICDevJam/Lab7
     - title: Lab 8 -- Creating GraphQL Proxy API
       path: /APICDevJam/Lab8
+- title: Confluent Labs
+  pages:
+    - title: Confluent Labs
+      path: /Confluent
 - title: Resources
   pages:
     - path: /resources/
