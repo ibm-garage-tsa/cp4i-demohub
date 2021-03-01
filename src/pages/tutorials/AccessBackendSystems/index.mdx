@@ -4,13 +4,12 @@ title: Access backend systems using APIs and Messaging
 
 import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/ArticleDetails'
 
-<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="September 2020" readTimeMinutes="45" />
+<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="January 2021" readTimeMinutes="45" />
 
-In this tutorial, you use the Cloud Pak for Integration 2020.2.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.4 .
+In this tutorial, you use the Cloud Pak for Integration 2020.4.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.6.
 
 <AnchorLinks>
   <AnchorLink>Introduction</AnchorLink>
-  <AnchorLink>Prepare the environment</AnchorLink>
   <AnchorLink>Configure IBM MQ</AnchorLink>
   <AnchorLink>Working with App Connect Enterprise toolkit</AnchorLink>
   <AnchorLink>Deploying a BAR file</AnchorLink>
@@ -18,232 +17,128 @@ In this tutorial, you use the Cloud Pak for Integration 2020.2.1 to create an Ap
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
-## Introduction
+### Takeaways
 
-Implement enterprise grade messaging that is secure and reliable for any application across your backend integration architecture. Modern applications and APIs all need the ability to communicate data reliably between mission critical systems across internal/external data sources, networks, and regions. In mission critical environments your messaging infrastructure must be robust, reliable, and secure with the ability to integrate into your applications and APIs at pace and scale. In this tutorial, you create a message queue that receives order data from an API call to a retail ordering system. The red box in the diagram shows what you are creating and where it fits in the overall architecture of a mobile retail buying application.
 
-## Takeaways
-
-- Exploring multiple integration capabilities within a single platform
 - Configuring IBM MQ
 - Creating an integration flow that connects to a message queue
 - Deploy the integration flow as a container in Kubernetes
 - Checking the message using MQ Web Console
 - Checking this message using Operational Dashboard (tracing)
 
-
-## Preparing the environment
-
-**Note: If your using this tutorial in a multi-user ROKS setup, the environment is already prepared for you. Please login to the cluster using LDAP authentication and the credentials provided by your instructor and jump to [Configuring IBM MQ](#configuring-ibm-mq). Also, maske sure that you use a prefix provided by the instructor for queue, topic and server names.**
-
-As this is a new deployment of the Cloud Pak for Integration, you must execute some steps to prepare the environment. Initial setup steps are only needed for a fresh installation of the platform. They do not need to be repeated.
-You can use your workstation (MAC OSX) for working in this lab.
-
-In your workstation open a browser and enter http://cloud.ibm.com and enter your ibmid  and click continue and password to login IBM Cloud.
-
-![](images/tutorial_html_4684368ee9aef605.png)
-
-Use the password specified in parenthesis to login to VNC
-
-![](images/tutorial_html_dcc3a9fa250b6267.png)
-
-1.In your workstation open a browser and enter http://cloud.ibm.com and enter your **ibmid** and click continue and password to login IBM Cloud.
-
-![](images/tutorial_html_40856922adb9fae5.png)
-
-2.Enter your IBM userid  and the password and then enter the verify code.
-
-![](images/tutorial_html_e00b9a6736f7e923.png)
-
-3.In the IBM Cloud Dashboard. You see all information about the infrastructure. On the Resource summary. Observe if you have one cluster and click **Cluster** link.
-
-![](images/tutorial_html_43ece9238189e0a4.png)
-
-4.You see the  available resources for your cluster. Select Clusters arrow and click your cluster line.
-
-![](images/tutorial_html_dd756ffd9ce473bb.png)
-
-5.In the cluster page, you see the status of your cluster infrastructure,. such as worker node, CPU and Memory usage. Click **OpenShift Web Console**.
-
-![](images/tutorial_html_d22a349be88c0a4f.png)
-
-6.In the OpenShift console. Select the following:
-
-```
-    1. **Networking**
-
-    2. **Routes**
-
-    3. Drill down the Project to **Integration**
-
-    5. Click the **Navigator** link.
-
-```
-![](images/tutorial_html_ff17543331daf722.png)
-
-7.Select **Default authentication** as authentication type.
-
-![](images/login_cloud_pak_admin_default.png)
-
-8.You might need to login screen for IBM Cloud Pak might be displayed, enter the username: admin and Password (Enter the 32 characters password that you created when you made the Cloud Pak provisioning) and Click Log in.
-Tip: You might need to use the password. You can use the Clipboard to save the password.
-
-![](images/login_cloud_pak_userid_password.png)
-
-9.In the Cloud Pak Welcome page, you see Capabilities and Runtimes instances.
-
-![](images/Welcome_IBM_Cloud_Pak.png)
-
-10.You need to have access to Openshift cluster. In a browser go to **Openshift Console** and right top click **IAM#(your userid)** and click **Copy Login Command**.
-
-![](images/ocp-console-login.png)
-
-11.Click Display Token link and then copy the log in command:
-
-![](images/ocp-display-token.png)
-
-12.Open a terminal window and Paste the oc command.
-
-![](images/ocp-paste-ocp-terminal.png)
-
-
 ## Configuring IBM MQ
 
-IBM Cloud Pak for Integration provides a single solution for all of your enterprise integration needs. The platform provides a comprehensive set of industry-leading capabilities. Combine powerful integration capabilities to create, manage, and monitor all of your integrations across applications, messaging, events, APIs, and more.
+### Task 1 - Configure Message Queue (IBM MQ) to Authorize and Accept Data
 
-In this task, you create a local queue using MQ Console and check the MQ configuration. You create the queue, which accepts the resulting data from the call to the "NEWORDER" API.
+As this is a brand-new deployment of the Cloud Pak for Integration, all instances of integrations, message queues, and APIs are deployed as microservices. You need to authorize the Message Queue service to accept incoming data from the integration running on a separate server.
 
-1.Open a browser and enter https://github.com/ibm-cloudintegration/dte-labs .You need to configure the MQ security.
+1.Open a browser and enter https://github.com/ibm-cloudintegration/dte-labs/tree/master/Lab2-AccessBackendSystems/resources.You need to configure the MQ security.
 
-![](images/ace-mq-github.png)
+![](images/lab2-task1.1.png)
 
-2.Select and click **Lab2-AccessBackendSystem** folder.
+2.Click **Download** for both zip files.
 
-![](images/ace-mq-download-git.png)
+![](images/lab2-task1.2.png)
 
-3.Download two zip files (**ace-mq.zip and mqconf.zip**). Click over the **ace-mq.zip** file.
+3.Open a terminal window and enter unzip es-mq.zip. Unzip creates a directory mqconf.zip ~/Downloads/ directory. Do not unzip ace-mq.zip (this is a App Connect project).
 
-![](images/ace-mq-ace-mqfile.png)
+![](images/lab2-task1.3.png))
 
-4.Click **Download** and save to your download directory (**/home/student/Downloads** ).
+4.In terminal window, find the mq pods, using this command: **oc get pods | grep mq**. Copy the mq pods (mq-quickstart-ibm-mq-0).
+
+![](images/lab2-task1.4.png))
+
+5.Execute the shell script to run MQ configuration (update the channel and security). Go to ~/Downloads/mqconf directory and enter ./loadmq.sh mq-quickstart-ibm-mq-0. The MQ configuration will be updated for this lab.
 
 ![](images/ace-mq-download-ace-mq.png)
 
-5.Download **mqconf.zip** and save in **/home/student/Downloads**.
+6.Open a browser and select on the Bookmark Bar (IBM Cloud Pak for Integration). From here, you are able to navigate to all the integration and development technology contained within the platform. Today, this technology Capabilities and Runtimes instances. Capabilities include: API Connect, App Connect Dashboard, App Connect Designer , Asset Repository and Operations Dashboard. To access IBM MQ click the Runtimes link. This task covers administering and creating a new queue in IBM MQ. IBM MQ for Cloud Pak for Integration has a web GUI, which the Integration Developer, with security authorization, is able to manage the different IBM MQ objects (queues, channels, topics and so on).
 
-6.You need to configure IBM MQ permissions in MQ Runtime, before creating a local queue. Open a terminal window.
+![](images/lab2-task1.6.png))
 
-![](images/es-command_line.png)
+You might see this warning (Potential Security Risk Ahead). Click Advance.  And then click the link, Accept the Risk and Continue). Don’t worry there is no Risk for your workstation.
 
-7.In **/home/student** directory, create a work directory **mq-lab**. Use **mkdir -p mq-lab** .
-
-![](images/ace-mq-mkdir.png)
-
-8.Move the two files(**ace-mq.zip** and **mqconf.zip**) from **/home/student/Downloads** to **/home/student/mq-lab**. Use mv **/home/student/Downloads/ace-mq.zip /home/student/mq-lab** and **mv /home/student/Downloads/ace-mqconfig.zip /home/student/mq-lab**.
-
-![](images/ace-mq-move-two-file.png)
-
-9.Go to **/home/student/mq-lab** directory and uncompressing the **mqconfig.zip** . (**Do not uncompress ace-mq.zip**)
-
-10.The uncompressing process creates a directory **mqconf**. This directory contains IBM MQ Queue Manager security configuration. Go to **/home/student/mq-lab/mqconfig** and enter **./loadmq.sh** shell script.
-
-![](images/ace-mq-unzip-mqconfig.png)
-
-11.You have the MQ server configured to be accessed by App Connect Enterprise.
-
-![](images/ace-mq-after-loadmq.png)
-
-12.Open browser and go to **Welcome IBM Cloud Pak for Integration**. Select **Runtimes** and click **mq-demo** to work with IBM MQ.
-
-![](images/ace-mq-start-mq.png)
-
-13.You might see this warning (Potential Security Risk Ahead). Click Advance.  And then click the link, Accept the Risk and Continue). Don’t worry there is no Risk for your workstation.
-
-14.In the **Welcome IBM MQ page** (**QUICKSTART** is the name of queue manager). This page, you can manage queue manager, create queues, learn MQ basics, and get more information about IBM MQ. Click **Create a queue**.
+7.You see the IBM MQ Welcome Page and an important tile that can help you learn about MQ technology. Click **Create a queue**.
 
 ![](images/ace-mq-createaqueue.png)
 
-15.In Create a queue page. You can choose queue type: Local, Alias, Remote, and Model. Click **Local** to create a queue.
+8.In Create a queue page. You can choose queue type: Local, Alias, Remote, and Model. Click **Local** to create a queue.
 
 ![](images/ace-mq-localqueue.png)
 
-16.Enter the queue name: **NEWORDER** and keep the default values and the click **Create**.
+9.Enter the queue name: **NEWORDER** and keep the default values and the click **Create**.
 
 ![](images/ace-mq-neworder.png)
 
-17.In the **Manage** page, locate the queues and click **NEWORDER** queue link.
+10.In the **Manage** page, locate the queues and click **NEWORDER** queue link.
 
 ![](images/ace-mq-check-neworder.png)
 
-18.You see that the **NEWORDER** queue is empty. Click **QUICKSTART** link (the queue manager).
+11.You see that the **NEWORDER** queue is empty. Click **QUICKSTART** link (the queue manager).
 
 ![](images/ace-mq-neworder-empty.png)
 
-19.Verify MQ Server hostname. Open a terminal window and enter **oc get svc** . Locate the **mq-demo-ibm-mq**  **ClusterIP address**. In this case is: 172.21.26.194.
-
-![](images/ace-mq-get-mq-address.png)
 
 ## Working with App Connect Enterprisa Toolkit (integration)
+
+### Task 2 - Configuring the app integration flow
 
 In this task, take an existing integration flow in ACE and modify it to send only the payload data to the NEWORDER queue.
 
 1.Open a terminal window by right-clicking on the desktop and selecting Open Terminal.
 
-2.Enter **ace toolkit** to open the App Connect Enterprise Toolkit.
+2.Before starting App Connect Enterprise toolkit, let’s check IBM MQ IP address. In th terminal window, enter the OpenShift command, **oc get svc -n cp4i | grep mq** to get a list of services in the namespaces. and copy the IP address (**172.30.152.157**) which the port is **1414**.
+
+![](images/lab2-task2.2.png)
+
+3.Enter **ace toolkit** to open the App Connect Enterprise Toolkit.
 
 ![](images/ace-mq-acetoolkit.png)
 
-3.In the Workspace Launcher window, create the workspace **/home/student/IBM/ACET11/workspace/ace-mq**. Click **OK**.
+4.In the Workspace Launcher window, create the workspace **/IBM/ACET11/workspace/ace-mq**. Click **OK**.
 
 ![](images/ace-mq-create-ace-mq-workspace.png)
 
-4.Import App Connect Enterprise project. Click **File -> Import**.
+5.The toolkit opens the project. Import the ace-mq.zip file that you downloaded ( see ~/Downloads/ace-mq.zip ). Select **File->Import->Project Interchange** and click **Next**.
 
 ![](images/ace-mq-import-zipfile.png)
 
-5.Select Project Interchange and click **Next** .
-
 ![](images/ace-mq-projectinterchange.png)
 
-6.Go to **/home/student/mq-lab** and select **ace-mq.zip**.
+6.Select ace-mq.zip in Downloads folder and then click Ok.
 
-![](images/ace-mq-ace-mq-file.png)
+![](images/lab2-task2.6.png)
 
-7.Check the project name **neworder** and click **Finish**.
-
-![](images/ace-mq-confirm-neworder.png)
-
-8.Click **neworder > Resources > Subflows > getId.subflow** on the left pane.
+7.Verify **neworder** project is checked and click **Finish**. To view the integration flow that you deploy, click **neworder -> Resources -> Subflows -> getid.subflow**.
 
 ![](images/ace-mq-opengetid.png)
 
-9.Click the **MQ Output** tile. In the lower-right of the Properties pane, open the Properties tab and click **Basic**. Enter the queue name: **NEWORDER**.
+8.Click the **MQ Output** tile. In the lower-right of the Properties pane, open the Properties tab and click **Basic**. Enter the queue name: **NEWORDER**.
 
-![](images/ace-mq-basci-neworder.png)
+![](images/ace-mq-basic-neworder.png)
 
-10.	Click the MQ Connection parameter and enter the following settings:
+9.Click the MQ Connection parameter and enter the following settings:
 
 ```
   1.	Connection*: Select **MQ client connection properties** from the drop-down.
   2.	Destination queue manager name: **QUICKSTART** (case-sensitive).
-  3.	Queue manager hostname: **172.21.26.194**. (When you entered **oc get svc**)
+  3.	Queue manager hostname: **172.30.152.157**. (When you entered **oc get svc**)
   4.	Listener: **1414**.
   5.	Channel name: **SYSTEM.DEF.SRVCONN** (Server Connection).
+  6.  Save the flow (**CRTL+S**)
 
 ```
 ![](images/ace-mq-mqconnection.png)
 
-11.Save your flow. Click the **save button** .
-
-12.Now, you need to generate a bar (broker archive) file. The App Connect Enterprise server uses BAR (Broker Archive) files to save compiled message flows, libraries, etc. We have created a file **neworder.bar** for this lab. In the Application Development window in the upper-left, on **neworder application**, right-click and select New then **BAR** file.
+10.Now, you need to generate a bar (broker archive) file. The App Connect Enterprise server uses BAR (Broker Archive) files to save compiled message flows, libraries, etc. We have created a file **neworder.bar** for this lab. In the Application Development window in the upper-left, on **neworder application**, right-click and select New then **BAR** file.
 
 ![](images/ace-mq-create-bar-file.png)
 
-13.On the Window New Bar file, type the name of bar file: **neworder**.
+11.On the Window New Bar file, type the name of bar file: **neworder**.
 
 ![](images/ace-mq-neworder-bar-file.png)
 
-14.	App Connect Enterprise opens a window: **Prepare window** .
+12.	App Connect Enterprise opens a window: **Prepare window** .
 
 ```
 
@@ -260,11 +155,14 @@ App Connect Enterprise Toolkit saves and compile message flows, sub flows into a
 
 ## Deploying a BAR file
 
+### Task 3 - Deploy Integration BAR file as containers
+
+
 In this task, deploy the integration flow as App Connect Enterprise containers running in Kubernetes on the Cloud Pak for Integration. You then test the integration API by calling the API to create a new order and confirm the response payload and data in the queue.
 
-1.In your browser, return to the IBM Cloud Pak for Integration.Under **Capabilities**, select the **App Connect Dashboard** line and click **db-demo** instance.
+1.In your browser, return to the IBM Cloud Pak for Integration.Under **Capabilities**, select the **App Connect Dashboard** line and click the instance.
 
-![](images/ace-mq-open-db-demo.png)
+![](images/lab2-task3.1.png)
 
 2.When you deploy a BAR file, you create a new instance of App Connect Enterprise. Click **Create Server**.
 
@@ -278,7 +176,7 @@ In this task, deploy the integration flow as App Connect Enterprise containers r
 
 ![](images/ace-mq-drag-bar-file.png)
 
-5.In the File Upload window. Open **/home/student/IBM/ACET11/workspace/ace-mq/BARfiles** and select the file new **neworders.bar** and click **Open**. Verify the path routes to the **ace-mq** folder.
+5.In the File Upload window. Open **/home/student/IBM/ACET11/workspace/ace-mq/BARfiles** and select the file new **neworder.bar** and click **Open**. Verify the path routes to the **ace-mq** folder.
 
 ![](images/ace-mq-new-file-neworder.png)
 
@@ -295,14 +193,12 @@ In this task, deploy the integration flow as App Connect Enterprise containers r
 ```
 
   1.	Enter Integration Server name: **neworder**.
-  2.	Change the replicas to: **1** . (This is a lab and do not need more replicas)
-  3.	Switch to **ON** to use **Operational Dashboard (tracing)**.
-  4.	Enter Operational Dashboard instance namespace: **cp4i**.
-  5.	Update the App Connect Enterprise version to the latest: **11.0.0.9 r3** .
-  6.	Click **Create** .
+  2.	Switch to **ON** to use **Operational Dashboard (tracing)**.
+  3.	Enter Operational Dashboard instance namespace: **cp4i**.
+  4.	Click **Create** .
 
 ```
-![](images/ace-mq-configure-integration-server.png)
+![](images/lab2-task3.8.png)
 
 9.You see the **App Connect Enterprise Dashboard** with the Integration Server **neworder** deployed and started. Click the **neworder** server icon.
 

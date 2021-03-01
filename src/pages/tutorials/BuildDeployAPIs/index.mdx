@@ -12,8 +12,6 @@ In this tutorial, you learn how to deploy an app integration flow that takes dat
 
 
 <AnchorLinks>
-  <AnchorLink>Introduction</AnchorLink>
-  <AnchorLink>Preparing the environment</AnchorLink>
   <AnchorLink>Configuring IBM MQ</AnchorLink>
   <AnchorLink>Creating a BAR File</AnchorLink>
   <AnchorLink>Deploying a BAR file</AnchorLink>
@@ -39,90 +37,11 @@ Implement enterprise grade messaging that is secure and reliable for any applica
 - Checking this message using Operational Dashboard (tracing)
 
 
-## Preparing the environment
-
-### Task 1 - Preparing the environment
-
-**Note: If your using this tutorial in a multi-user ROKS setup, the environment is already prepared for you. Please login to the cluster using LDAP authentication and the credentials provided by your instructor and jump to [Configuring IBM MQ](#configuring-ibm-mq). Also, maske sure that you use a prefix provided by the instructor for queue, topic and server names.**
-
-As this is a new deployment of the Cloud Pak for Integration, you must execute some steps to prepare the environment. Initial setup steps are only needed for a fresh installation of the platform. They do not need to be repeated.
-You can use your workstation (MAC OSX) for working in this lab.
-
-In your workstation open a browser and enter http://cloud.ibm.com and enter your ibmid  and click continue and password to login IBM Cloud.
-
-![](images/tutorial_html_4684368ee9aef605.png)
-
-Use the password specified in parenthesis to login to VNC
-
-![](images/tutorial_html_dcc3a9fa250b6267.png)
-
-1.In your workstation open a browser and enter http://cloud.ibm.com and enter your **ibmid** and click continue and password to login IBM Cloud.
-
-![](images/tutorial_html_40856922adb9fae5.png)
-
-2.Enter your IBM userid  and the password and then enter the verify code.
-
-![](images/tutorial_html_e00b9a6736f7e923.png)
-
-3.In the IBM Cloud Dashboard. You see all information about the infrastructure. On the Resource summary. Observe if you have one cluster and click **Cluster** link.
-
-![](images/tutorial_html_43ece9238189e0a4.png)
-
-4.You see the  available resources for your cluster. Select Clusters arrow and click your cluster line.
-
-![](images/tutorial_html_dd756ffd9ce473bb.png)
-
-5.In the cluster page, you see the status of your cluster infrastructure,. such as worker node, CPU and Memory usage. Click **OpenShift Web Console**.
-
-![](images/tutorial_html_d22a349be88c0a4f.png)
-
-6.In the OpenShift console. Select the following:
-
-```
-    1. **Networking**
-
-    2. **Routes**
-
-    3. Drill down the Project to **Integration**
-
-    4. Click the **Navigator** link.
-
-```
-![](images/tutorial_html_ff17543331daf722.png)
-
-7.Select **Default authentication** as authentication type.
-
-![](images/login_cloud_pak_admin_default.png)
-
-8.You might need to login screen for IBM Cloud Pak might be displayed, enter the username: admin and Password (Enter the 32 characters password that you created when you made the Cloud Pak provisioning) and Click Log in.
-Tip: You might need to use the password. You can use the Clipboard to save the password.
-
-![](images/login_cloud_pak_userid_password.png)
-
-9.In the Cloud Pak Welcome page, you see Capabilities and Runtimes instances.
-
-![](images/Welcome_IBM_Cloud_Pak.png)
-
-10.You need to have access to Openshift cluster. In a browser go to **Openshift Console** and right top click **IAM#(your userid)** and click **Copy Login Command**.
-
-![](images/ocp-console-login.png)
-
-11.Click Display Token link and then copy the log in command:
-
-![](images/ocp-display-token.png)
-
-12.Open a terminal window and Paste the oc command.
-
-![](images/ocp-paste-ocp-terminal.png)
-
-13.	In the terminal window enter oc get svc | grep mq and save mq-demo-ibm-mq IP Adress: 172.21.157.216 (This IP Adress may be different).
-
-![](images/lab1-task1.11.png)
 
 ## Configuring IBM MQ
 
 
-### Task 2 - Configure Message Queue (MQ) to Authorize and Accept Data.
+### Task 1 - Configure Message Queue (MQ) to Authorize and Accept Data.
 
 As this is a brand-new deployment of the Cloud Pak for Integration, all instances of integrations, message queues, and event streams are deployed as microservices. We need to authorize the Message Queue service to accept incoming data from the integration running on a separate server.
 Cloud Pak for Integration provides a single solution for all of your enterprise integration needs. The platform provides a comprehensive set of industry-leading capabilities. Use any of them on their own or together through a single interface. Create, manage, and monitor all of your integrations across SaaS applications, messaging, streams, APIs, high-speed transfer, and more.
@@ -173,7 +92,7 @@ Unlock the power of your data and support the scale required for all of your int
 
 ## Creating a BAR file
 
-### Task 3 – Configuring the integration flow using App Connect Enterprise Toolkit
+### Task 2 – Configuring the integration flow using App Connect Enterprise Toolkit
 
 This task covers opening and examining an application integration flow in the IBM App Connect Enterprise Toolkit. With the Toolkit you can build powerful and complex integration applications, services, and APIs quickly and easily using a visual designer. Your integration solutions can be directly deployed to the Cloud Pak for Integration on IBM Cloud Pak running on-premise, in any cloud, or combinations of both.
 
@@ -224,7 +143,7 @@ This task covers opening and examining an application integration flow in the IB
 
 ## Deploying a BAR file
 
-### Task 4 – Deploy Integration BAR file as containers
+### Task 3 – Deploy Integration BAR file as containers
 
 In this task, you deploy a BAR file in App Connect Enterprise Dashboard.
 
@@ -296,7 +215,7 @@ If the API call is successful, you see JSON reply with {"accountid":"ABC-1234567
 
 ## Configuring API Connect
 
-### Task 5 – Configuring API Connect to test the integration
+### Task 4  – Configuring API Connect to test the integration
 
 You've created an application integration flow and successfully called it via a REST API call! Now, to make it accessible to the rest of the world, it's important to add security around it—at least in the form of a client ID .This way, in addition to access control, you can get insights into which teams or customers are the least and most active. Adding security to an API is simply done via an OpenAPI configuration parameter. We can add rate limits to the API to increase the calls per second, minute, or hour to scale up as much as you need.
 
@@ -431,7 +350,7 @@ You've created an application integration flow and successfully called it via a 
 
 ## Sharing the API
 
-### Task 6 - Share the API
+### Task 5 - Share the API
 
 Now that you've built, secured, published, and tested your API, the last step is to add it to the Asset Repository. With the Asset Repository, your organization can store, manage, and share all of your integration assets in one central location. Sharing assets in this way increases collaboration between teams, avoids unnecessary duplication and boosts productivity.
 
@@ -479,7 +398,7 @@ You’ve successfully added a review. Now your teammates know that this asset is
 
 ## Using Operations Dashboard
 
-### Task 7 – Using Operations Dashboard (tracing)
+### Task 6 – Using Operations Dashboard (tracing)
 
 
 Cloud Pak for Integration - Operations Dashboard Add-on is based on Jaeger open source project and the OpenTracing standard to monitor and troubleshoot microservices-based distributed systems. Operations Dashboard can distinguish call paths and latencies. DevOps personnel, developers, and performance engineers now have one tool to visualize throughput and latency across integration components that run on Cloud Pak for Integration. Cloud Pak for Integration - Operations Dashboard Add-on is designed to help organizations that need to meet and ensure maximum service availability and react quickly to any variations in their systems.
