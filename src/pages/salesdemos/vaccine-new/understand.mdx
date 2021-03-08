@@ -4,7 +4,7 @@ description: Demo Description page
 tabs: [ 'Overview', 'Understand', 'Deliver']
 ---
 
-export const Title = () => <span>Car Crash Repair - Cognitive API Demo</span>
+export const Title = () => <span>Vaccine Delivery - Respond to Events</span>
 
 <AnchorLinks>
   <AnchorLink>Demo Scenario</AnchorLink>
@@ -16,32 +16,18 @@ export const Title = () => <span>Car Crash Repair - Cognitive API Demo</span>
 
 ## Demo Scenario
 
-We are a Car Repair company: We take in vehicles with problems and repair them – seems simple but..
+The vaccine lots need to be kept at a constant temperature for a period of time. The sensor telemetry data coming from the refrigerated shipping containers is processed to assess cold-chain violations.
 
-- We want to gain business advantage by allowing multiple car leasing companies to use us to repair their cars – these companies insist that we expose APIs for them to call to do business with them.
+The solution for this use case includes streaming telemetry events, a stateful microservice to implement aggregation & alarm generation, and integration with a microservice to log issues against the refrigerated shipping container.
 
-- We want to allow their customers to book their cars in for repair and get an estimate for price and number of days in real time – in seconds. Later we will build more APIs to allow customers to query the status of their repairs, or make updates or add comments to their repair cases.
-
-- We want to allow them to send photos of their cars so we can check for type, damage etc.
-
-- We want to check for errors and issues up-front as quickly as possible to feed back to the customer in real time. Photo not valid? No car in the photo? We’ll tell you instantly so you can re-submit.
-
-- We want to minimize manual processes and have the repair request automatically create a repair case in our CRM system (Salesforce). If a customer wants to book a repair at 3am on a Sunday, they can – it’s their choice.
-
-- (Extension scenario): If the car is a convertible/roadster, we don’t repair it, it’s a specialist job. We want convertibles to automatically create a repair case in our partner’s system (ServiceNow) as well.
-
-- (Extension scenario)Our partner speaks Spanish – we don’t! We need the requests translating from English.
-
-- We are wanting to grow our business fast with this new model and expect the use of APIs to really increase the number of requests we get. We need our solution to be scalable and highly available.
-
-The diagram below shows how all the parties of our business are related:
+The diagram below describes this scenario:
 
 ![](images/scenario-1.png)
 
 ***
 
 ### Demo Video
-Do you want to understand better the Car Repair Demo? Check the video below.
+Do you want to understand better the Vaccine Deliver Demo? Check the video below.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TRzO26kawu4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -51,12 +37,11 @@ Do you want to understand better the Car Repair Demo? Check the video below.
 Here is the list of the macro steps of this Demo:
 
   - Scenario Introduction
-  - API Request
-  - Image Recognition
-  - Error Handling
+  - Capture Event
+  - Event Analyzis
+  - Anomaly detection
   - Salesforce Integration
-  - Tone Analysis
-  - Attach the Image on SalesForce
+  - Problem Resolution
   - Summary
 
 On the Deliver page, you have the Guided Tour for each Delivery Option, explaining everything that you will do in each macro step.
