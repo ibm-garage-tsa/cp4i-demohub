@@ -1,6 +1,6 @@
 
 <h1 align="center">
-IBM Cloud Pak for Integration
+PoT Messaging
 </h1>
 
 <p align="left">
@@ -9,12 +9,11 @@ IBM Cloud Pak for Integration
   </a>
 </p>
 
-## Cloud Pak for Integration DemoHub
+## IBM Messaging Proof of Technology
 
-The course materials can be viewed at- [https://ibm-garage-tsa.github.io/cp4i-demohub/](https://ibm-garage-tsa.github.io/cp4i-demohub/)
+The course materials can be viewed at- [https://jackcarnes.github.io/cp4i-demohub](https://jackcarnes.github.io/cp4i-demohub/)
 
 
 ### Contributors
 
-- Ravi Katikala (ravi.katikala@us.ibm.com)
-- Carlos Hirata (chirata@us.ibm.com)
+- Jack Carnes (carnesj@us.ibm.com)
