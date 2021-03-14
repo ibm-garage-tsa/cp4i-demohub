@@ -1,0 +1,83 @@
+---
+title: Setup CP4I
+---
+
+import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/ArticleDetails'
+
+<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="January 2021" readTimeMinutes="60" />
+
+We installed IBM Cloud Pak® for Integration 2020.3.1 on Red Hat® Openshift® 4.6.
+
+<AnchorLinks>
+  <AnchorLink>Prepare the environment</AnchorLink>
+</AnchorLinks>
+
+
+## Prepare the environment
+
+### Task 1 - Prepare the environment
+
+##  Start the Environment
+
+As this is a new deployment of the Cloud Pak for Integration, you must execute some steps to prepare the environment. Initial setup steps are only needed for a fresh installation of the platform. They do not need to be repeated.
+
+1. All work for this lab is done on the Developer Machine. Open the Developer Machine VM by copying the **Client VM VNC** link in a browser window from your email or the Reservation Details as shown below.
+
+  ![](images/tutorial_html_4684368ee9aef605.png)
+
+   Use the password specified in parenthesis to login to VNC.
+
+  ![](images/tutorial_html_dcc3a9fa250b6267.png)
+
+2. In your workstation open a browser and enter [http://cloud.ibm.com](http://cloud.ibm.com/) and enter your ibmid and click continue and password to login IBM Cloud.
+
+  ![](images/tutorial_html_40856922adb9fae5.png)
+
+3. Enter your userid and the password and then enter the **verify** code.
+
+  ![](images/tutorial_html_e00b9a6736f7e923.png)
+
+4. In the IBM Cloud Dashboard. You see all information about the infrastructure. On the **Resource summary**. Observe if you have one cluster and click **Cluster** link ,
+
+  ![](images/tutorial_html_43ece9238189e0a4.png)
+
+5. You see the available resources for your cluster. Select Clusters arrow and click your cluster line.
+
+  ![](images/tutorial_html_dd756ffd9ce473bb.png)
+
+6. In the cluster page, you see the status of your cluster infrastructure, such as worker node, CPU and Memory usage. Click **OpenShift Web Console**.
+
+  ![](images/tutorial_html_d22a349be88c0a4f.png)
+
+7. In the OpenShift console. Select the following:
+
+    a. **Networking**
+
+    b. **Routes**
+
+    c. Drill down the Project to **Integration**
+
+    d. Click the Navigator link.
+
+    ![](images/tutorial_html_ff17543331daf722.png)
+
+8. In the Cloud Pak Welcome page, click **Skip Welcome**.
+
+  ![](images/tutorial_html_e4c588fe25d64578.png)
+
+9. In the Cloud Pak Navigator click **View Instance**.
+
+  ![](images/tutorial_html_68464c54bc79da9b.png)
+
+10. Make sure that your workstation is configured to access OpenShift using the command line. In your desktop click right mouse and open a terminal window.
+
+  ![](images/tutorial_html_cc072d279d113090.png)
+
+11. Enter **oc project integration**
+
+  ![](images/oc_login.png)
+## Summary
+
+You have successfully completed the tutorial. You were able to add a layer of secure, reliable, event-driven, and real-time data, which can be reused across applications in your enterprise.
+
+To try out more labs, go to Cloud Pak for Integration Demos. For more information about the Cloud Pak for Integration, go to https://www.ibm.com/cloud/cloud-pak-for-integration.
