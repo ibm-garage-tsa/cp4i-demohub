@@ -53,86 +53,85 @@ Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo
 ## Install Cloud Pak for Integration on ROKS cluster
 
 
-1.  Login to <https://cloud.ibm.com/catalog> if have not already
+1.Login to <https://cloud.ibm.com/catalog> if have not already
 
-2.  Confirm that you are using the DTE organization.
+2.Confirm that you are using the DTE organization.
 
-    ![](images/dte_org.png)
+  ![](images/dte_org.png)
 
-3.  From the Catalog, select **Cloud Pak for Integration**
+3.From the Catalog, select **Cloud Pak for Integration**
 
-    ![](images/cp4i_catalog.png)
+  ![](images/cp4i_catalog.png)
 
-4.  Select the Redhat Openshift Cluster that you just created from the list. The DTE provisioned cluster name starts with dteroks or playgrowth.
+4.Select the Redhat Openshift Cluster that you just created from the list. The DTE provisioned cluster name starts with dteroks or playgrowth.
 
-    ![](images/roks-cluster.png)
+  ![](images/roks-cluster.png)
 
-5.  Click **Add project** Enter a project name, and a tag name to identify your cluster.
+5.Click **Add project** Enter a project name, and a tag name to identify your cluster.
 
-    ![](images/add-project.png)
+  ![](images/add-project.png)
 
-6.  Enter **cp4i** as Project name and click **Add**.
+6.Enter **cp4i** as Project name and click **Add**.
 
-    ![](images/cp4i-project.png)
+  ![](images/cp4i-project.png)
 
-7.  Scroll down. On *Set the deployment values* section. Unmark the **Use an existing secret?** to define a new password and enter a value for csDefaultAdminPassword. It is important that you choose a password that is 32 characters in length and it conforms to the password rule - number, letter, -.
+7.Scroll down. On *Set the deployment values* section. Unmark the **Use an existing secret?** to define a new password and enter a value for csDefaultAdminPassword. It is important that you choose a password that is 32 characters in length and it conforms to the password rule - number, letter, -.
 
-     *Note: Currently password validation is not enforced on this page. If you proceed with an invalid password you will be able to start the installation but it will fail. There is no way to recover from this error other than provisioning a new cluster.*
+  *Note: Currently password validation is not enforced on this page. If you proceed with an invalid password you will be able to start the installation but it will fail. There is no way to recover from this error other than provisioning a new cluster.*
 
-     ![](images/password.png)
+  ![](images/password.png)
 
-8.  Scroll down to 'Parameters with default values' and click on the 'twisty' to open them. There is no need to change the default values except for the parameters that start with demo.
+8.Scroll down to see 'Parameters with default values' and click on the 'twisty' to open them. There is no need to change the default values except for the parameters that start with demo.
 
-    ![](images/cp4i-install-param.png)
+  ![](images/cp4i-install-param.png)
 
-    If you do have an SMTP email server and accounts that you can use, you may sign up for a free mailtrap.io account using [https://mailtrap.io](https://mailtrap.io/). Mailtrap.io is a free cloud service that mimics an SMTP server. It is used for development/demonstration purposes only.
+  If you do have an SMTP email server and accounts that you can use, you may sign up for a free mailtrap.io account using [https://mailtrap.io](https://mailtrap.io/). Mailtrap.io is a free cloud service that mimics an SMTP server. It is used for development/demonstration purposes only.
 
-    Fill in the following fields:
+  Fill in the following fields:
 
-    demoPreparation: Set to 'true'
+  demoPreparation: Set to 'true'
 
-    demoAPICEmailAddress: if you're using mailtrap.io, use any email address. Use 'apicadmin@example.com' to be safe -- example.com is guaranteed to not be a real domain. If you're using your own mail server, use an email address that you can receive and read.
+  demoAPICEmailAddress: if you're using mailtrap.io, use any email address. Use 'apicadmin@example.com' to be safe -- example.com is guaranteed to not be a real domain. If you're using your own mail server, use an email address that you can receive and read.
 
-    demoAPICMailServerPort: if you're using mailtrap, leave this as 2525
+  demoAPICMailServerPort: if you're using mailtrap, leave this as 2525
 
-    demoAPICMialServerUsername: Set this to your mailtrap username.
+  demoAPICMialServerUsername: Set this to your mailtrap username.
 
-    demoAPICMailServerPassword: Set this to your mailtrap password.
+  demoAPICMailServerPassword: Set this to your mailtrap password.
 
-    You are welcome to set true in drivewayDentDeletionDemo and eventEnabledInsuranceDemo, if you desire.
+  You are welcome to set true in drivewayDentDeletionDemo and eventEnabledInsuranceDemo, if you desire.
 
-9.  Accept the license agreement and click **Install** to install Cloud
-    Pak for Integration. The installation will take up to 90 minutes.
+9.Accept the license agreement and click **Install** to install Cloud Pak for Integration. The installation will take up to 90 minutes.
 
-    ![](images/license.png)
+  ![](images/license.png)
 
-10.  You can view the progress in the Schematics progress bar or check the details in view log.
+10.You can view the progress in the Schematics progress bar or check the details in view log.
 
-    ![](images/progress-bar.png)
+  ![](images/progress-bar.png)
 
-11.  When you see the **Active** status, you will be able to access Cloud Pak for Integration Platform Navigator by selecting **Offering Dashboard** on the upper right corner of the page.
+11.When you see the **Active** status, you will be able to access Cloud Pak for Integration Platform Navigator by selecting **Offering Dashboard** on the upper right corner of the page.
 
-    ![](images/offering_dashboard.png)
+  ![](images/offering_dashboard.png)
 
-    You can also get to the platform navigator page from a browser by manually entering **cpd-cp4i.<yourcluster-domain-name\>**. Your cluster domain is shown in the Details section in Reserved Instances.
+  You can also get to the platform navigator page from a browser by manually entering **cpd-cp4i.<yourcluster-domain-name\>**. Your cluster domain is shown in the Details section in Reserved Instances.
 
-12. On **Log in** page, select the authentication type **IBM provided credentials (admin only)**.
+12.On **Log in** page, select the authentication type **IBM provided credentials (admin only)**.
 
-    ![](images/authentication-types.png)
+  ![](images/authentication-types.png)
 
-13. Log in with your admin user and password.
+13.Log in with your admin user and password.
 
-    ![](images/login.png)
+  ![](images/login.png)
 
-14. Click on **View capabilities**.
+14.Click on **View capabilities**.
 
-    ![](images/capabilities.png)
+  ![](images/capabilities.png)
 
-15. Here you are able to view the instances for API Connect, App Connect Designer, App Connect Dashboard and Asset Repository. Additional instances for any of the Integration Capabilities can be created by selecting **Create capabilities.**
+15.Here you are able to view the instances for API Connect, App Connect Designer, App Connect Dashboard and Asset Repository. Additional instances for any of the Integration Capabilities can be created by selecting **Create capabilities.**
 
-    ![](images/instances.png)
+  ![](images/instances.png)
 
-    You have successfully completed cluster provisioning, Cloud Pak for Integration installation and deployment of API Connect and App Connect. You are ready to proceed to Sales Demos or CP4I Labs that are supported on Cloud Pak for Integration on ROKS.
+  You have successfully completed cluster provisioning, Cloud Pak for Integration installation and deployment of API Connect and App Connect. You are ready to proceed to Sales Demos or CP4I Labs that are supported on Cloud Pak for Integration on ROKS.
 
 ***
 
@@ -140,22 +139,22 @@ Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo
 
 Some demos and labs requires access to ROKS cluster by command line. Follow the steps below to log in your cluster.
 
-1.  Back to the OpenShift Managed Cluster Web Console (if you are not there, you should have an email with a link to OpenShift Console, you received this e-mail when you requested the ROKS environment).
+1.Back to the OpenShift Managed Cluster Web Console (if you are not there, you should have an email with a link to OpenShift Console, you received this e-mail when you requested the ROKS environment).
 
-    ![](images/roks-console.png)
+  ![](images/roks-console.png)
 
-2.  On the top right of the screen, click on your **username** and select **Copy Login Command**.
+2.On the top right of the screen, click on your **username** and select **Copy Login Command**.
 
-    ![](images/copy-login-cmd.png)
+  ![](images/copy-login-cmd.png)
 
-3.  On the new page, click **Display Token**.
+3.On the new page, click **Display Token**.
 
-    ![](images/display-token.png)
+  ![](images/display-token.png)
 
-4.  Copy the **log in** command.
+4.Copy the **log in** command.
 
-    ![](images/login-token.png)
+  ![](images/login-token.png)
 
-5.  On a terminal window, **paste** and **run** the log in command.
+5.On a terminal window, **paste** and **run** the log in command.
 
-    ![](images/cli-login.png)
+  ![](images/cli-login.png)
