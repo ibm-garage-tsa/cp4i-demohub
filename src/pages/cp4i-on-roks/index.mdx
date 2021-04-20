@@ -15,146 +15,120 @@ Cloud Pak Integration on ROKS cluster.
 
 You will complete the following high level tasks:
 
--   Create a ROKS cluster in IBM Cloud
+<AnchorLinks>
+  <AnchorLink>Create a ROKS cluster in IBM Cloud</AnchorLink>
+  <AnchorLink>Install Cloud Pak for Integration on ROKS Cluster</AnchorLink>
+</AnchorLinks>
 
--   Install Cloud Pak for Integration on ROKS Cluster
+***
 
--   Prepare the demo environment
+##Create a ROKS cluster in IBM Cloud
 
--   Use integrated sales demos or DTE Hands on Labs for your workshops or customer engagements
 
-Create a ROKS cluster in IBM Cloud 
-----------------------------------
+Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo purposes, self-learning or Proof of Concept projects. If you have not already provisioned a cluster, follow these steps.
 
-Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos
-for demo purposes, self-learning or Proof of Concept projects. If you
-have not already provisioned a cluster, follow these steps.
+1.Access the [IBM Asset Repo site](https://assetrepo.ibm.com/) and log in using your IBM credentials.
 
-1.  Login to <https://www.ibm.com/demos/> using your IBM credentials
+2.On the home page, scroll down and open the **Cloud Pak for Integration Activation Kit**.
 
-2.  From the featured Collection, select Cloud Pak for Integration
+  ![](images/cp4i-ak.png)
 
-    ![](images/tutorial_html_d8e6d2c22b10e37d.png)
+3.Open the **Environments** tab.
 
-3.  From the Demo Environments section, select Cloud Pak for Integration
-    ROKS 4.4 Cluster (Express). If you are interetsed in running CP4I 2020.1.1 select ROKS 4.3 cluster.
+  ![](images/environments.png)
 
-    ![](images/tutorial_html_7086b5a8f615cb8b.png)
+4.Select the ROKS cluster that you want (the simplest way is to select the latest version of the Express instalation).
 
-4.  Clock on **Reserve Instance**. If prompted for login, use your IBM
-    ID credentials.
+  ![](images/express.png)
 
-5.  Enter your **Opportunity number**, **Purpose**, **Provision
-    duration** and **country/region**. The environment can be
-    provisioned immediately by selecting the checkbox for a duration up
-    to 14 days. Make sure you change the duration before you click
- **Create**.
+5.Follow the **Create a reservation** form to define the details of your ROKS Reservation.
 
-    ![](images/tutorial_html_9e33530cad3cdfe8.png)
+  ![](images/reservation-form.png)
 
-6.  The reservation status is shown in the next screen if there is an
-    available cluster from the pool for immediate use. Otherwise, an
-    email notification will be sent when the cluster is ready.
+  After few minutes, your ROKS environment is ready. Now you are ready to move to the next step and install Cloud Pak for Integration!
 
-    ![](images/tutorial_html_86e8f35571608a88.png)
+***
 
-7.  The reservation details can be viewed by selecting **Details**.
+## Install Cloud Pak for Integration on ROKS cluster
 
-     ![](images/tutorial_html_6d9291b896ee5219.png)
-
-You are ready to install Cloud Pak for Integration!
-
-Install Cloud Pak for Integration on ROKS cluster 
--------------------------------------------------
 
 1.  Login to <https://cloud.ibm.com/catalog> if have not already
 
-2.  From the Catalog, select **Cloud Pak for Integration**
+2.  Confirm that you are using the DTE organization.
 
-    ![](images/tutorial_html_4cb9b9db063e29fd.png)
+    ![](images/dte_org.png)
 
-3.  Select the Redhat Openshift Cluster that you just created from the
-    list. The DTE provisioned cluster name starts with playgrowth. Enter
-    a project name, and a tag name to identify your cluster.
+3.  From the Catalog, select **Cloud Pak for Integration**
 
-    ![](images/tutorial_html_ff093f28f345b4d6.png)
+    ![](images/cp4i_catalog.png)
 
-4.  Skip this step if you are using Cloud Pak for Integration 2020.2.1 or higher. If you are using the schematics for CP4I 2020.1.1 
-    you must run the preinstallation script before you install the Cloud
-    Pak. There is no need to modify the content of the script, simply
-    click on Run Script to complete the pre-installation step.
+3.  Select the Redhat Openshift Cluster that you just created from the list. The DTE provisioned cluster name starts with dteroks or playgrowth.
 
-    ![](images/tutorial_html_56c1550f7625ea2f.png)
+    ![](images/roks-cluster.png)
 
-    Once the pre-installation step is complete, you may proceed with the
-    installation.
+4.  Click **Add project** Enter a project name, and a tag name to identify your cluster.
 
-    ![](images/tutorial_html_9367ceb312dd07a1.png)
+    ![](images/add-project.png)
 
-5.  Enter a value for csDefaultAdminPassword. It is important that you
-    choose a password that is 32 characters in length and it conforms to
-    the password rule - number, letter, -.
+5.  Enter **cp4i** as Project name and click **Add**.
 
-     Note: Currently password validation is not enforced on this page. If you proceed with an invalid password you will be able to start the installation but it will fail. There is no way to recover from this error other than provisioning a new cluster.
+    ![](images/cp4i-project.png)
 
-6.  Scroll down to 'Parameters with default values' and click on the
-    'twisty' to open them. There is no need to change the default values
-    except for the parameters that start with demo.
+6.  Scroll down. On *Set the deployment values* section. Unmark the **Use an existing secret?** to define a new password and enter a value for csDefaultAdminPassword. It is important that you choose a password that is 32 characters in length and it conforms to the password rule - number, letter, -.
 
-    ![](images/tutorial_html_873d5b430786fcde.png)
+     *Note: Currently password validation is not enforced on this page. If you proceed with an invalid password you will be able to start the installation but it will fail. There is no way to recover from this error other than provisioning a new cluster.*
 
-    If you do have an SMTP email server and accounts that you can use, you
-    may sign up for a free mailtrap.io account using
-    [https://mailtrap.io](https://mailtrap.io/). Mailtrap.io is a free cloud
-    service that mimics an SMTP server. It is used for
-    development/demonstration purposes only.
+     ![](images/password.png)
+
+7.  Scroll down to 'Parameters with default values' and click on the 'twisty' to open them. There is no need to change the default values except for the parameters that start with demo.
+
+    ![](images/cp4i-install-param.png)
+
+    If you do have an SMTP email server and accounts that you can use, you may sign up for a free mailtrap.io account using [https://mailtrap.io](https://mailtrap.io/). Mailtrap.io is a free cloud service that mimics an SMTP server. It is used for development/demonstration purposes only.
 
     Fill in the following fields:
 
     demoPreparation: Set to 'true'
 
-    demoAPICEmailAddress: if you're using mailtrap.io, use any email
-    address. Use 'apicadmin@example.com' to be safe -- example.com is
-    guaranteed to not be a real domain. If you're using your own mail
-    server, use an email address that you can receive and read.
+    demoAPICEmailAddress: if you're using mailtrap.io, use any email address. Use 'apicadmin@example.com' to be safe -- example.com is guaranteed to not be a real domain. If you're using your own mail server, use an email address that you can receive and read.
 
     demoAPICMailServerPort: if you're using mailtrap, leave this as 2525
 
-    demoAPICMialServerUsername: Set this to your mailtrap user name
+    demoAPICMialServerUsername: Set this to your mailtrap username.
 
     demoAPICMailServerPassword: Set this to your mailtrap password.
 
+    You are welcome to set true in drivewayDentDeletionDemo and eventEnabledInsuranceDemo, if you desire.
+
 7.  Accept the license agreement and click **Install** to install Cloud
-    Pak for Integration. The installation will take up to 60 minutes.
+    Pak for Integration. The installation will take up to 90 minutes.
 
-    ![](images/tutorial_html_4e481413f0c6156e.png)
+    ![](images/license.png)
 
-8.  You can view the progress in the Schematics progress bar or check
-    the details in view log.
+8.  You can view the progress in the Schematics progress bar or check the details in view log.
 
-    ![](images/tutorial_html_a0d985d2de87ca96.png)
+    ![](images/progress-bar.png)
 
-9. When you see the **Active** status, you will be able to access Cloud
-    Pak for Integration Platform Navigator by selecting **Offering
-    Dashboard** on the upper right corner of the page.
+9.  When you see the **Active** status, you will be able to access Cloud Pak for Integration Platform Navigator by selecting **Offering Dashboard** on the upper right corner of the page.
 
-    ![](images/tutorial_html_2ff191465c965c95.png)
+    ![](images/offering_dashboard.png)
 
-    You can also get to the platform navigator page from a browser by
-    manually entering navigator-integration.<yourcluster-domain-name\>.
-    Your cluster domain is shown in the Details section in Reserved
-    Instances.
+    You can also get to the platform navigator page from a browser by manually entering **cpd-cp4i.<yourcluster-domain-name\>**. Your cluster domain is shown in the Details section in Reserved Instances.
 
-    ![](images/tutorial_html_39d1ee4945dca534.png)
+10. On **Log in** page, select the authentication type **IBM provided credentials (admin only)**.
 
-10. Click on **view instances** to view the instances for API Connect,
-    App Connect Designer, App Connect Dashboard and Asset Repository.
-    Additional instances for any of the Integration Capabilities can be
-    created by selecting **create instance.**
+    ![](images/authentication-types.png)
 
-    ![](images/tutorial_html_f38113fff9eb825b.png)
+11. Log in with your admin user and password.
 
-    You have successfully completed cluster provisioning, Cloud Pak for
-    Integration installation and deployment of API Connect and App Connect.
-    You are ready to proceed to Sales Demos that are supported on Cloud Pak for Integration
-    on ROKS.
+    ![](images/login.png)
+
+12. Click on **View capabilities**.
+
+    ![](images/capabilities.png)
+
+13. Here you are able to view the instances for API Connect, App Connect Designer, App Connect Dashboard and Asset Repository. Additional instances for any of the Integration Capabilities can be created by selecting **Create capabilities.**
+
+    ![](images/instances.png)
+
+    You have successfully completed cluster provisioning, Cloud Pak for Integration installation and deployment of API Connect and App Connect. You are ready to proceed to Sales Demos or CP4I Labs that are supported on Cloud Pak for Integration on ROKS.
