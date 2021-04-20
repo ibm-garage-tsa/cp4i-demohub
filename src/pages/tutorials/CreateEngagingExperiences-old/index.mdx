@@ -4,38 +4,27 @@ title: Augment existing business functions with new applications using Kafka
 
 import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/ArticleDetails'
 
+<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="January 2021" readTimeMinutes="60" />
 
-<FeatureCard
-  title="Augment existing business functions with new applications using Kafka"
-  color="dark"
-  >
-
-![banner](images/lab3-banner.png)
-
-</FeatureCard>
+In this tutorial, you use the Cloud Pak for Integration 2020.4.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.6.
 
 <AnchorLinks>
-  <AnchorLink>Lab Overview</AnchorLink>
-  <AnchorLink>Prerequisites</AnchorLink>
-  <AnchorLink>Creating a Development Event Stream Instances</AnchorLink>
   <AnchorLink>Event Streams Topic</AnchorLink>
   <AnchorLink>Configuring App Connect Enterprise</AnchorLink>
   <AnchorLink>Deploying App Connect Enterprise</AnchorLink>
-  <AnchorLink>Operations Dashboard</AnchorLink>
+  <AnchorLink>Testing App Connect Enterprise</AnchorLink>
+  <AnchorLink>Operations Dashboard (tracing)</AnchorLink>
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
-***
+### Introduction
 
-<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="April 2021" readTimeMinutes="60" />
-
-***
-
-## Lab Overview
-
-In this tutorial, you use the Cloud Pak for Integration 2021.1.1 to create a topic in Kafka, modify an integration flow to call an API, emit an event onto the topic, and use the tracing tool to verify the message from App Connect Enterprise to Event Streams.
+Augment existing business functions with new applications using Kafka.
 
 The most interesting and impactful new applications in an enterprise are those that provide interactive experiences by reacting to existing systems carrying out a business function. In this tutorial, we take a look at an example from the retail industry. Starting with an existing API orchestrating the business function to "place an order". Let's say that when a customer places an order, we want to provide a real-time response. We want to reward the customer with points in a customer loyalty app or gamification experience or sign them up for a certain email nurture program. To do that, we need each order to emit an event. The Cloud Pak for Integration combines integration capabilities with Kafka based event streaming to make the data available for cloud-native applications to subscribe to a Kafka topic and use it for various business purposes.
+
+In this tutorial, you create a topic in Kafka, modify an integration flow to call an API, emit an event onto the topic, and use the tracing tool to verify the message from App Connect Enterprise to Event Streams.
+The Cloud Pak for Integration - Operations Dashboard Add-on provides cross-component monitoring and tracing capabilities that enable IT personnel to quickly analyze performance bottlenecks and latency problems across integration components to help ensure high levels of service.
 
 ### Takeaways
 
@@ -46,21 +35,7 @@ The most interesting and impactful new applications in an enterprise are those t
 - Testing App Connect Enterprise API sending a message to Event Streams
 - Checking this message using Operations Dashboard (tracing).
 
-***
 
-## Prerequisites
-
-  - You need to have your personal CP4I on ROKS environment. [Check here how to request it](https://ibm-garage-tsa.github.io/cp4i-demohub/cp4i-on-roks/)
-  - You need to have the OC CLI and you should have logged in your ROKS cluster via command line. [Check here how to do it](https://ibm-garage-tsa.github.io/cp4i-demohub/cp4i-on-roks/#access-your-roks-cluster-by-command-line)
-  - You need to have the IBM App Connect Enterprise Toolkit installed in your desktop. Follow the sections **Download IBM App Connect Enterprise for Developers** and **Install IBM App Connect Enterprise** from [this tutorial](https://www.ibm.com/docs/en/app-connect/11.0.0?topic=started-get-hands-experience) to install it.
-
-***
-
-## Creating a Development Event Stream Instances
-
-
-
-***
 
 ## Event Streams Topic
 
@@ -185,8 +160,6 @@ For this lab you use external listener to verify how to access Event Streams as 
 
 ![](images/lab3-task2.18-b-setfbparms.png)
 
-***
-
 ## Configuring App Connect Enterprise
 
 ### Task 2 - Configuring App Connect Enterprise flow using App Connect Enterprise Toolkit
@@ -309,8 +282,6 @@ You have created a topic in Event Streams created. App Connect Enterprise produc
 
 ![](images/lab3-task3.22-compress-policy.png)
 
-***
-
 ## Deploying App Connect Enterprise
 
 ### Task 3 – Deploying App Connect BAR file on App Connect Enterprise Server
@@ -411,8 +382,6 @@ This release introduces a new Operator-based approach for packaging, deploying, 
 ```
 ![](images/lab3-task4.23-create-ace-customerinfo.png)
 
-***
-
 ## Testing App Connect Enterprise
 
 ### Task 4  – Testing App Connect Enterprise API sending a message to Event Streams
@@ -463,8 +432,6 @@ You verify if the message you created in App Connect Dashboard (Integration serv
 
 ![](images/lab3-task5.11-eventstreams-monitoring.png)
 
-***
-
 ## Operations Dashboard (tracing)
 
 ### Task 5 - Using Operations Dashboard (tracing)
@@ -497,9 +464,9 @@ o	Span context: Trace information that accompanies the distributed transaction, 
 
 ![](images/lab3-task6.5-tracing.png)
 
-***
 
 ## Summary
+
 
 You have successfully completed this lab. In this lab you learned how to:
 
