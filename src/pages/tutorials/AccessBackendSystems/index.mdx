@@ -157,7 +157,7 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 
 ![](images/ace-mq-save-bar-file.png)
 
-Congratulations! You have the BAR file. Next section you will deploy the file as container in Cloud Pak for Integration. Now, you are welcome to **close** the Toolkit. 
+Congratulations! You have the BAR file. Next section you will deploy the file as container in Cloud Pak for Integration. Now, you are welcome to **close** the Toolkit.
 
 ***
 
@@ -168,70 +168,66 @@ Congratulations! You have the BAR file. Next section you will deploy the file as
 
 In this task, deploy the integration flow as App Connect Enterprise containers running in Kubernetes on the Cloud Pak for Integration. You then test the integration API by calling the API to create a new order and confirm the response payload and data in the queue.
 
-1.In your browser, return to the IBM Cloud Pak for Integration.Under **Capabilities**, select the **App Connect Dashboard** line and click the instance.
+1.Back to the **Cloud Pak Platform Navigator** in the browser. Open the **Menu** and on the **Run** section, open the **Integrations** dashboard.
 
-![](images/lab2-task3.1.png)
+  ![](images/open-ace-dashboard.png)
 
-2.When you deploy a BAR file, you create a new instance of App Connect Enterprise. Click **Create Server**.
+2.To deploy a BAR file, you need to create an Integration server. Let's do it! Click **Create a server**.
 
 ![](images/ace-mq-create-server.png)
 
-3.Now, in the Create an **App Connect Integration Server** page, define which integration tool generated the **BAR File**. Select **Toolkit Integration** and then click **Next**.
+3.In the *Create an Integration Server* page, you have two options to deploy a BAR file: Deploy a BAR file from *App Connect Toolkit* or from *App Connect Designer*. In this lab you use the App Connect Toolkit. Select **Quick start toolkit integration** option and click **NEXT**.
 
-![](images/ace-mq-select-toolkit.png)
+![](images/create-integration-server.png)
 
-4.In this step, drag a BAR file or click to upload
+4.Click to upload your BAR File. And select the **neworders.bar** (~/IBM/ACET11/workspace/ace-mq/BARfiles). And click **Next**.
 
-![](images/ace-mq-drag-bar-file.png)
+![](images/neworder-integration-server.png)
 
-5.In the File Upload window. Open **/home/student/IBM/ACET11/workspace/ace-mq/BARfiles** and select the file new **neworder.bar** and click **Open**. Verify the path routes to the **ace-mq** folder.
-
-![](images/ace-mq-new-file-neworder.png)
-
-6.You see that **neworder.bar** has uploaded to be deployed. Click **Next**.
-
-![](images/ace-mq-confirm-neworder-bar.png)
-
-7.You do not need to use the configuration package (**Configuration package contains the files that you can use for App Connect Enterprise works with Databases, Event Streams, etc**) click **Next**.
+5.You do not need to use the configuration package (*configuration package contains the files that you can use for App Connect Enterprise works with Databases, Event Streams, etc*) click **Next**.
 
 ![](images/ace-mq-configuration.png)
 
-8.Now you configure App Connect, enter the parameters:
+6.On *Create an Integration Server* page, enter the Integration Server name as **neworder** (1). Switch to **ON** to use *Operations Dashboard tracing* (2). Enter Operational Dashboard instance namespace as **cp4i** (3). Then click **Create** (4).
 
-```
+![](images/neworder-server-details.png)
 
-  1.	Enter Integration Server name: **neworder**.
-  2.	Switch to **ON** to use **Operational Dashboard (tracing)**.
-  3.	Enter Operational Dashboard instance namespace: **cp4i**.
-  4.	Click **Create** .
-
-```
-![](images/lab2-task3.8.png)
-
-9.You see the **App Connect Enterprise Dashboard** with the Integration Server **neworder** deployed and started. Click the **neworder** server icon.
+7.Here you can see the **App Connect Enterprise Dashboard** with the Integration Server **neworder** deployed and started. Click the **neworder** server icon.
 
 **Note:** The deployment process takes up to 5 minutes, refresh the browser to see the BAR file deployed and started.
 
 ![](images/ace-mq-neworder-server.png)
 
-10.Click the **neworder API** icon.
+8.Click the **neworder API** icon.
 
 ![](images/ace-mq-neworder-api.png)
 
-11.This page displays and copy the REST API Base URL (**Endpoint**), use the base URL (in the example :  http://neworder-http-cp4i.mycluster-dal12-c3c-32x-4e85092308b6e4e8c206c47df210f622-0000.us-south.containers.appdomain.cloud:80/neworder/v1/). It might be different.
-In this page, you can download a swagger file (you can import this file in API Connect and access by way of API Connect).
+9.This page displays the **Endpoint** URL (for example :  http://neworder-http-cp4i.mycluster-dal12-c3c-32x-4e85092308b6e4e8c206c47df210f622-0000.us-south.containers.appdomain.cloud:80/neworder/v1/).
+In this page, you can download a swagger file. But in this lab, you just need the Endpoint URL.
 
-![](images/ace-mq-neworder-endpoint.png)
+![](images/neworder-endpoint.png)
 
-12.Open a terminal window and enter the curl command: curl -k  --request GET http://neworder-http-cp4i.mycluster-dal12-c3c-32x-4e85092308b6e4e8c206c47df210f622-0000.us-south.containers.appdomain.cloud:80/neworder/v1/00000. And see the results
+10.Now let's test it. Open a terminal window and enter the curl command below:
+```
+curl -G -k  http://neworder-http-cp4i.mycluster-dal12-c3c-32x-4e85092308b6e4e8c206c47df210f622-0000.us-south.containers.appdomain.cloud:80/neworder/v1/00000
+```
+*Note: Replace the API URL with your Endpoint snd don't forget to include 0000 as order number at the end of the URL.*
 
 ![](images/ace-mq-curl-result.png)
 
-13.You check the message arrived in queue **NEWORDER** in IBM MQ (**QUICKSTART**). You can check using IBM MQ Console. Open a browser and click **Cloud Pak Platform Navigator** and go to **Runtimes** and click **mq-demo** in the instance **Queue Manager**.
+11.Now, let's check the message arrived in the *NEWORDER* queue in IBM MQ. Let's use IBM MQ Console to check it. Open the **Menu** again, and on **Run** section, click on **Messaging**.
+
+![](images/open-mq.png)
+
+12.Click **Manage QUICKSTART**.
+
+![](images/manage-quickstart.png)
+
+13.Here you can see that a new message has arrived in *NEWORDER* queue.
 
 ![](images/ace-mq-ckeck-message-neworder.png)
 
-14.You see a new message has arrived in **NEWORDER** queue.
+14.You are welcome, to click on the *NEWORDER* queue, to explore the message.
 
 ![](images/ace-mq-message-arrived.png)
 
