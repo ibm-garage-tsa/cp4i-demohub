@@ -22,7 +22,7 @@ You will complete the following high level tasks:
 
 ***
 
-##Create a ROKS cluster in IBM Cloud
+## Create a ROKS cluster in IBM Cloud
 
 
 Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo purposes, self-learning or Proof of Concept projects. If you have not already provisioned a cluster, follow these steps.
@@ -62,25 +62,25 @@ Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo
 
     ![](images/cp4i_catalog.png)
 
-3.  Select the Redhat Openshift Cluster that you just created from the list. The DTE provisioned cluster name starts with dteroks or playgrowth.
+4.  Select the Redhat Openshift Cluster that you just created from the list. The DTE provisioned cluster name starts with dteroks or playgrowth.
 
     ![](images/roks-cluster.png)
 
-4.  Click **Add project** Enter a project name, and a tag name to identify your cluster.
+5.  Click **Add project** Enter a project name, and a tag name to identify your cluster.
 
     ![](images/add-project.png)
 
-5.  Enter **cp4i** as Project name and click **Add**.
+6.  Enter **cp4i** as Project name and click **Add**.
 
     ![](images/cp4i-project.png)
 
-6.  Scroll down. On *Set the deployment values* section. Unmark the **Use an existing secret?** to define a new password and enter a value for csDefaultAdminPassword. It is important that you choose a password that is 32 characters in length and it conforms to the password rule - number, letter, -.
+7.  Scroll down. On *Set the deployment values* section. Unmark the **Use an existing secret?** to define a new password and enter a value for csDefaultAdminPassword. It is important that you choose a password that is 32 characters in length and it conforms to the password rule - number, letter, -.
 
      *Note: Currently password validation is not enforced on this page. If you proceed with an invalid password you will be able to start the installation but it will fail. There is no way to recover from this error other than provisioning a new cluster.*
 
      ![](images/password.png)
 
-7.  Scroll down to 'Parameters with default values' and click on the 'twisty' to open them. There is no need to change the default values except for the parameters that start with demo.
+8.  Scroll down to 'Parameters with default values' and click on the 'twisty' to open them. There is no need to change the default values except for the parameters that start with demo.
 
     ![](images/cp4i-install-param.png)
 
@@ -100,34 +100,34 @@ Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo
 
     You are welcome to set true in drivewayDentDeletionDemo and eventEnabledInsuranceDemo, if you desire.
 
-7.  Accept the license agreement and click **Install** to install Cloud
+9.  Accept the license agreement and click **Install** to install Cloud
     Pak for Integration. The installation will take up to 90 minutes.
 
     ![](images/license.png)
 
-8.  You can view the progress in the Schematics progress bar or check the details in view log.
+10.  You can view the progress in the Schematics progress bar or check the details in view log.
 
     ![](images/progress-bar.png)
 
-9.  When you see the **Active** status, you will be able to access Cloud Pak for Integration Platform Navigator by selecting **Offering Dashboard** on the upper right corner of the page.
+11.  When you see the **Active** status, you will be able to access Cloud Pak for Integration Platform Navigator by selecting **Offering Dashboard** on the upper right corner of the page.
 
     ![](images/offering_dashboard.png)
 
     You can also get to the platform navigator page from a browser by manually entering **cpd-cp4i.<yourcluster-domain-name\>**. Your cluster domain is shown in the Details section in Reserved Instances.
 
-10. On **Log in** page, select the authentication type **IBM provided credentials (admin only)**.
+12. On **Log in** page, select the authentication type **IBM provided credentials (admin only)**.
 
     ![](images/authentication-types.png)
 
-11. Log in with your admin user and password.
+13. Log in with your admin user and password.
 
     ![](images/login.png)
 
-12. Click on **View capabilities**.
+14. Click on **View capabilities**.
 
     ![](images/capabilities.png)
 
-13. Here you are able to view the instances for API Connect, App Connect Designer, App Connect Dashboard and Asset Repository. Additional instances for any of the Integration Capabilities can be created by selecting **Create capabilities.**
+15. Here you are able to view the instances for API Connect, App Connect Designer, App Connect Dashboard and Asset Repository. Additional instances for any of the Integration Capabilities can be created by selecting **Create capabilities.**
 
     ![](images/instances.png)
 
