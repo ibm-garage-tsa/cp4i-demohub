@@ -59,7 +59,7 @@ In this tutorial, you use the Cloud Pak for Integration 2021.1.1 to create an Ap
 
 As this is a brand-new deployment of the Cloud Pak for Integration, all instances of integrations, message queues, and APIs are deployed as microservices. You need to authorize the Message Queue service to accept incoming data from the integration running on a separate server.
 
-1.Open a browser and enter https://github.com/ibm-cloudintegration/dte-labs/tree/master/Lab2-AccessBackendSystems/resources.You need to configure the MQ security.
+1.Let's configure the MQ security. Open a browser and go to [https://github.com/ibm-cloudintegration/dte-labs/tree/master/Lab2-AccessBackendSystems/resources](https://github.com/ibm-cloudintegration/dte-labs/tree/master/Lab2-AccessBackendSystems/resources).
 
 ![](images/lab2-task1.1.png)
 
@@ -67,7 +67,7 @@ As this is a brand-new deployment of the Cloud Pak for Integration, all instance
 
 ![](images/lab2-task1.2.png)
 
-3.Open a terminal window and enter unzip es-mq.zip. Unzip creates a directory mqconf.zip ~/Downloads/ directory. Do not unzip ace-mq.zip (this is a App Connect project).
+3.Open a terminal window and enter **unzip es-mq.zip**. Unzip creates a directory mqconf.zip ~/Downloads/ directory. Do not unzip ace-mq.zip (this is a App Connect Interchange Project).
 
 ![](images/lab2-task1.3.png))
 
@@ -75,25 +75,23 @@ As this is a brand-new deployment of the Cloud Pak for Integration, all instance
 
 ![](images/lab2-task1.4.png))
 
-5.Execute the shell script to run MQ configuration (update the channel and security). Go to ~/Downloads/mqconf directory and enter ./loadmq.sh mq-quickstart-ibm-mq-0. The MQ configuration will be updated for this lab.
+5.Execute the shell script to run MQ configuration (update the channel and security). Go to **~/Downloads/mqconf** directory and enter **./loadmq.sh mq-quickstart-ibm-mq-0**. The MQ configuration will be updated for this lab.
 
 ![](images/ace-mq-download-ace-mq.png)
 
-6.Open a browser and select on the Bookmark Bar (IBM Cloud Pak for Integration). From here, you are able to navigate to all the integration and development technology contained within the platform. Today, this technology Capabilities and Runtimes instances. Capabilities include: API Connect, App Connect Dashboard, App Connect Designer , Asset Repository and Operations Dashboard. To access IBM MQ click the Runtimes link. This task covers administering and creating a new queue in IBM MQ. IBM MQ for Cloud Pak for Integration has a web GUI, which the Integration Developer, with security authorization, is able to manage the different IBM MQ objects (queues, channels, topics and so on).
+6.Open a browser and go to your **Cloud Pak for Integration Platform Navigation**. From here, you are able to navigate to all the integration runtimes and capabilities available in the platform. Capabilities include: API Connect, App Connect Dashboard, App Connect Designer , Asset Repository and Operations Dashboard. Let's explore the Message Runtime. IBM MQ for Cloud Pak for Integration has a web GUI, which the Integration Developer, with security authorization, is able to manage the different MQ objects (queues, channels, topics and so on). On the *Cloud Pak for Integration Home*, scroll down to see the **Message** box, and click to open your **MQ Queue Manager Runtime**.
 
-![](images/lab2-task1.6.png))
+![](images/view-capabilities.png)
 
-You might see this warning (Potential Security Risk Ahead). Click Advance.  And then click the link, Accept the Risk and Continue). Don’t worry there is no Risk for your workstation.
-
-7.You see the IBM MQ Welcome Page and an important tile that can help you learn about MQ technology. Click **Create a queue**.
+7.Now you are on the IBM MQ Welcome Page. Let's create a queue: click **Create a queue**.
 
 ![](images/ace-mq-createaqueue.png)
 
-8.In Create a queue page. You can choose queue type: Local, Alias, Remote, and Model. Click **Local** to create a queue.
+8.In Create a queue page. Choose **Local** as your queue type.
 
 ![](images/ace-mq-localqueue.png)
 
-9.Enter the queue name: **NEWORDER** and keep the default values and the click **Create**.
+9.Enter the queue name: **NEWORDER**, keep the default values and the click **Create**.
 
 ![](images/ace-mq-neworder.png)
 
@@ -101,7 +99,7 @@ You might see this warning (Potential Security Risk Ahead). Click Advance.  And 
 
 ![](images/ace-mq-check-neworder.png)
 
-11.You see that the **NEWORDER** queue is empty. Click **QUICKSTART** link (the queue manager).
+11.Here, you can see that the **NEWORDER** queue is empty. Ok, let's return to the queue manager screen. On the breadcrumbs, click **QUICKSTART** link.
 
 ![](images/ace-mq-neworder-empty.png)
 
