@@ -235,25 +235,33 @@ curl -G -k  http://neworder-http-cp4i.mycluster-dal12-c3c-32x-4e85092308b6e4e8c2
 
 ## Using Operational Dashboard
 
-Cloud Pak for Integration - Operations Dashboard Add-on is based on Jaeger open source project and the OpenTracing standard to monitor and troubleshoot microservices-based distributed systems. Operations Dashboard can distinguish call paths and latencies. DevOps personnel, developers, and performance specialists now have one tool to visualize throughput and latency across integration components that run on Cloud Pak for Integration. Cloud Pak for Integration - Operations Dashboard Add-on is designed to help organizations that need to meet and ensure maximum service availability and react quickly to any variations in their systems.
+Cloud Pak for Integration - Operations Dashboard Add-on is based on Jaeger open source project and the OpenTracing standard to monitor and troubleshoot microservices-based distributed systems. Operations Dashboard can distinguish call paths and latencies. DevOps personnel, developers, and performance engineers now have one tool to visualize throughput and latency across integration components that run on Cloud Pak for Integration. Cloud Pak for Integration - Operations Dashboard Add-on is designed to help organizations that need to meet and ensure maximum service availability and react quickly to any variations in their systems.
 
-1.Back to the browser with Operations Dashboard opened. Click the Overview option and you see all the tracing of **MQ, App Connect and APIC** (You see how to configure tracing in APIC lab). Operations Dashboard Add-on is based on Jaeger open source project and the **OpenTracing** standard to monitor and troubleshoot microservices-based distributed systems. Operations Dashboard can distinguish call paths and latencies. DevOps personnel, developers, and performance engineers now have one tool to visualize throughput and latency across integration components that run on Cloud Pak for Integration. Cloud Pak for Integration - Operations Dashboard Add-on is designed to help organizations that need to meet and ensure maximum service availability and react quickly to any variations in their systems.
+1.Let's explore the Operations Dashboard. Open again the **Menu**, and on the **Administration** section, open **Integration capabilities**.
+
+![](images/integration-capabilities.png)
+
+2.From the Capabilities list, open *Integration tracing* link: **tracing-demo**.
+
+![](images/tracing-demo.png)
+
+3.In the Tracing page, check the **Overview page**. Here you are able to select the product that you want to trace: APIC ,APP Connect and MQ. (more tracing products will add in the future releases).
 
 ![](images/ace-mq-tracing-overview.png)
 
-2.You can see also MQ tracing, click **MQ Overview** in Dashboard.
+4.Let's see the MQ tracing, click **MQ Overview** in Dashboard.
 
 ![](images/ace-mq-tracing-mq-overview.png)
 
-3.You can see **App C tracing**, click **App C Overview** in Dashboard.
+5.You can see **App C tracing**, click **App C Overview** in Dashboard.
 
 ![](images/ace-mq-tracing-appc-overview.png)
 
-4.In the tracing page in **Dashboards**, select **Traces** the menu on the left.
+6.In the tracing page in **Dashboards**, select **Traces** the menu on the left.
 
 ![](images/ace-mq-tracing-traces.png)
 
-5.Operations Dashboard generated a list of tracing. Select a line to analyze the trace of MQ and App Connect Enterprise.
+7.Operations Dashboard generated a list of tracing. Select a line to analyze the trace of MQ and App Connect Enterprise.
 
 ![](images/ace-mq-tracing-trace-chart.png)
 
