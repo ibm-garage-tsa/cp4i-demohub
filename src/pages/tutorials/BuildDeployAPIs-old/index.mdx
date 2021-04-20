@@ -4,20 +4,14 @@ title: Build and deploy new integrations and securely expose them as APIs
 
 import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/ArticleDetails'
 
+In this tutorial, you use the IBM Cloud Pak for Integration 2020.4.1 to deploy an App Integration flow on containers and expose it as a secure rate-limited API on RedHat OpenShift 4.6.
 
-<FeatureCard
-  title="Build and deploy new integrations and securely expose them as APIs"
-  color="dark"
-  >
+Extend your back-end integrations securely to partners and developers.
+Extending access via APIs to your back-end integrations empower your partners and developer community to create new business value, technical value, and customer experiences for your products and offerings. Spur innovations where a number of technologies are combined to create something new, for example, extending the ability apply for loan pre-approvals that can be used within apps that search for cars or real estate. To do this, you must first create the back-end integrations, which combine data from existing core systems, disparate assets, or SaaS services with the ability to send critical data between systems reliably. Second, you need to provide APIs to your back-end integrations that secure access and apply rate limits.
+In this tutorial, you learn how to deploy an app integration flow that takes data from one source and sends it to a message queue for reliable delivery. Then, you expose this integration as a rate-limited API secured by a key and secret. This integration flow is deployed quickly and easily as an independent, auto-scalable microservice running on containers. By using RedHat OpenShift as a foundation.
 
-![banner](images/lab1-banner.png)
-
-</FeatureCard>
 
 <AnchorLinks>
-  <AnchorLink>Lab Overview</AnchorLink>
-  <AnchorLink>Prerequisites</AnchorLink>
-  <AnchorLink>Business Context</AnchorLink>
   <AnchorLink>Configuring IBM MQ</AnchorLink>
   <AnchorLink>Creating a BAR File</AnchorLink>
   <AnchorLink>Deploying a BAR file</AnchorLink>
@@ -27,25 +21,7 @@ import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/Artic
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
-***
-
-## Lab Overview
-
-In this tutorial, you use the IBM Cloud Pak for Integration 2020.4.1 to deploy an App Integration flow on containers and expose it as a secure rate-limited API on RedHat OpenShift 4.6.
-
-Extend your back-end integrations securely to partners and developers.
-Extending access via APIs to your back-end integrations empower your partners and developer community to create new business value, technical value, and customer experiences for your products and offerings. Spur innovations where a number of technologies are combined to create something new, for example, extending the ability apply for loan pre-approvals that can be used within apps that search for cars or real estate. To do this, you must first create the back-end integrations, which combine data from existing core systems, disparate assets, or SaaS services with the ability to send critical data between systems reliably. Second, you need to provide APIs to your back-end integrations that secure access and apply rate limits.
-In this tutorial, you learn how to deploy an app integration flow that takes data from one source and sends it to a message queue for reliable delivery. Then, you expose this integration as a rate-limited API secured by a key and secret. This integration flow is deployed quickly and easily as an independent, auto-scalable microservice running on containers. By using RedHat OpenShift as a foundation.
-
-***
-
-## Prerequisites
-
-  - You need to have your personal CP4I on ROKS environment (check here how to request it).
-
-***
-
-## Business Context
+## Introduction
 
 Implement enterprise grade messaging that is secure and reliable for any application across your backend integration architecture. Modern applications and APIs all need the ability to communicate data reliably between mission critical systems across internal/external data sources, networks, and regions. In mission critical environments your messaging infrastructure must be robust, reliable, and secure with the ability to integrate into your applications and APIs at pace and scale. In this tutorial, you create a message queue that receives order data from an API call to a retail ordering system. The red box in the diagram shows what you are creating and where it fits in the overall architecture of a mobile retail buying application.
 
@@ -60,7 +36,7 @@ Implement enterprise grade messaging that is secure and reliable for any applica
 - Sharing API in Asset Repository
 - Checking this message using Operational Dashboard (tracing)
 
-***
+
 
 ## Configuring IBM MQ
 
@@ -165,8 +141,6 @@ This task covers opening and examining an application integration flow in the IB
 
 ![](images/lab1-task3.10.png)
 
-***
-
 ## Deploying a BAR file
 
 ### Task 3 – Deploy Integration BAR file as containers
@@ -238,8 +212,6 @@ If the API call is successful, you see JSON reply with {"accountid":"ABC-1234567
 13.You see in the queues on QUICKSTART. The queue ORDERS has a message (look at Queue Depth)
 
 ![](images/lab1-task4.13.png)
-
-***
 
 ## Configuring API Connect
 
@@ -375,7 +347,6 @@ You've created an application integration flow and successfully called it via a 
 
 ![](images/lab1-task6.30.png)
 
-***
 
 ## Sharing the API
 
@@ -425,8 +396,6 @@ Now that you've built, secured, published, and tested your API, the last step is
 
 You’ve successfully added a review. Now your teammates know that this asset is reusable and reliable. Additional information about the asset is available in the sidebar including when the file was created, a description that explains the purpose and use, and any relevant tags
 
-***
-
 ## Using Operations Dashboard
 
 ### Task 6 – Using Operations Dashboard (tracing)
@@ -458,9 +427,9 @@ Cloud Pak for Integration - Operations Dashboard Add-on is based on Jaeger open 
 
 ![](images/lab1-task8.6.png)
 
-***
-
 ## Summary
+
+### Summary
 
 You have successfully completed this lab. In this lab you learned how to:
 
