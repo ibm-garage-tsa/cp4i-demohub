@@ -76,51 +76,51 @@ Cloud Pak for Integration provides a single solution for all of your enterprise 
 Unlock the power of your data and support the scale required for all of your integration and digital transformation initiatives.
 
 
-1.  You need to configure the MQ security.  Open a browser and enter https://github.com/ibm-cloudintegration/dte-labs/tree/master/Lab1-BuildAndDeployAPIs/resources .
+1.You need to configure the MQ security.  Open a browser and enter https://github.com/ibm-cloudintegration/dte-labs/tree/master/Lab1-BuildAndDeployAPIs/resources .
 
-    ![](images/lab1-task2.1-github.png)
+  ![](images/lab1-task2.1-github.png)
 
-2.  Select **ace-apic.zip** and the click **Download**.
+2.Select **ace-apic.zip** and the click **Download**.
 
-    ![](images/lab1-task2.2-select-apic-download.png)
+  ![](images/lab1-task2.2-select-apic-download.png)
 
-3.  Repeat step 2 and download **mqconf.zip**.
+3.Repeat step 2 and download **mqconf.zip**.
 
-4.  The files **ace-apic.zip** and **mqconf.zip** are in **~/Downloads**. Uncompress the **mqconf.zip** (use **unzip mqconf.zip**), the unzip generates a directory **mqconf** with two files **loadmq.sh** and **mq_ace_lab.mqsc**.
+4.The files **ace-apic.zip** and **mqconf.zip** are in **~/Downloads**. Uncompress the **mqconf.zip** (use **unzip mqconf.zip**), the unzip generates a directory **mqconf** with two files **loadmq.sh** and **mq_ace_lab.mqsc**.
 
-    ![](images/lab1-task2.4-unzip-mqconf.png)
+  ![](images/lab1-task2.4-unzip-mqconf.png)
 
-5.  In terminal window, check the name of MQ pods in your environment, using this command: **oc get pods | grep mq**. Your MQ pod is the pod that starts with mq-quickstart. Take note of the pod name (e.g.: mq-quickstart-ibm-mq-0).
+5.In terminal window, check the name of MQ pods in your environment, using this command: **oc get pods | grep mq**. Your MQ pod is the pod that starts with mq-quickstart. Take note of the pod name (e.g.: mq-quickstart-ibm-mq-0).
 
-    ![](images/mq-pod.png)
+  ![](images/mq-pod.png)
 
-6.  Execute the shell script to run MQ configuration (update the channel and security). Go to **~/Downloads/mqconf** directory and enter **./loadmq.sh mq-quickstart-ibm-mq-0**. The MQ configuration will be updated for this lab.
+6.Execute the shell script to run MQ configuration (update the channel and security). Go to **~/Downloads/mqconf** directory and enter **./loadmq.sh mq-quickstart-ibm-mq-0**. The MQ configuration will be updated for this lab.
 
-    ![](images/lab1-task2.5.png)
+  ![](images/lab1-task2.5.png)
 
-7.  Open a browser and go to your **Cloud Pak for Integration Platform Navigation**. On the **Message** box, click to open your **MQ Queue Manager Runtime**.
+7.Open a browser and go to your **Cloud Pak for Integration Platform Navigation**. On the **Message** box, click to open your **MQ Queue Manager Runtime**.
 
-    ![](images/view-capabilities.png)
+  ![](images/view-capabilities.png)
 
-8.  You might need to login screen for IBM Cloud Pak might be displayed, enter the username: **admin** and Password (**Enter the 32 characters password that you created when you made the Cloud Pak provisioning**) and Click **Log in**.
+8.You might need to login screen for IBM Cloud Pak might be displayed, enter the username: **admin** and Password (**Enter the 32 characters password that you created when you made the Cloud Pak provisioning**) and Click **Log in**.
 
-    ![](images/lab1-task1.2-userid-password.png)
+  ![](images/lab1-task1.2-userid-password.png)
 
-9.  In the **Welcome IBM MQ page**. This page, you can manage queue manager, create queues, learn MQ basics, and get more information about IBM MQ. Click **Create a queue**.
+9.In the **Welcome IBM MQ page**. This page, you can manage queue manager, create queues, learn MQ basics, and get more information about IBM MQ. Click **Create a queue**.
 
-    ![](images/lab1-task2.8-access-mq-console.png)
+  ![](images/lab1-task2.8-access-mq-console.png)
 
-10. In Create a queue page. You can choose queue type: Local, Alias, Remote, and Model. Click **local** to create a queue.
+10.In Create a queue page. You can choose queue type: Local, Alias, Remote, and Model. Click **local** to create a queue.
 
-    ![](images/lab1-task2.9-create-a-queue.png)
+  ![](images/lab1-task2.9-create-a-queue.png)
 
-11. Enter the queue name: **ORDERS (this is case-sensitive)** and keep the default values and the click **Create**.
+11.Enter the queue name: **ORDERS (this is case-sensitive)** and keep the default values and the click **Create**.
 
-    ![](images/create-queue.png)
+  ![](images/create-queue.png)
 
-12. Click **Manage QUICKSTART** and You see the queues window. You see queue names, type and queue depth.
+12.Click **Manage QUICKSTART** and You see the queues window. You see queue names, type and queue depth.
 
-    ![](images/lab1-task2.11-show-queues.png)
+  ![](images/lab1-task2.11-show-queues.png)
 
 ***
 
@@ -130,47 +130,47 @@ Unlock the power of your data and support the scale required for all of your int
 
 This task covers opening and examining an application integration flow in the IBM App Connect Enterprise Toolkit. With the Toolkit you can build powerful and complex integration applications, services, and APIs quickly and easily using a visual designer. Your integration solutions can be directly deployed to the Cloud Pak for Integration on IBM Cloud Pak running on-premise, in any cloud, or combinations of both.
 
-1.  Open a terminal window. If you are using MAC click App Connect Enterprise Toolkit icon and go to the Step 3.
+1.Open a terminal window. If you are using MAC click App Connect Enterprise Toolkit icon and go to the Step 3.
 
-2.  Before starting App Connect Enterprise toolkit, let’s check IBM MQ IP address. In th terminal window, enter the OpenShift command, **oc get svc -n cp4i | grep mq** to get a list of services in the namespaces. and copy the IP address (**172.30.152.157**) which the port is **1414**.
+2.Before starting App Connect Enterprise toolkit, let’s check IBM MQ IP address. In th terminal window, enter the OpenShift command, **oc get svc -n cp4i | grep mq** to get a list of services in the namespaces. and copy the IP address (**172.30.152.157**) which the port is **1414**.
 
-    ![](images/mq-get-svc.png)
+  ![](images/mq-get-svc.png)
 
-3.  Open your App Connect Enterprise Toolkit by clicking the icon or executing **ace toolkit** in terminal window (depends of your operational system).
+3.Open your App Connect Enterprise Toolkit by clicking the icon or executing **ace toolkit** in terminal window (depends of your operational system).
 
-4.  In the Workspace Launcher window, choose the workspace **~/IBM/ACET11/workspace/ace-apic**. **Click OK**.
+4.In the Workspace Launcher window, choose the workspace **~/IBM/ACET11/workspace/ace-apic**. **Click OK**.
 
-    ![](images/lab1-task3.3.png)
+  ![](images/lab1-task3.3.png)
 
-5.  The toolkit opens the project. Import the **ace-apic.zip** file that you downloaded ( see ~/Downloads/ace-apic.zip ). Select **File->Import->Project Interchange** and click **Next**.
+5.The toolkit opens the project. Import the **ace-apic.zip** file that you downloaded ( see ~/Downloads/ace-apic.zip ). Select **File->Import->Project Interchange** and click **Next**.
 
-    ![](images/import-zipfile.png)
+  ![](images/import-zipfile.png)
 
-    ![](images/projectinterchange.png)
+  ![](images/projectinterchange.png)
 
-6.  The toolkit opens the project. To view the integration flow that you deploy, click **orders -> Resources -> Subflows -> getOrder.subflow** .
+6.The toolkit opens the project. To view the integration flow that you deploy, click **orders -> Resources -> Subflows -> getOrder.subflow** .
 
-    ![](images/lab1-task3.4.png)
+  ![](images/lab1-task3.4.png)
 
-7.  Check the MQ node by clicking the MQ Output Node. Click Properties and select **Basic**, and enter the queue name (you created in MQ Task) **ORDERS**.
+7.Check the MQ node by clicking the MQ Output Node. Click Properties and select **Basic**, and enter the queue name (you created in MQ Task) **ORDERS**.
 
-    ![](images/lab1-task3.5.png)
+  ![](images/lab1-task3.5.png)
 
-8.  Select the MQ connection tab. App Connect Enterprise uses a mq client connection. Select **MQ client connection properties** (1). Type Destination queue manager name: **QUICKSTART** (2). Enter the IP of your **MQ Queue manager host**, identified the beginner of this task (3). 	Type port number: 1414 (4). Type Channel name: SYSTEM.DEF.SVRCONN (5). 	**Save** the flow (**Control + S**).
+8.Select the MQ connection tab. App Connect Enterprise uses a mq client connection. Select **MQ client connection properties** (1). Type Destination queue manager name: **QUICKSTART** (2). Enter the IP of your **MQ Queue manager host**, identified the beginner of this task (3). 	Type port number: 1414 (4). Type Channel name: SYSTEM.DEF.SVRCONN (5). 	**Save** the flow (**Control + S**).
 
-    ![](images/lab1-task3.7.png)
+  ![](images/lab1-task3.7.png)
 
-9.  In the Application Development view on the left, on orders flow, right-click and then select **New -> BAR file**.
+9.In the Application Development view on the left, on orders flow, right-click and then select **New -> BAR file**.
 
-    ![](images/lab1-task3.8.png)
+  ![](images/lab1-task3.8.png)
 
-10. Enter the name of BAR file: **orders** and click **Finish**. App Connect Enterprise is creating an empty BAR file.
+10.Enter the name of BAR file: **orders** and click **Finish**. App Connect Enterprise is creating an empty BAR file.
 
-    ![](images/lab1-task3.9.png)
+  ![](images/lab1-task3.9.png)
 
-11. You need to configure which artifacts are compiled in the BAR file. Check **orders** and check **Compile and in-line resources**, then click the **Build and Save** button. A pop-up window displays “Operation completed successfully.” Click **OK**.
+11.You need to configure which artifacts are compiled in the BAR file. Check **orders** and check **Compile and in-line resources**, then click the **Build and Save** button. A pop-up window displays “Operation completed successfully.” Click **OK**.
 
-    ![](images/lab1-task3.10.png)
+  ![](images/lab1-task3.10.png)
 
 ***
 
@@ -180,60 +180,61 @@ This task covers opening and examining an application integration flow in the IB
 
 In this task, you deploy a BAR file in App Connect Enterprise Dashboard.
 
-1.  Back to the **Cloud Pak Platform Navigator** in the browser. Open the **Menu** and on the **Run** section, open the **Integrations** dashboard.
+1.Back to the **Cloud Pak Platform Navigator** in the browser. Open the **Menu** and on the **Run** section, open the **Integrations** dashboard.
 
-    ![](images/open-ace-dashboard.png)
+  ![](images/open-ace-dashboard.png)
 
-2.  In the *App Connect Dashboard*, you can see the Integration Server deployed. To deploy the **orders.bar** file you saved and complied above click **Create a server**.
+2.In the *App Connect Dashboard*, you can see the Integration Server deployed. To deploy the **orders.bar** file you saved and complied above click **Create a server**.
 
-    ![](images/lab1-task4.2.png)
+  ![](images/lab1-task4.2.png)
 
-3.  In the *Create an Integration Server* page, you have two optiond to deploy a BAR file: Deploy a BAR file from *App Connect Toolkit* or from *App Connect Designer*. In this lab you deploy BAR file from App Connect Toolkit. Select **Quick start toolkit integration** option and click **NEXT**.
+3.In the *Create an Integration Server* page, you have two optiond to deploy a BAR file: Deploy a BAR file from *App Connect Toolkit* or from *App Connect Designer*. In this lab you deploy BAR file from App Connect Toolkit. Select **Quick start toolkit integration** option and click **NEXT**.
 
-    ![](images/create-integration-server.png)
+  ![](images/create-integration-server.png)
 
-4.  Click to upload your BAR File. And select the **orders.bar** (~/IBM/ACET11/workspace/ace-apic/BARfiles). And click **Next**.
+4.Click to upload your BAR File. And select the **orders.bar** (~/IBM/ACET11/workspace/ace-apic/BARfiles). And click **Next**.
 
-    ![](images/create-server-from-bar.png)
+  ![](images/create-server-from-bar.png)
 
-5.  You don’t need to download configuration package (Configuration package contains the files that you can use for App Connect Enterprise works with Databases, Event Streams, etc) click **Next**.
+5.You don’t need to download configuration package (Configuration package contains the files that you can use for App Connect Enterprise works with Databases, Event Streams, etc) click **Next**.
 
-    ![](images/server-config.png)
+  ![](images/server-config.png)
 
-6.  In Create an App Connect Integration Server page: enter the fIntegration Server name: **orders** (1). Switch to **On** to **Enable Operations Dashboard tracing** (2). Enter the namespace: **cp4i** (3). Then click **Create** (4).
+6.In Create an App Connect Integration Server page: enter the fIntegration Server name: **orders** (1). Switch to **On** to **Enable Operations Dashboard tracing** (2). Enter the namespace: **cp4i** (3). Then click **Create** (4).
 
-    ![](images/server-details.png)
+  ![](images/server-details.png)
 
-7.  During the deployment process, App Connect Enterprise opens the servers page. You see the App Connect Enterprise Dashboard with the Integration Server orders deployed and started .Click the **orders server** icon.
-Note: The deployment process takes 2-3 minutes, refresh the browser to see the BAR file.
+7.During the deployment process, App Connect Enterprise opens the servers page. You see the App Connect Enterprise Dashboard with the Integration Server orders deployed and started .Click the **orders server** icon.
 
-    ![](images/lab1-task4.8.png)
+  *Note: The deployment process takes 2-3 minutes, refresh the browser to see the BAR file.*
 
-8.  Click **orders API**.
+  ![](images/lab1-task4.8.png)
 
-    ![](images/lab1-task4.9.png)
+8.Click **orders API**.
 
-9.  This page displays the REST API Base URL. Copy the base URL (in the example below: http://orders-http-cp4i.playgrowth-integr-694940-8946bbc006b7c6eb0829d088919818bb-0000.us-east.containers.appdomain.cloud:80/orders/v1 ).
+  ![](images/lab1-task4.9.png)
 
-    ![](images/lab1-task4.10.png)
+9.This page displays the REST API Base URL. Copy the base URL (in the example below: http://orders-http-cp4i.playgrowth-integr-694940-8946bbc006b7c6eb0829d088919818bb-0000.us-east.containers.appdomain.cloud:80/orders/v1 ).
 
-10. From the terminal window, execute the following curl command and complete with 0000. Enter:
+  ![](images/lab1-task4.10.png)
+
+10.From the terminal window, execute the following curl command and complete with 0000. Enter:
 
 ```
   curl -G -k http://orders-http-cp4i.playgrowth-integr-694940-8946bbc006b7c6eb0829d088919818bb-0000.us-east.containers.appdomain.cloud:80/orders/v1/0000.
 ```
 
-    If the API call is successful, you see JSON reply with {"accountid":"ABC-1234567890","orderid":"0000000"}
+  If the API call is successful, you see JSON reply with {"accountid":"ABC-1234567890","orderid":"0000000"}
 
-    ![](images/lab1-task4.11.png)
+  ![](images/lab1-task4.11.png)
 
-11. You check the message arrived in queue **ORDERS** in MQ You can check using MQ Console. Open a browser and go to **Cloud Pak Platform Navigator** and click **mq link**. Click **Manage QUICKSTART**.
+11.You check the message arrived in queue **ORDERS** in MQ You can check using MQ Console. Open a browser and go to **Cloud Pak Platform Navigator** and click **mq link**. Click **Manage QUICKSTART**.
 
-    ![](images/lab1-task4.12.png)
+  ![](images/lab1-task4.12.png)
 
 12.You see in the queues on QUICKSTART. The queue ORDERS has a message (look at Queue Depth)
 
-    ![](images/lab1-task4.13.png)
+  ![](images/lab1-task4.13.png)
 
 ***
 
@@ -245,135 +246,135 @@ You've created an application integration flow and successfully called it via a 
 
 *Note: During some tests, we found some issues to execute this task on Chrome browser, because of security certification issues. We recommend to use Firefox during this task.*
 
-1.  Open the **orders API**. Then click **Download OpenAPI Document** link. The file is saved as **orders-1.0.0.yaml** file in **~/Downloads** directory.
+1.Open the **orders API**. Then click **Download OpenAPI Document** link. The file is saved as **orders-1.0.0.yaml** file in **~/Downloads** directory.
 
-    ![](images/download-openapi.png)
+  ![](images/download-openapi.png)
 
-2.  Now, you will do a manual edition of the Open API YAML file. Open your YAML file with any editor and manually add the attribute below at the end of your document:
+2.Now, you will do a manual edition of the Open API YAML file. Open your YAML file with any editor and manually add the attribute below at the end of your document:
 
 ```
 x-ibm-configuration:
   gateway: datapower-api-gateway
 ```
 
-    ![](images/yaml-edition.png)
+  ![](images/yaml-edition.png)
 
 
-3.  Open the **Menu** and on **Run** section, select **APIs**.
+3.Open the **Menu** and on **Run** section, select **APIs**.
 
-    ![](images/open-api-manager.png)
+  ![](images/open-api-manager.png)
 
-    *You might receive a Warning: Potential Security Risk Ahead. Click Advanced and then Accept the Risk and Continue.*
+  *You might receive a Warning: Potential Security Risk Ahead. Click Advanced and then Accept the Risk and Continue.*
 
-4.  In the **API Connect** page, click **IBM Common Services user registry**.
+4.In the **API Connect** page, click **IBM Common Services user registry**.
 
-    ![](images/lab1-task6.4.png)
+  ![](images/lab1-task6.4.png)
 
-5.  Click **Develop APIs and Products**.
+5.Click **Develop APIs and Products**.
 
-    ![](images/lab1-task6.5.png)
+  ![](images/lab1-task6.5.png)
 
-6.  Click **Add**, then choose **API (from REST, GraphQL or SOAP)** from the drop-down menu.
+6.Click **Add**, then choose **API (from REST, GraphQL or SOAP)** from the drop-down menu.
 
-    ![](images/create-api.png)
+  ![](images/create-api.png)
 
-7.  Choose **From an existing OpenAPI service**, scroll down and click **Next**.
+7.Choose **From an existing OpenAPI service**, scroll down and click **Next**.
 
-    ![](images/create-from-existing-service.png)
+  ![](images/create-from-existing-service.png)
 
-8.  Click **Drag and drop files here or click to upload** and select **order-1.0.0.yaml** from **~/Downloads** directory. Then click **Next**.
+8.Click **Drag and drop files here or click to upload** and select **order-1.0.0.yaml** from **~/Downloads** directory. Then click **Next**.
 
-    ![](images/lab1-task6.8.png)
+  ![](images/lab1-task6.8.png)
 
-9.  Confirm the Info about API and click **Next**.
+9.Confirm the Info about API and click **Next**.
 
     ![](images/lab1-task6.9.png)
 
-10. Keep the security settings and click **Next**.
+10.Keep the security settings and click **Next**.
 
-    ![](images/lab1-task6.10.png)
+  ![](images/lab1-task6.10.png)
 
-11. Your API with Client ID is created! Click **Edit API**.
+11.Your API with Client ID is created! Click **Edit API**.
 
-    ![](images/lab1-task6.11.png)
+  ![](images/lab1-task6.11.png)
 
 12.In the API Setup page. Let's put our API **Online** (1) and click **Save** (2).
 
-    ![](images/api-setup.png)
+  ![](images/api-setup.png)
 
-13. Let's test the API. Click the **Test** link and replace **{order}** for **0000** in **GET** command. Click **Send**.
+13.Let's test the API. Click the **Test** link and replace **{order}** for **0000** in **GET** command. Click **Send**.
 
-    ![](images/lab1-task6.13.png)
+  ![](images/lab1-task6.13.png)
 
-14. Scroll down and see Body and check the results. You see a status code: **200** created with a response body containing the results details.
+14.Scroll down and see Body and check the results. You see a status code: **200** created with a response body containing the results details.
 
-    ![](images/lab1-task6.14.png)
+  ![](images/lab1-task6.14.png)
 
-15. You need to get the Developer Portal, click **Manage** icon on the left navigator.
+15.You need to get the Developer Portal, click **Manage** icon on the left navigator.
 
-    ![](images/manage-api.png)
+  ![](images/manage-api.png)
 
-16. Click on **Sandbox**.
+16.Click on **Sandbox**.
 
-    ![](images/lab1-task6.16.png)
+  ![](images/lab1-task6.16.png)
 
-17. In Sandbox page, click **Catalog settings** and click **Portal**. Now, just copy the **Portal URL**:  https://ademo-ptl-portal-web-cp4i.playgrowth-integr-694940-8946bbc006b7c6eb0829d088919818bb-0000.us-east.containers.appdomain.cloud/ddd-demo-test/sandbox.
+17.In Sandbox page, click **Catalog settings** and click **Portal**. Now, just copy the **Portal URL**:  https://ademo-ptl-portal-web-cp4i.playgrowth-integr-694940-8946bbc006b7c6eb0829d088919818bb-0000.us-east.containers.appdomain.cloud/ddd-demo-test/sandbox.
 
-    *Note: You should have the Portal already configured (if not, go ahead and configure, it is really simple).*
+  *Note: You should have the Portal already configured (if not, go ahead and configure, it is really simple).*
 
-    ![](images/lab1-task6.17.png)
+  ![](images/lab1-task6.17.png)
 
-18.	Open a new browser tab, and go to the Developer Portal server using the Portal URL. Click **Create account** to create a developer account.
+18.Open a new browser tab, and go to the Developer Portal server using the Portal URL. Click **Create account** to create a developer account.
 
-    ![](images/portal-create-account.png)
+  ![](images/portal-create-account.png)
 
-19.	Go ahead and complete the Registration Form. Then activate the new account from the email link. When is ready, log in with the new developer user.
+19.Go ahead and complete the Registration Form. Then activate the new account from the email link. When is ready, log in with the new developer user.
 
-    ![](images/lab1-task6.19.png)
+  ![](images/lab1-task6.19.png)
 
-20. In the Developer Portal, on the *Explore products* section, click **orders auto product 1.0.0**.
+20.In the Developer Portal, on the *Explore products* section, click **orders auto product 1.0.0**.
 
-    ![](images/lab1-task6.20.png)
+  ![](images/lab1-task6.20.png)
 
-21. You need to subscribe to Default Plan, clicking **Subscribe**.
+21.You need to subscribe to Default Plan, clicking **Subscribe**.
 
-    ![](images/lab1-task6.21.png)
+  ![](images/lab1-task6.21.png)
 
-22. Create an Application, clicking **Create Application**.
+22.Create an Application, clicking **Create Application**.
 
-    ![](images/lab1-task6.22.png)
+  ![](images/lab1-task6.22.png)
 
-23. Create an application called **myapp** and click **Save**. You will use this application to test the API.
+23.Create an application called **myapp** and click **Save**. You will use this application to test the API.
 
-    ![](images/lab1-task6.23.png)
+  ![](images/lab1-task6.23.png)
 
-24. Here you can see the credentials for your new application (API Key and secret). You will not use this credential in this lab, just close the window.
+24.Here you can see the credentials for your new application (API Key and secret). You will not use this credential in this lab, just close the window.
 
-    ![](images/lab1-task6.24.png)
+  ![](images/lab1-task6.24.png)
 
-25. Click **myapp** icon to select Application.
+25.Click **myapp** icon to select Application.
 
-    ![](images/lab1-task6.25.png)
+  ![](images/lab1-task6.25.png)
 
-26. Confirm the subscription for **orders auto product**. Click **Next**.
+26.Confirm the subscription for **orders auto product**. Click **Next**.
 
-    ![](images/lab1-task6.26.png)
+  ![](images/lab1-task6.26.png)
 
-27. The subscription is completed. Now click **Done**.
+27.The subscription is completed. Now click **Done**.
 
-    ![](images/lab1-task6.27.png)
+  ![](images/lab1-task6.27.png)
 
-28. Click **orders 1.0.0**, to open the API.
+28.Click **orders 1.0.0**, to open the API.
 
-    ![](images/lab1-task6.28.png)
+  ![](images/lab1-task6.28.png)
 
-29. In orders 1.0.0 page, select **GET/{order}** (1). Click on **Try it** (2). Enter **0000* as order parameter (3). Click **Send**.
+29.In orders 1.0.0 page, select **GET/{order}** (1). Click on **Try it** (2). Enter **0000* as order parameter (3). Click **Send**.
 
-    ![](images/lab1-task6.29.png)
+  ![](images/lab1-task6.29.png)
 
-30. The results are shown in the response string.
+30.The results are shown in the response string.
 
-    ![](images/lab1-task6.30.png)
+  ![](images/lab1-task6.30.png)
 
 ***
 
@@ -383,45 +384,45 @@ x-ibm-configuration:
 
 Now that you've built, secured, published, and tested your API, the last step is to add it to the Asset Repository. With the Asset Repository, your organization can store, manage, and share all of your integration assets in one central location. Sharing assets in this way increases collaboration between teams, avoids unnecessary duplication and boosts productivity.
 
-1.  To push our new API to **Asset Repository** you will use the API Manager. Back to the Cloud Pak for Integration Navigator Platform browser tab. Open the **Menu** and on **Run** section, select **APIs**.
+1.To push our new API to **Asset Repository** you will use the API Manager. Back to the Cloud Pak for Integration Navigator Platform browser tab. Open the **Menu** and on **Run** section, select **APIs**.
 
-    ![](images/open-apimanager.png)
+  ![](images/open-apimanager.png)
 
-2.  In the API Manager screen, click **Develop APIs and Products**.
+2.In the API Manager screen, click **Develop APIs and Products**.
 
-    ![](images/lab1-task7.3.png)
+  ![](images/lab1-task7.3.png)
 
-3.  On the Develop Screen, select the menu next to your API and from the drop-down, click **Push to asset repository**.
+3.On the Develop Screen, select the menu next to your API and from the drop-down, click **Push to asset repository**.
 
-    ![](images/lab1-task7.4.png)
+  ![](images/lab1-task7.4.png)
 
-4.  Once the upload completes, you see a success dialogue at top-right.
+4.Once the upload completes, you see a success dialogue at top-right.
 
-    ![](images/lab1-task7.5.png)
+  ![](images/lab1-task7.5.png)
 
-5.  Now, let's explore the Asset Repository. Open the **Menu** again and select **Integration Capabilities**.
+5.Now, let's explore the Asset Repository. Open the **Menu** again and select **Integration Capabilities**.
 
-    ![](images/integration-capabilities.png)
+  ![](images/integration-capabilities.png)
 
-6.  Click on the **Automation assets** capability link.
+6.Click on the **Automation assets** capability link.
 
-    ![](images/asset-repo-link.png)
+  ![](images/asset-repo-link.png)
 
-7.  Here you see the orders asset that you pushed from API Connect in the previous step. Open the context menu and choose **Open** to check the orders API.
+7.Here you see the orders asset that you pushed from API Connect in the previous step. Open the context menu and choose **Open** to check the orders API.
 
-    ![](images/open-order-asset.png)
+  ![](images/open-order-asset.png)
 
-8.  Here you can see the API overview.
+8.Here you can see the API overview.
 
-    ![](images/lab1-task7.8.png)
+  ![](images/lab1-task7.8.png)
 
-9.  Click **Get/{order}** link. Here you can see the API parameters.
+9.Click **Get/{order}** link. Here you can see the API parameters.
 
-    ![](images/lab1-task7.9.png)
+  ![](images/lab1-task7.9.png)
 
-10. Click Definitions and then click the **arrow** on **order**. Here you can see an example of results.
+10.Click Definitions and then click the **arrow** on **order**. Here you can see an example of results.
 
-    ![](images/lab1-task7.10.png)
+  ![](images/lab1-task7.10.png)
 
 Great! Here you learned how developers can leverage the Automation Assets repository to implement a culture of reusability. Additional information about the asset is available in the sidebar including when the file was created, a description that explains the purpose and use, and any relevant tags
 
@@ -434,33 +435,33 @@ Great! Here you learned how developers can leverage the Automation Assets reposi
 
 Cloud Pak for Integration - Operations Dashboard Add-on is based on Jaeger open source project and the OpenTracing standard to monitor and troubleshoot microservices-based distributed systems. Operations Dashboard can distinguish call paths and latencies. DevOps personnel, developers, and performance engineers now have one tool to visualize throughput and latency across integration components that run on Cloud Pak for Integration. Cloud Pak for Integration - Operations Dashboard Add-on is designed to help organizations that need to meet and ensure maximum service availability and react quickly to any variations in their systems.
 
-1.  Let's explore the Operations Dashboard. Open again the **Menu**, and on the **Administration** section, open **Integration capabilities**.
+1.Let's explore the Operations Dashboard. Open again the **Menu**, and on the **Administration** section, open **Integration capabilities**.
 
-    ![](images/integration-capabilities.png)
+  ![](images/integration-capabilities.png)
 
-2.  From the Capabilities list, open *Integration tracing* link: **tracing-demo**.
+2.From the Capabilities list, open *Integration tracing* link: **tracing-demo**.
 
-    ![](images/tracing-demo.png)
+  ![](images/tracing-demo.png)
 
-3.  In the Tracing page, check the **Overview page**. You see all products that you can use this tool: APIC ,APP Connect and MQ. (more tracing products will add in the future releases).
+3.In the Tracing page, check the **Overview page**. You see all products that you can use this tool: APIC ,APP Connect and MQ. (more tracing products will add in the future releases).
 
-    ![](images/lab1-task8.2.png)
+  ![](images/lab1-task8.2.png)
 
-4.  You can monitor each product separately. Click **App C overview**.
+4.You can monitor each product separately. Click **App C overview**.
 
-    ![](images/lab1-task8.3.png)
+  ![](images/lab1-task8.3.png)
 
-5.  Now, let's explore the **API C overview**.
+5.Now, let's explore the **API C overview**.
 
-    ![](images/lab1-task8.4.png)
+  ![](images/lab1-task8.4.png)
 
-6.  Operations Dashboard generated a list of tracing. Select **Traces** on the left menu. And select the line that you want to see the trace.
+6.Operations Dashboard generated a list of tracing. Select **Traces** on the left menu. And select the line that you want to see the trace.
 
-    ![](images/lab1-task8.5.png)
+  ![](images/lab1-task8.5.png)
 
-7.  You are welcome to explore the tracing.
+7.You are welcome to explore the tracing.
 
-    ![](images/lab1-task8.6.png)
+  ![](images/lab1-task8.6.png)
 
 ***
 
