@@ -4,53 +4,27 @@ title: Access backend systems using APIs and Messaging
 
 import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/ArticleDetails'
 
-<FeatureCard
-  title="Access backend systems using APIs and Messaging"
-  color="dark"
-  >
+<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="January 2021" readTimeMinutes="45" />
 
-![banner](images/lab2-banner.png)
-
-</FeatureCard>
+In this tutorial, you use the Cloud Pak for Integration 2020.4.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.6.
 
 <AnchorLinks>
-  <AnchorLink>Lab Overview</AnchorLink>
-  <AnchorLink>Prerequisites</AnchorLink>
+  <AnchorLink>Introduction</AnchorLink>
   <AnchorLink>Configure IBM MQ</AnchorLink>
   <AnchorLink>Working with App Connect Enterprise toolkit</AnchorLink>
   <AnchorLink>Deploying a BAR file</AnchorLink>
   <AnchorLink>Using Operational Dashboard</AnchorLink>
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
-</AnchorLinks>
-
-<ArticleDetails name="Carlos Hirata, Ravi Katikala" lastUpdated="January 2021" readTimeMinutes="45" />
-
-***
-
-## Lab Overview
-
-In this tutorial, you use the Cloud Pak for Integration 2021.1.1 to create an App Integration flow (IBM App Connect Enterprise) that sends messages to a queue (IBM MQ) on OpenShift 4.6.
-
 
 ### Takeaways
+
 
 - Configuring IBM MQ
 - Creating an integration flow that connects to a message queue
 - Deploy the integration flow as a container in Kubernetes
 - Checking the message using MQ Web Console
 - Checking this message using Operational Dashboard (tracing)
-
-***
-
-## Prerequisites
-
-  - You need to have your personal CP4I on ROKS environment. [Check here how to request it](https://ibm-garage-tsa.github.io/cp4i-demohub/cp4i-on-roks/)
-  - You need to have the OC CLI and you should have logged in your ROKS cluster via command line. [Check here how to do it](https://ibm-garage-tsa.github.io/cp4i-demohub/cp4i-on-roks/#access-your-roks-cluster-by-command-line)
-  - You should have an MQ Queue Manager runtime pre-created in your CP4I on ROKS environment.
-  - You need to have the IBM App Connect Enterprise Toolkit installed in your desktop. Follow the sections **Download IBM App Connect Enterprise for Developers** and **Install IBM App Connect Enterprise** from [this tutorial](https://www.ibm.com/docs/en/app-connect/11.0.0?topic=started-get-hands-experience) to install it.
-
-***
 
 ## Configuring IBM MQ
 
