@@ -111,27 +111,25 @@ As this is a brand-new deployment of the Cloud Pak for Integration, all instance
 
 In this task, take an existing integration flow in ACE and modify it to send only the payload data to the NEWORDER queue.
 
-1.Open a terminal window by right-clicking on the desktop and selecting Open Terminal.
+1.Open a **Terminal** window.
 
 2.Before starting App Connect Enterprise toolkit, let’s check IBM MQ IP address. In th terminal window, enter the OpenShift command, **oc get svc -n cp4i | grep mq** to get a list of services in the namespaces. and copy the IP address (**172.30.152.157**) which the port is **1414**.
 
 ![](images/lab2-task2.2.png)
 
-3.Enter **ace toolkit** to open the App Connect Enterprise Toolkit.
-
-![](images/ace-mq-acetoolkit.png)
+3.Open your App Connect Enterprise Toolkit by clicking the icon on the Launchapad (MAC OS) or Desktop (Windows) or executing **ace toolkit** in terminal window.
 
 4.In the Workspace Launcher window, create the workspace **/IBM/ACET11/workspace/ace-mq**. Click **OK**.
 
 ![](images/ace-mq-create-ace-mq-workspace.png)
 
-5.The toolkit opens the project. Import the ace-mq.zip file that you downloaded ( see ~/Downloads/ace-mq.zip ). Select **File->Import->Project Interchange** and click **Next**.
+5.The toolkit opens the project (if necessary closes the Welcome screen). Now, let's import the ace-mq.zip file that you downloaded ( available on ~/Downloads/ace-mq.zip ). Select **File->Import->Project Interchange** and click **Next**.
 
 ![](images/ace-mq-import-zipfile.png)
 
 ![](images/ace-mq-projectinterchange.png)
 
-6.Select ace-mq.zip in Downloads folder and then click Ok.
+6.Select **ace-mq.zip** in Downloads folder and then click **Ok**.
 
 ![](images/lab2-task2.6.png)
 
@@ -143,20 +141,11 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 
 ![](images/ace-mq-basic-neworder.png)
 
-9.Click the MQ Connection parameter and enter the following settings:
+9.Open the **MQ Connection** tab. On the *Connection* field, select **MQ client connection properties** (1). On *Destination queue manager name*, enter **QUICKSTART** (case-sensitive) (2). On *Queue manager host name*, enter the **MQ ip** identified in the previous step, when you entered *oc get svc* (3). On *Listener port number*, enter **1414** (4). On *Channel name* field, enter **SYSTEM.DEF.SRVCONN** (5). **Save** the flow (**CRTL+S**).
 
-```
-  1.	Connection*: Select **MQ client connection properties** from the drop-down.
-  2.	Destination queue manager name: **QUICKSTART** (case-sensitive).
-  3.	Queue manager hostname: **172.30.152.157**. (When you entered **oc get svc**)
-  4.	Listener: **1414**.
-  5.	Channel name: **SYSTEM.DEF.SRVCONN** (Server Connection).
-  6.  Save the flow (**CRTL+S**)
-
-```
 ![](images/ace-mq-mqconnection.png)
 
-10.Now, you need to generate a bar (broker archive) file. The App Connect Enterprise server uses BAR (Broker Archive) files to save compiled message flows, libraries, etc. We have created a file **neworder.bar** for this lab. In the Application Development window in the upper-left, on **neworder application**, right-click and select New then **BAR** file.
+10.Now, you need to generate a BAR (broker archive) file. The App Connect Enterprise server uses BAR files to save compiled message flows, libraries, etc. In the Application Development window in the upper-left, on *neworder application*, right-click and select **New** then **BAR file**.
 
 ![](images/ace-mq-create-bar-file.png)
 
@@ -164,19 +153,8 @@ In this task, take an existing integration flow in ACE and modify it to send onl
 
 ![](images/ace-mq-neworder-bar-file.png)
 
-12.	App Connect Enterprise opens a window: **Prepare window** .
+12.On the *Prepare* screen, mark the **REST APIs** checkbox (1). Check **Compile and in-line resources** (2). Click **Build and Save** (3). Now, a popup window displays *Operation completed successfully*. Click **Ok** and **close** the toolkit.
 
-```
-
-  1.	Check REST APIs
-  2.	Check Compile and inline resources
-  3.	Click Build and Save
-  4.	A popup window displays “Operation completed successfully.”
-  5.	Click Ok and exit out of the toolkit.
-
-App Connect Enterprise Toolkit saves and compile message flows, sub flows into a BAR file.
-
-```
 ![](images/ace-mq-save-bar-file.png)
 
 ***
