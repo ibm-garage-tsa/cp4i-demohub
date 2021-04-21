@@ -17,8 +17,8 @@ import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/Artic
 <AnchorLinks>
   <AnchorLink>Lab Overview</AnchorLink>
   <AnchorLink>Prerequisites</AnchorLink>
-  <AnchorLink>Creating a Development Event Streams Instances</AnchorLink>
-  <AnchorLink>Event Streams Topic</AnchorLink>
+  <AnchorLink>Creating a Development EventStreams Instances</AnchorLink>
+  <AnchorLink>EventStreams Topic</AnchorLink>
   <AnchorLink>Configuring App Connect Enterprise</AnchorLink>
   <AnchorLink>Deploying App Connect Enterprise</AnchorLink>
   <AnchorLink>Operations Dashboard</AnchorLink>
@@ -104,7 +104,7 @@ With the OneClick install you should have an EventStreams instance ready for a b
 
 ***
 
-## Event Streams Topic
+## EventStreams Topic
 
 ### Task 1 – Creating and Configuring an Event Streams Topic
 
@@ -170,7 +170,7 @@ But, for this lab you use external listener to verify how to access Event Stream
 
 ![](images/lab3-task2.13-which-consumer-access.png)
 
-15.In the dialog, *Choose which transactional IDs the application can access?*, you can control the ability to use the transaction capability in Kafka. Keep **No transactional IDs** checked (1). Click **Generate credentials** (2).
+15.In the dialog *Choose which transactional IDs the application can access?*, you can control the ability to use the transaction capability in Kafka. Keep **No transactional IDs** checked (1). Click **Generate credentials** (2).
 
 ![](images/lab3-task2.15-which-transactional-id.png)
 
@@ -182,7 +182,7 @@ But, for this lab you use external listener to verify how to access Event Stream
 
 ![](images/lab3-task2.17-truststore-password.png)
 
-18.Now, let's add our passwords in a configuration file. Open a **terminal window**, go to directory you created **~/eslab**. Open to edit the **setdbparms.txt** file. Replace \<securityIdentity\> with **customerinfoapp**. Copy the *SCRAM username* (1) and paste over **\<SCRAM USER\>**. Now, copy the *SCRAM password* (2) and paste over **\<SCRAM PASSWORD\>**. Copy the *PKCS12 certificate - Certificate password* (3) and paste over **\<TRUSTSTORE PASSWORD\>**.
+18.Now, let's add our passwords in a configuration file. Open a **terminal window**, go to directory you created **~/eslab**. Open to edit the **setdbparms.txt** file. Replace *\<securityIdentity\>* with **customerinfoapp**. Copy the *SCRAM username* (1) and paste over *\<SCRAM USER\>*. Now, copy the *SCRAM password* (2) and paste over *\<SCRAM PASSWORD\>*. Copy the *PKCS12 certificate - Certificate password* (3) and paste over *\<TRUSTSTORE PASSWORD\>*.
 
 ![](images/lab3-task2.18-a-cluster-connectio-parameters.png)
 
@@ -442,7 +442,7 @@ curl -G -k http://customerinfo-http-cp4i.mycluster-wdc06-c3c-32x64-4e85092308b6e
 
 ***
 
-## Operations Dashboard (tracing)
+## Operations Dashboard
 
 ### Task 5 - Using Operations Dashboard (tracing)
 
