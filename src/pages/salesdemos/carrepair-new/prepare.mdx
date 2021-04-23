@@ -1,0 +1,51 @@
+---
+title: Preparing your Environment
+description: Demo Deliver Page
+tabs: [ 'Overview', 'Understand', 'Deliver']
+---
+
+export const Title = () => <span>Cognitive API Demo - Preparing your Environment</span>
+
+<FeatureCard
+  title="Preparing your Environment"
+  color="dark"
+  >
+
+![banner](images/preparation.jpg)
+
+</FeatureCard>
+
+<AnchorLinks>
+  <AnchorLink>Introduction</AnchorLink>
+  <AnchorLink>Setting up Watson Tone Analyzer</AnchorLink>
+  <AnchorLink>Setting up Salesforce</AnchorLink>
+  <AnchorLink>Connecting CP4I to your endpoints</AnchorLink>
+</AnchorLinks>
+
+***
+
+## Introduction
+
+You are going to integrate with Salesforce and IBM Watson Tone Analyzer service. You need to have these services and endpoints created and all the credentials necessary to integrate to them securely in the demo.
+
+IBM Watson can tell if someone is happy or sad or angry or many other emotions! If your customer is angry, you want to know so you can make them happy – you’ll use this to look at the customer’s description of the damage/problem and put the tone into our Salesforce case so that when we call them, we know what to expect.
+
+Salesforce is a CRM system provided as a SaaS i.e. it is hosted in the cloud. In this scenario, we as a car repair company will use Salesforce to create and store our car repair claims.
+
+***
+
+## Setting up Watson Tone Analyzer
+
+Great! Now you will start by setting up IBM Watson services. You will need an IBM Cloud account to do this. Once you have an account, all of the Watson services have ‘lite’ plans which allow you to use them for free. Let'see how to do it!
+
+1.Open [IBM Cloud Catalog](https://cloud.ibm.com/catalog) again, now with your personal account. Now, search and select the **Tone Analyzer**.
+
+![](./images/prepare/search-tone.png)
+
+2.Select the free *Lite* plan and click *Create* to provision the service.
+
+![](./images/prepare/tone-lite.png)
+
+3.When the service is *active*, click on the **Manage** tab.
+
+![](./images/prepare/tone-active.png)
