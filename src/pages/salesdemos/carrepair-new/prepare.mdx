@@ -72,4 +72,32 @@ Now, let's set up Salesforce. You will need a developer account to use for testi
 
 ![](./images/prepare/salesforce-url.png)
 
-4.Next you need to retrieve Security Token. For this, click on your **user profile** and select the **Settings** option in the profile panel.
+4.Next, you need to retrieve Security Token. For this, click on your **user profile** and select the **Settings** option in the profile panel.
+
+![](./images/prepare/salesforce-settings.png)
+
+5.Under *Settings*, find and click the **Reset Security Token** option. Then click on **Reset Security Token Button** and it will send the newly generated security token to your email.
+
+![](./images/prepare/salesforce-reset-token.png)
+
+6.Next, you will retrieve the *Client ID* and *Secret*. Click the **setup cogwheel** at the top right.
+
+![](./images/prepare/salesforce-setup.png)
+
+7.On the left navigator, go to **PLATFORM TOOLS > Apps > App Manager**.
+
+![](./images/prepare/salesforce-appmanager.png)
+
+8.Now click on **New Connected App** button.
+
+![](./images/prepare/salesforce-newconnectedapp.png)
+
+9.Enter **App Connect** as *Connect App Name*. Enter you **admin email** as *Contact Email*. And mark the **Enable OAuth Settings**. Either click on **Enable for Device Flow**. Now select the **Access and manage your data (api)** as a *Selected OAuth Scopes*. And then click on **Save**.
+
+![](./images/prepare/salesforce-connect-app.png)
+
+10.It may take several minutes for newly created Connected App to be registered. Once registered go back to **Apps > Connected Apps > Manage Connected Apps**. Here you can copy the **Consumer Key** and **Secret**.
+
+![](./images/prepare/salesforce-credentials.png)
+
+Great, your Salesforce Dev account is ready, now let's configure CP4I to the services endpoints!
