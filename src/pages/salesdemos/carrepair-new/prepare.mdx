@@ -101,3 +101,73 @@ Now, let's set up Salesforce. You will need a developer account to use for testi
 ![](./images/prepare/salesforce-credentials.png)
 
 Great, your Salesforce Dev account is ready, now let's configure CP4I to the services endpoints!
+
+***
+
+## Connecting CP4I to your endpoints
+
+Now, let's configure our Services Endpoints in Cloud Pak for Integration. Let's do it!
+
+1.Open your **Cloud Pak for Integration Home page** (if necessary, check [here](https://ibm-garage-tsa.github.io/cp4i-demohub/cp4i-on-roks/#install-cloud-pak-for-integration-on-roks-cluster) how to do it - step 11). On the Integrations area, click on **ace-designer-demo**.
+
+![](./images/prepare/endpoint-home.png)
+
+2.Open the **Catalog**.
+
+![](./images/prepare/endpoint-catalog.png)
+
+3.Here you can see a list of the available connectors.
+
+![](./images/prepare/endpoint-connectors.png)
+
+4.Search for **Watson Tone Analyzer** and click **Connect**.
+
+![](./images/prepare/endpoint-tone-connect.png)
+
+5.Now you need to inform your **URL** and **API key**. Click **Connect** to create your account.
+
+![](./images/prepare/endpoint-tone-info.png)
+
+6.Great! A connector account was created for you. However the integration flow that you will import later, it will look for a specific account. Because of that, you need to rename the account to work seamlessly. Let's rename the Account1. Click the three dots **menu** and click **Rename account**.
+
+![](./images/prepare/endpoint-tone-rename.png)
+
+7.In the dialog box, name the account **App Connect Trial** (exactly as shown – capitals on the first letter of the words, spaces between the words) and click **Rename Account**.
+
+![](./images/prepare/endpoint-tone-rename2.png.png)
+
+8.Great, now you have an *IBM Watson Tone Analyzer - App Connect Trial* account.
+
+![](./images/prepare/endpoint-tone-created.png)
+
+9.Now, it's time to configure the Salesforce connection. Search for **Salesforce** and click **Connect**.
+
+![](./images/prepare/endpoint-salesforce-connect.png)
+
+10.Here you need to enter your Salesforce credentials. Insert the login URL into the connector account form as shown below.
+   *IMPORTANT: You MUST enter the ‘https://’ part as well – it won’t work if you just copy/paste from the salesforce screen*.
+
+![](./images/prepare/endpoint-salesforce-login-details.png)
+
+11.To populate the Password field on the connector account screen you will need to concatenate the Password used to log into the Salesforce account with the Security Token received via email.
+   For example if you Salesforce password is ‘myGreatPassword’ and your Salesforce security token is ‘2325jsdhew4312hs534dh’ then you should enter *‘myGreatPassword2325jsdhew4312hs534dh’* in the *password* field.
+
+![](./images/prepare/endpoint-salesforce-login-details2.png)
+
+12.Use Salesforce's *Consumer Key* and *Secret* as **Client ID** and **Client Secret** respectively as needed in the connector account UI as follows and click **Connect**.
+
+![](./images/prepare/endpoint-salesforce-login-details3.png)
+
+13.Great! However you need to rename this account too. Click on **menu** and select **Rename account**.
+
+![](./images/prepare/endpoint-salesforce-rename.png)
+
+14.Enter **App Connect Trial** as *account name* and click **Rename Account**.
+
+![](./images/prepare/endpoint-salesforce-rename2.png)
+
+15.Great! Your environment is ready to demo!
+
+![](./images/prepare/endpoint-salesforce-created.png)
+
+   Now, it is time to learn how to deliver demo, by exploring the Demo Script document.
