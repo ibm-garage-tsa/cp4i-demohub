@@ -194,9 +194,74 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 </details>
 
+<details>
+<summary>3.8 - Create Attachment</summary>
+
+<br/>
+
+| **Create Attachment** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Salesforce – Create Attachment node* (1). **Close** the Salesforce connector dialog. Open the **IBM Watson Tone Analyzer** node (2). |
+| **Talking Points**      | To add a photograph, we need to create a salesforce attachment – that’s easy, just use the connector again. Note that we use the Case ID that is a returned value from the ‘Create Case’ connector call – it’s been kept in the flow automatically. We send the PhotoOfCar as a base64 string and we tell Salesforce that the content Type is image/jpeg. |
+| **Screenshots**         | &nbsp;  <br/> ![review8](./images/demoscript-review-attachment.png) |
+
+</details>
+
+<details>
+<summary>3.9 - Analyze the description</summary>
+
+<br/>
+
+| **Analyze the description** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Watson Tone Analyzer* connector (1). **Close** the Tone Analyzer connector dialog. Open the **Salesforce - Create case comment** (2). |
+| **Talking Points**      | Here, the Watson Tone Analyzer services, analyse the description shared by the customer, to identify if the customer is angry or upset, that demands further action or treat them more carefully. |
+| **Screenshots**         | &nbsp;  <br/> ![review9](./images/demoscript-review-analyzer.png) |
+
+</details>
+
+<details>
+<summary>3.10 - Create case comment</summary>
+
+<br/>
+
+| **Create case comment** |   |
+| :---         | :--- |
+| **Actions**             | Explore the **Salesforce – Create case comment** node (1). Close the Salesforce connector dialog. Open the **Response**. (2) |
+| **Talking Points**      | Then we’ll add a comment to the case with the Salesforce connector and give it the tone name from Watson. |
+| **Screenshots**         | &nbsp;  <br/> ![review10](./images/demoscript-review-comment.png) |
+
+</details>
+
+<details>
+<summary>3.11 - Response</summary>
+
+<br/>
+
+| **Response** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Response* dialog (1). Click **Done** (2). |
+| **Talking Points**      | Here, we have the response that we submit back to the customer after the API call. This response incluse their Salesforce case reference for future enquiries and also an estimate of how long it will take to repair and how much it will cost.  <br/>Great. we've built the flow, let's start it! |
+| **Screenshots**         | &nbsp;  <br/> ![review11](./images/demoscript-review-response.png) |
+
+</details>
+
 ***
 
 ## 4 - Testing the Flow
+
+<details>
+<summary>4.1 - Starting the Flow</summary>
+
+<br/>
+
+| **Response** |   |
+| :---         | :--- |
+| **Actions**             | Click **Start API** on the *three dot menu* at the top right |
+| **Talking Points**      | Now we’ve looked at the integration flow, let’s start it up. Great! Now our flow is running, we need to test it.  |
+| **Screenshots**         | &nbsp;  <br/> ![review11](./images/demoscript-start-flow.png) |
+
+</details>
 
 ***
 
