@@ -345,6 +345,19 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 </details>
 
+<details>
+<summary>5.4 - Testing the Flow on the Runtime</summary>
+
+<br/>
+
+| **Testing the Flow on the Runtime** |   |
+| :---         | :--- |
+| **Actions**             | Copy the **Endpoint** (1). In your script folder, on *terminal* window, *edit* the **00-variables** file and update the **BASEPATH** (2). Execute **source exportVariables.sh** (3). Execute **./demotestcar.sh** (4). Check the **new case** in *Salesforce* (5).|
+| **Talking Points**      | We’ll use the same scrips we used to test designer – we’ll just change the variables to point to the CP4I runtime. In the Server, we can get the runtime information. Let's update our variables file and export them again. Now, we just need to run again our script with the same request data. Great, we can check the Salesforce cases page, and voilá here we have our new case created by calling the API in the Integration Runtime.|
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-testing-runtime1.png) <br/> ![](./images/demoscript-testing-runtime2.png) <br/> ![](./images/demoscript-testing-runtime3.png) <br/> ![](./images/demoscript-testing-runtime4.png) <br/> ![](./images/demoscript-testing-runtime5.png) |
+
+</details>
+
 ***
 
 ## 6 - Managing API in API Connect
