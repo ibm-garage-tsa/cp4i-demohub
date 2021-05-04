@@ -270,9 +270,35 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **Setting Environment Variables** |   |
 | :---         | :--- |
-| **Actions**             | Open the **Test** tab (1). Copy the **Endpoint URL** (2). Open **POST /CarRepairClaim** (3). Open **Try it** (4).  Copy the **Username** (5) and **Password** (6). In your script folder, on *terminal* window, *edit* the **00-variables** file (e.g.: *vi 00-variables*) and update the **BASEPATH** (7), **USERNAME** (8) and **PASSWORD** (9). Execute **./exportVariables.sh** (10) |
+| **Actions**             | Open the **Test** tab (1). Copy the **Endpoint URL** (2). Open **POST /CarRepairClaim** (3). Open **Try it** (4).  Copy the **Username** (5) and **Password** (6). In your script folder, on *terminal* window, *edit* the **00-variables** file (e.g.: *vi 00-variables*) and update the **BASEPATH** (7), **USERNAME** (8) and **PASSWORD** (9). Execute **source exportVariables.sh** (10) |
 | **Talking Points**      | Now we’ve built our API, we need to test it. APIs can be tested in a number of different ways, for example using the IBM API Test and Monitor tool. During this demo, we do 3 different tests, one in the designer tool, another when our API is deployed to the Cloud Pak App Connect Runtime. And the last test, will be calling thru a Gateway. <br/> For simplicity and speed, as we’re using base64 pictures, we will use simple curl scripts so that we can call the APIs from the command line. Before go ahead and execute the script to call our API, we need to configure our script to point to our environment. To get the credentials for the designer, we go to the ‘Manage’ tab in designer. Now, let's change our variable files to use this credentials. Great, let's export now these variables.   |
 | **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-variables0.png) <br/> ![](./images/demoscript-variables1.png) <br/> ![](./images/demoscript-variables2.png)  <br/> ![](./images/demoscript-variables3.png) |
+
+</details>
+
+<details>
+<summary>4.3 - Running the Test</summary>
+
+<br/>
+
+| **Running the Test** |   |
+| :---         | :--- |
+| **Actions**             | Edit the **demotestcar.sh** script (1). Explore and close the file. Execute **./demotestcar.sh** (2). |
+| **Talking Points**      | Now, it is time to run the script. Let's check the script. Here we can see that we have a simple curl command that call our api, passing the user and password. And our data request, is a json with all the information about the case, including a picture with a Subaru SUV. It is ready. Let's run this script. Great, we received the expected response with the case information.   |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-car-running1.png) <br/> ![](./images/demoscript-car-running2.png) |
+
+</details>
+
+<details>
+<summary>4.4 - Checking Salesforce</summary>
+
+<br/>
+
+| **Checking Salesforce** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Salesforce Dev Account** site (1). On the *App Launcher* menu, search for **cases** (2). Open the **Cases** page (3). On *Cases* view, open the latest **Car Breakdown case** (4). Explore all fields, including picture and Watson analysis (5).  |
+| **Talking Points**      | Let's see our Salesforce system, to check if we have a new case. Let's open the Cases page. And in the Recently Viewed, we can check all open cases. Great! Here we have our case with all the information, including the picture, and the Watson tone analysis. With this information, our Customer Relationship team is able to work to support our customer.  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-salesforce-check1.png) <br/> ![](./images/demoscript-salesforce-check2.png) <br/> ![](./images/demoscript-salesforce-check3.png) |
 
 </details>
 
