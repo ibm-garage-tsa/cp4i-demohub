@@ -306,6 +306,32 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 ## 5 - Deploying the Flow
 
+<details>
+<summary>5.1 - Export the BAR File</summary>
+
+<br/>
+
+| **Export the BAR File** |   |
+| :---         | :--- |
+| **Actions**             | Into the *Designer Dashboard* (1), click the **menu** (2) and click **Export** (3).   Select **Runtime flow asset (BAR)** (4) and click **Export** (5).  |
+| **Talking Points**      | To deploy the flow to an integration server, you must export it as a BAR file. All the configuration settings, other than the connection credentials for your accounts, are preserved in the exported archive. Let's export an executable bar file. From the dashboard, locate the flow, open its menu, and then click Export. When you export a flow, you can choose to export its configuration as a YAML or BAR file, or as an OpenAPI document. In our case, we export as a BAR File.  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-export-bar1.png) <br/> ![](./images/demoscript-export-bar2.png) |
+
+</details>
+
+<details>
+<summary>5.2 - Import the BAR File</summary>
+
+<br/>
+
+| **Import the BAR File** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Main Menu** (1), and click **Run > Integrations** (2).  Click **Create a server** (3). Select **Quick start designer integration** (4) and click **Next** (5). **Upload the BAR** file (6) and click **Next** (7). Select **ace-designerdemo-designer-acc** (8) and click **Next** (9). Enter a *name* for our integration server (10). Set **Enable Operations Dashboard tracing** to **On** (11). Enter **cp4i** as *Operations Dashboard namespace (12). Click **Create** (13)   |
+| **Talking Points**      | Now, let's open the the App Connect Dashboard and create a new server. We need to create an integration server to run our integration. An integration server is a Kubernetes pod which has the containers needed to run our .bar file. Now we need to select the kind of tooling we used to build the integration. We used the Designer. Now, we just need to upload the BAR file that we exported from designer. And here we choose which configurations we want. Here we enter the information that we want for our Integration server. Great, let's create it!|
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-import-bar1.png) <br/> ![](./images/demoscript-import-bar2.png) <br/> ![](./images/demoscript-import-bar3.png) <br/> ![](./images/demoscript-import-bar4.png) <br/> ![](./images/demoscript-import-bar5.png) <br/> ![](./images/demoscript-import-bar6.png)|
+
+</details>
+
 ***
 
 ## 6 - Managing API in API Connect
