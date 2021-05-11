@@ -352,7 +352,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **Testing the Flow on the Runtime** |   |
 | :---         | :--- |
-| **Actions**             | Copy the **Endpoint** (1). In your script folder, on *terminal* window, *edit* the **00-variables** file and update the **BASEPATH** (2). Execute **source exportVariables.sh** (3). Execute **./demotestcar.sh** (4). Check the **new case** in *Salesforce* (5).|
+| **Actions**             | Copy the **Endpoint** (1). In your script folder, on *terminal* window, *edit* the **00-variables** file and update the **BASEPATH** (2). *NOTE:remove the "/" from the end of the endpoint*. Execute **source exportVariables.sh** (3). Execute **./demotestcar.sh** (4). Check the **new case** in *Salesforce* (5).|
 | **Talking Points**      | We’ll use the same scrips we used to test designer – we’ll just change the variables to point to the CP4I runtime. In the Server, we can get the runtime information. Let's update our variables file and export them again. Now, we just need to run again our script with the same request data. Great, we can check the Salesforce cases page, and voilá here we have our new case created by calling the API in the Integration Runtime.|
 | **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-testing-runtime1.png) <br/> ![](./images/demoscript-testing-runtime2.png) <br/> ![](./images/demoscript-testing-runtime3.png) <br/> ![](./images/demoscript-testing-runtime4.png) <br/> ![](./images/demoscript-testing-runtime5.png) |
 
@@ -361,3 +361,29 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 ***
 
 ## 6 - Managing API in API Connect
+
+<details>
+<summary>6.1 - Download OpenAPI Document</summary>
+
+<br/>
+
+| **Download OpenAPI Document** |   |
+| :---         | :--- |
+| **Actions**             | Click **Download OpenAPI Document** link (1).|
+| **Talking Points**      | You’ve created an application integration flow and successfully called it via a REST API call! Now, to make it accessible to the rest of the world, it’s important to add security around it. Let's export our API to API Connect by downloading the OpenAPI Document. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-download-openapi.png)  |
+
+</details>
+
+<details>
+<summary>6.2 - Develop API</summary>
+
+<br/>
+
+| **Develop API** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Menu** (1) and on **Run** (2) section, select **APIs** (3). If necessary, select the **ademo** instance (4). In the *API Connect* page, click **Common Services user registry** (5). Click **Develop APIs and Products** (6). Click **Add**, then choose **API (from REST, GraphQL or SOAP)** from the drop-down menu (7). Choose **From an existing OpenAPI service** (8) and click **Next** (9). Upload our **Car_Insurance..** YAML file (10) and click **Next** (11). Confirm the Info about API and click **Next** (12). Keep the security settings and click **Next** (13). |
+| **Talking Points**      | Now, let's open our API Manager. Here, we add our API from an existing OpenAPI service by selecting our YAML file. We just confirme the Info about API. And keep the security settings. Great our API with Client ID is created!  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-develop-api1.png) <br/> ![](./images/demoscript-develop-api2.png) <br/> ![](./images/demoscript-develop-api3.png) <br/> ![](./images/demoscript-develop-api4.png) <br/> ![](./images/demoscript-develop-api5.png) <br/> ![](./images/demoscript-develop-api6.png) <br/> ![](./images/demoscript-develop-api7.png) <br/> ![](./images/demoscript-develop-api8.png) <br/> ![](./images/demoscript-develop-api9.png)|
+
+</details>
