@@ -395,9 +395,10 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **Edit API** |   |
 | :---         | :--- |
-| **Actions**             | Click **Edit API** (1). Change to **Online** (2).  Click **Test** (3).|
-| **Talking Points**      | Let's check our new API in API Manager. Here we put our API Online and test it. |
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-edit-api1.png) <br/> ![](./images/demoscript-edit-api2.png) |
+| **Actions**             | Click **Edit API** (1). Change to **Online** (2). scroll down to *Base Path*. You’ll see the base path has a trailing slash, at the
+end, **remove** this (3). Click **Save** (4). Click **Test** (5).|
+| **Talking Points**      | Let's check our new API in API Manager. Here we put our API Online, change the Base Path and test it. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-edit-api1.png) <br/> ![](./images/demoscript-edit-api2.png) <br/> ![](./images/demoscript-edit-api3.png)|
 
 </details>
 
@@ -406,7 +407,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 <br/>
 
-| **Edit API** |   |
+| **Test API** |   |
 | :---         | :--- |
 | **Actions**             | Copy the **POST URL** (remove */CarRepairClaim*) (1). Copy the **X-IBM-Client-Id** (2).  In your script folder, on *terminal* window, *edit* the **00-variables** file and update the **BASEPATH** and **CLIENTID** (3). Execute **source exportVariables.sh** (4). Execute **./demotestcar.sh** (5). Check the **new case** in *Salesforce*.|
 | **Talking Points**      | We can use this page to test the api, but we will need to include all the JSON body. Let's use all test script, that is ready. We just need to copy the new URL and the Client ID and update our script variables.  |
@@ -422,7 +423,20 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Publish API** |   |
 | :---         | :--- |
 | **Actions**             | Open the **Menu** (1) and click **Publish** (2). Enter **Car Repair APIs** as *Product Title* (3). Select **Catalog for Demo use (ddd-demo-test-catalog)** and click **Publish** (4). |
-| **Talking Points**      | we will make the API available to developers. In order to do so, the API must be first put into a product and then published to the catalog. A product dictates rate limits and API throttling.  |
+| **Talking Points**      | We will make the API available to developers. In order to do so, the API must be first put into a product and then published to the catalog. A product dictates rate limits and API throttling.  |
 | **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-publish-api1.png) <br/> ![](./images/demoscript-publish-api2.png) <br/> ![](./images/demoscript-publish-api3.png) <br/> ![](./images/demoscript-publish-api4.png) |
+
+</details>
+
+<details>
+<summary>6.6 - Adding a Rate Limiting Plan</summary>
+
+<br/>
+
+| **Rate Limiting Plan** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Products** tab (1). Click on the **Car Repair APIs** product (2). Click on **Plans** (3). Click **Add** (4). Enter **Gold Plan** as *Title* (5). Change the *Rate Limits* to **100 Calls Per 1 minute** (6). Click **Save** (7). Open the **Develop** page (8). Back to the **Products** tab (9). Open the **Menu** and **Publish** the Product (10). Select the *Catalog for Demo use* (11). Click **Publish** (12).  Open the **Manage** (13), open the **Catalog for Demo use** (14) and check the Products state and plans (15).|
+| **Talking Points**      | Security is applied to APIs. Rate limiting is applied to products.  Let's do it! We just need to open our new product. Rate Limiting is done using plans. Let's create a new Gold Plan with a specific Rate Limits. Great we have now two plans, the Gold and the default plan. We can have multiple plans for different consumers, for example we can add approval steps for consumers when they sign up or we can allocate them plans as a provider. Ok, now we need to republish our product. You’ll be prompted for a catalog to publish to. We only have one gateway installed so we don't need to worry about that. Just Publish. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-rate-limit1.png) <br/> ![](./images/demoscript-rate-limit2.png) <br/> ![](./images/demoscript-rate-limit3.png) <br/> ![](./images/demoscript-rate-limit4.png) <br/> ![](./images/demoscript-rate-limit5.png) <br/> ![](./images/demoscript-rate-limit6.png) <br/> ![](./images/demoscript-rate-limit7.png) |
 
 </details>
