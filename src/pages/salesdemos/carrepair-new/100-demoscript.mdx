@@ -1,0 +1,380 @@
+---
+title: Demoscript
+description: Demo Deliver Page
+tabs: [ 'Overview', 'Understand', 'Deliver']
+---
+
+export const Title = () => <span>Automate customer interactions using APIs and Integration Demo</span>
+
+<FeatureCard
+  title="100 Demo Script"
+  color="dark"
+  >
+
+![banner](images/100-demo-script.jpg)
+
+</FeatureCard>
+
+This Demo Script has multiple tasks, that have multiple steps. In each step you have the details about what you need to do (**Actions**) and what you can say delivering this demo step (**Talking Points**). This Demo Script is a suggestion, but you are welcome to customize based in your sales opportunity. Enjoy it and good sales!
+
+<AnchorLinks>
+  <AnchorLink>1 - Accessing the Environment</AnchorLink>
+  <AnchorLink>2 - Reviewing the Flow</AnchorLink>
+  <AnchorLink>3 - Managing API</AnchorLink>
+  <AnchorLink>4 - Portal</AnchorLink>
+</AnchorLinks>
+
+***
+
+## 1 - Accessing the Environment
+
+<details>
+<summary>1.1 - Log in CP4I</summary>
+
+<br/>
+
+| **Log in CP4I** |   |
+| :---         | :--- |
+| **Actions**             | Open CP4I and click **IBM provided credentials (admin only)** and **og in** with your admin user and password. |
+| **Talking Points**      | In the road to digital transformation, every organization seeks to move faster than before. But going fast without the right approach, guided by real-world operational data, has caused 70% of digital transformations to fail. A new approach with automation and continuous improvement fed by AI algorithms is required. IBM Cloud Pak for Integration is a hybrid integration solution that provides an automated and closed-loop lifecycle across multiple styles of enterprise integration. With IBM Cloud Pak for Integration, companies can speed integration development, reduce costs and maintain enhanced security, governance and availability. Let's see IBM Cloud Pak for Integration in action. Here I have a cloud version of the product on IBM Cloud. Let me log in here.|
+| **Screenshots**         | &nbsp;  <br/> ![login1](./images/demoscript-login1.png) <br/> ![login2](./images/demoscript-login2.png) |
+
+</details>
+
+<details>
+<summary>1.2 - CP4I Home</summary>
+
+<br/>
+
+| **CP4I Home** |   |
+| :---         | :--- |
+| **Actions**             | Show the Home Page and click on **Integration Capabilities**. |
+| **Talking Points**      | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the pak, brought together in one place.  Specialized integration capabilities —for API management, application integration, messaging and more —are built on top of powerful automation services. Let's see the Integration Capabilities available in this Cloud Pak for Integration.|
+| **Screenshots**         | &nbsp;  <br/> ![home](./images/demoscript-home.png) |
+
+</details>
+
+<details>
+<summary>1.3 - Integration Capabilities</summary>
+
+<br/>
+
+| **Integration Capabilities** |   |
+| :---         | :--- |
+| **Actions**             | Show the Integration Capabilities page and open the Designer (**ace-designer-demo**). |
+| **Talking Points**      | As you can see, through a single interface you are able to access all the integration capabilities your team needs. Including API Lifecycle Management, Application & Data Integration, Enterprise Messaging, Events and High Speed Transfer. In this Demo, we will explore App Connect for Application Integration, API Connect for API Management and Asset Repository as our centralized hub for allowing our teams to work together with Integration assets. Let's open our App Connect Designer. |
+| **Screenshots**         | &nbsp; <br/> ![integration capabilities](./images/demoscript-integration.png) |
+
+</details>
+
+***
+
+## 2 - Reviewing the Flow
+
+<details>
+<summary>2.1 - Review properties</summary>
+
+<br/>
+
+| **Review properties** |   |
+| :---         | :--- |
+| **Actions**             | Show the **Properties view** and click on **Operations** |
+| **Talking Points**      | Designer builds your API for you – you don’t need to worry about OpenAPI specs or Swagger editors – it’s all built in.  These are the fields we are going to use for our API. Note that we tell our API which field is the key – in our case, CaseReference.|
+| **Screenshots**         | &nbsp;  <br/> ![review1](./images/demoscript-review-props.png) |
+
+</details>
+
+<details>
+<summary>2.2 - Review operations</summary>
+
+<br/>
+
+| **Review operations** |   |
+| :---         | :--- |
+| **Actions**             | Show the **Operations view** and click on **Edit flow** |
+| **Talking Points**      | On Operations view are the actions that the API exposes with the data. In this demo, we’re going to build just one operation – we can add more if we wish. Let's check the flow logic.|
+| **Screenshots**         | &nbsp;  <br/> ![review2](./images/demoscript-operations.png) |
+
+</details>
+
+<details>
+<summary>2.3 - Review the flow</summary>
+
+<br/>
+
+| **Review the flow** |   |
+| :---         | :--- |
+| **Actions**             | Initially **close** the Request dialog. Explain the Flow and Scroll through all of the connectors in the flow. After that, open the **Request** again, by clicking the first step of the flow. |
+| **Talking Points**      | Here we have our demo flow. In the designer flow editor, we are able to edit and change our flow.   We are a Car Repair company: We take in vehicles with problems and repair them. We want to create an API which enables customers to send us photos of their cars along with descriptions of what needs to be done. With this information, we will create a case in Salesforce and use Watson to analyze if the customer is angry or upset. Let's explore our flow in details.|
+| **Screenshots**         | &nbsp;  <br/> ![review2](./images/demoscript-review-flow.png) |
+
+</details>
+
+<details>
+<summary>2.4 - Review Request</summary>
+
+<br/>
+
+| **Review Request** |   |
+| :---         | :--- |
+| **Actions**             | Show the *Request* dialog (1). Click to *open* the **if** step (2). |
+| **Talking Points**      | Our flow start by receiving the customer's car repair request with photo via an API.  Designer automatically creates an API “Request” and “Response” node for your API flow.|
+| **Screenshots**         | &nbsp;  <br/> ![review3](./images/demoscript-review-request.png) |
+
+</details>
+
+<details>
+<summary>2.5 - Checking the Photo</summary>
+
+<br/>
+
+| **Checking the Photo** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *if* step (1) and click on **Salesforce Connector - Retrieve contacts** (2). |
+| **Talking Points**      | Second, we validate the photo. Here, we have a really simple if statement, that check if the PhotoOfCar is empty. |
+| **Screenshots**         | &nbsp;  <br/> ![review5](./images/demoscript-review-if.png) |
+
+</details>
+
+<details>
+<summary>2.6 - Retrieve contacts</summary>
+
+<br/>
+
+| **Retrieve contacts** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Salesforce Connector - Retrieve contacts* (1). Change the *Contact name* to **Andrew Young** (2). And **test** the connection (3). Change back the *Contact Full name* to **Andy Young** (4) and **test** again (5). Open **View details** (6). On the *Output*, open the **Contact1** object (7). **Close** all the dialog tabs. Click on the **Salesforce – Create case node** (8). |
+| **Talking Points**      | Third, we use a connector to create a case in Salesforce with the date from the API. This Case is where we store the details and progress of our repair. We are using a hard-code contact: 'Andy Young'.  He's the contact for the insurance company that sends customers. Salesforce Developer Accounts have a prepopulated set of data that you can use to test. ‘Andy Young’ is one of those prepopulated contacts. Let's test our connection with Salesforce. Let me change here the contact to Andrew Young, and test the connection. Ok, the test shows that we don't have Andrew Young. Let's change back to Andy Young and test again. Great, now we received a success response. That prove that our connection is working. Let's check  the details. Here we can see the Output returned from SalesForce, including the Contact ID.  |
+| **Screenshots**         | &nbsp;  <br/> ![contacts1](./images/demoscript-contacts1.png) <br/> ![contacts2](./images/demoscript-contacts2.png) <br/> ![contacts3](./images/demoscript-contacts3.png) <br/> ![contacts4](./images/demoscript-contacts4.png) <br/> ![contacts5](./images/demoscript-contacts5.png)|
+
+</details>
+
+<details>
+<summary>2.7 - Create Case</summary>
+
+<br/>
+
+| **Create Case** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Salesforce – Create case node*. **Close** the Salesforce connector dialog. Open the **Salesforce - Create Attachment** node. |
+| **Talking Points**      | Now we have the ID that we need, let’s create our Salesforce case. Note that we just re-use the same connector but with a different operation and data. Here we can see that our contact ID comes from the previous ‘retrieve contact’ Salesforce Call. The Name and email come from the API Request. The connector ‘knows’ that fields like ‘Case Type’ have a limited number of values in Salesforce – so it automatically converts them into pull-down lists of values for you to choose from. |
+| **Screenshots**         | &nbsp;  <br/> ![review7](./images/demoscript-review-salesforce-createcase.png) |
+
+</details>
+
+<details>
+<summary>2.8 - Create Attachment</summary>
+
+<br/>
+
+| **Create Attachment** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Salesforce – Create Attachment node* (1). **Close** the Salesforce connector dialog. Open the **IBM Watson Tone Analyzer** node (2). |
+| **Talking Points**      | To add a photograph, we need to create a salesforce attachment – that’s easy, just use the connector again. Note that we use the Case ID that is a returned value from the ‘Create Case’ connector call – it’s been kept in the flow automatically. We send the PhotoOfCar as a base64 string and we tell Salesforce that the content Type is image/jpeg. |
+| **Screenshots**         | &nbsp;  <br/> ![review8](./images/demoscript-review-attachment.png) |
+
+</details>
+
+<details>
+<summary>2.9 - Analyze the description</summary>
+
+<br/>
+
+| **Analyze the description** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Watson Tone Analyzer* connector (1). **Close** the Tone Analyzer connector dialog. Open the **Salesforce - Create case comment** (2). |
+| **Talking Points**      | Here, the Watson Tone Analyzer services, analyse the description shared by the customer, to identify if the customer is angry or upset, that demands further action or treat them more carefully. |
+| **Screenshots**         | &nbsp;  <br/> ![review9](./images/demoscript-review-analyzer.png) |
+
+</details>
+
+<details>
+<summary>2.10 - Create case comment</summary>
+
+<br/>
+
+| **Create case comment** |   |
+| :---         | :--- |
+| **Actions**             | Explore the **Salesforce – Create case comment** node (1). Close the Salesforce connector dialog. Open the **Response**. (2) |
+| **Talking Points**      | Then we’ll add a comment to the case with the Salesforce connector and give it the tone name from Watson. |
+| **Screenshots**         | &nbsp;  <br/> ![review10](./images/demoscript-review-comment.png) |
+
+</details>
+
+<details>
+<summary>2.11 - Response</summary>
+
+<br/>
+
+| **Response** |   |
+| :---         | :--- |
+| **Actions**             | Explore the *Response* dialog (1). Click **Done** (2). |
+| **Talking Points**      | Here, we have the response that we submit back to the customer after the API call. This response incluse their Salesforce case reference for future enquiries and also an estimate of how long it will take to repair and how much it will cost.  <br/>Great. we've built the flow, let's start it! |
+| **Screenshots**         | &nbsp;  <br/> ![review11](./images/demoscript-review-response.png) |
+
+</details>
+
+<details>
+<summary>2.12 - Verify the Server</summary>
+
+<br/>
+
+| **Verify the Server** |   |
+| :---         | :--- |
+| **Actions**             | Click on our **Integration Server** (1). Open our **API Flow** (2). Explore the API detais (3). |
+| **Talking Points**      | Great, here we have our new Integration server. We need to wait some time to start the pods. At this point, the integration is running on the cloud pak. Opening the server, we can see our API Flow. And click again, we'll drill down further and see our API details. We can see the REST operation, the base URL and we can even download the OpenAPI document.|
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-verify-server1.png) <br/> ![](./images/demoscript-verify-server2.png) <br/> ![](./images/demoscript-verify-server3.png) |
+
+</details>
+
+***
+
+## 3 - Managing API
+
+<details>
+<summary>3.1 - Download OpenAPI Document</summary>
+
+<br/>
+
+| **Download OpenAPI Document** |   |
+| :---         | :--- |
+| **Actions**             | Click **Download OpenAPI Document** link (1). Open your YAML file with any editor and manually add **x-ibm-configuration: gateway: datapower-api-gateway** (2).|
+| **Talking Points**      | You’ve created an application integration flow and successfully called it via a REST API call! Now, to make it accessible to the rest of the world, it’s important to add security around it. Let's export our API to API Connect by downloading the OpenAPI Document. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-download-openapi.png) <br/> ![](./images/demoscript-download-openapi2.png) |
+
+</details>
+
+<details>
+<summary>3.2 - Develop API</summary>
+
+<br/>
+
+| **Develop API** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Menu** (1) and on **Run** (2) section, select **APIs** (3). If necessary, select the **ademo** instance (4). In the *API Connect* page, click **Common Services user registry** (5). Click **Develop APIs and Products** (6). Click **Add**, then choose **API (from REST, GraphQL or SOAP)** from the drop-down menu (7). Choose **From an existing OpenAPI service** (8) and click **Next** (9). Upload our **Car_Insurance..** YAML file (10) and click **Next** (11). Confirm the Info about API and click **Next** (12). Keep the security settings and click **Next** (13). |
+| **Talking Points**      | Now, let's open our API Manager. Here, we add our API from an existing OpenAPI service by selecting our YAML file. We just confirme the Info about API. And keep the security settings. Great our API with Client ID is created!  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-develop-api1.png) <br/> ![](./images/demoscript-develop-api2.png) <br/> ![](./images/demoscript-develop-api3.png) <br/> ![](./images/demoscript-develop-api4.png) <br/> ![](./images/demoscript-develop-api5.png) <br/> ![](./images/demoscript-develop-api6.png) <br/> ![](./images/demoscript-develop-api7.png) <br/> ![](./images/demoscript-develop-api8.png) <br/> ![](./images/demoscript-develop-api9.png) <br/> ![](./images/demoscript-develop-api10.png)|
+
+</details>
+
+<details>
+<summary>3.3 - Edit API</summary>
+
+<br/>
+
+| **Edit API** |   |
+| :---         | :--- |
+| **Actions**             | Click **Edit API** (1). Change to **Online** (2). scroll down to *Base Path*. You’ll see the base path has a trailing slash, at the
+end, **remove** this (3). Click **Save** (4). Click **Test** (5).|
+| **Talking Points**      | Let's check our new API in API Manager. Here we put our API Online, change the Base Path and test it. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-edit-api1.png) <br/> ![](./images/demoscript-edit-api2.png) <br/> ![](./images/demoscript-edit-api3.png)|
+
+</details>
+
+<details>
+<summary>3.4 - Test API</summary>
+
+<br/>
+
+| **Test API** |   |
+| :---         | :--- |
+| **Actions**             | Copy the **POST URL** (remove */CarRepairClaim*) (1). Copy the **X-IBM-Client-Id** (2).  In your script folder, on *terminal* window, *edit* the **00-variables** file and update the **BASEPATH** and **CLIENTID** (3). Execute **source exportVariables.sh** (4). Execute **./demotestcar.sh** (5). Check the **new case** in *Salesforce*.|
+| **Talking Points**      | We can use this page to test the api, but we will need to include all the JSON body. Let's use all test script, that is ready. We just need to copy the new URL and the Client ID and update our script variables.  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-test-apic1.png) <br/> ![](./images/demoscript-test-apic2.png) <br/> ![](./images/demoscript-test-apic3.png) <br/> ![](./images/demoscript-test-apic4.png) |
+
+</details>
+
+<details>
+<summary>3.5 - Publish API</summary>
+
+<br/>
+
+| **Publish API** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Menu** (1) and click **Publish** (2). Enter **Car Repair APIs** as *Product Title* (3). Select **Catalog for Demo use (ddd-demo-test-catalog)** and click **Publish** (4). |
+| **Talking Points**      | We will make the API available to developers. In order to do so, the API must be first put into a product and then published to the catalog. A product dictates rate limits and API throttling.  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-publish-api1.png) <br/> ![](./images/demoscript-publish-api2.png) <br/> ![](./images/demoscript-publish-api3.png) <br/> ![](./images/demoscript-publish-api4.png) |
+
+</details>
+
+<details>
+<summary>3.6 - Adding a Rate Limiting Plan</summary>
+
+<br/>
+
+| **Rate Limiting Plan** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Products** tab (1). Click on the **Car Repair APIs** product (2). Click on **Plans** (3). Click **Add** (4). Enter **Gold Plan** as *Title* (5). Change the *Rate Limits* to **100 Calls Per 1 minute** (6). Click **Save** (7). Open the **Develop** page (8). Back to the **Products** tab (9). Open the **Menu** and **Publish** the Product (10). Select the *Catalog for Demo use* (11). Click **Publish** (12).  Open the **Manage** (13), open the **Catalog for Demo use** (14) and check the Products state and plans (15).|
+| **Talking Points**      | Security is applied to APIs. Rate limiting is applied to products.  Let's do it! We just need to open our new product. Rate Limiting is done using plans. Let's create a new Gold Plan with a specific Rate Limits. Great we have now two plans, the Gold and the default plan. We can have multiple plans for different consumers, for example we can add approval steps for consumers when they sign up or we can allocate them plans as a provider. Ok, now we need to republish our product. You’ll be prompted for a catalog to publish to. We only have one gateway installed so we don't need to worry about that. Just Publish. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-rate-limit1.png) <br/> ![](./images/demoscript-rate-limit2.png) <br/> ![](./images/demoscript-rate-limit3.png) <br/> ![](./images/demoscript-rate-limit4.png) <br/> ![](./images/demoscript-rate-limit5.png) <br/> ![](./images/demoscript-rate-limit6.png) <br/> ![](./images/demoscript-rate-limit7.png) |
+
+</details>
+
+***
+
+## 4 - Portal
+
+<details>
+<summary>4.1 - Accessing Portal</summary>
+
+<br/>
+
+| **Accessing Portal** |   |
+| :---         | :--- |
+| **Actions**             | Open the **Catalog settings** (1). Click **Portal** (2). Copy the **Portal URL** (3). Open a new Browser tab and access the Portal URL. If you don't have a developer account click **Create account** to create it (4). As soon as you complete the registration (5), just **Sign in** (6). |
+| **Talking Points**      | Now that we’ve published our API, we need to make sure that our API consumers can discover it and use it. Our Portal will allow customers to view the APIs, sign up and subscribe to plans in a self-service manner, test the APIs, download the OpenAPI - Swagger documents and more. Let's get our portal URL and sign up as a Consumer of our API using Portal Self-Service.|
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-access-portal1.png) <br/> ![](./images/demoscript-access-portal2.png) <br/> ![](./images/demoscript-access-portal3.png) <br/> ![](./images/demoscript-access-portal4.png)|
+
+</details>
+
+<details>
+<summary>4.2 - Create a new App</summary>
+
+<br/>
+
+| **Create a new App** |   |
+| :---         | :--- |
+| **Actions**             | Click **Create a new App** (1). Enter **Car Repair Application** as *App Title* (2). Click **Save** (3). On the credentials dialog, click **OK** (4). On the **Subscription** tab, copy the Client ID (5). |
+| **Talking Points**      | As a Developer, we’re going to create a new application in the Portal. This will give us an API key so we can call our APIs. We just need to give an Application Title and copy the API Key and Secret. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-new-app1.png) <br/> ![](./images/demoscript-new-app2.png) <br/> ![](./images/demoscript-new-app3.png) <br/> ![](./images/demoscript-new-app4.png)|
+
+</details>
+
+<details>
+<summary>4.3 - Subscribe to API</summary>
+
+<br/>
+
+| **Subscribe to API** |   |
+| :---         | :--- |
+| **Actions**             | Click **Why not browser the available APIs?** (1). Click **Car Repair APIs 1.0.0** (2). On *Gold Plan*, click **Subscribe** (3). Select the **Car Repair Application** (4). Confirm the Subscription by clicking **Next** (5). Click **Done** (6). |
+| **Talking Points**      | We’ve not subscribed to any APIs, let's do it now. There’s only one API Product to subscribe to – normally there would be many. Now that we selected our API product, we can see the plans available. You’ll need to hover over to get the limits – we want the gold plan. We want to subscribe to the plan – but which application do we want to use to subscribe? We can have many applications but in this demo we’ve only created one. So we just need to select the App that we created earlier and confirm our subscription. And Done - we are subscribed to our API! |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-subscription1.png) <br/> ![](./images/demoscript-subscription2.png) <br/> ![](./images/demoscript-subscription3.png) <br/> ![](./images/demoscript-subscription4.png) <br/> ![](./images/demoscript-subscription5.png) <br/> ![](./images/demoscript-subscription6.png)|
+
+</details>
+
+<details>
+<summary>4.4 - Test API</summary>
+
+<br/>
+
+| **Test API** |   |
+| :---         | :--- |
+| **Actions**             | Click on the **Car_Insurance API** itself (1). Copy the **Endpoint** (2). Open the **POST /CarRepairClaim** (3). Explore the **Example request** area (4). Open the **Try it** tab (5). Click **Generate** (6). Click **Send** (7). Explore the **Response** (8).|
+| **Talking Points**      | We’re now back at the product screen. Let's explore our API here. From Overview page, we can download the OpenAPI Document and get the API Endpoint. Note the portal has everything you need to call your API, it’s even generated clients in various languages for you. You can try your API on the Try it area. Using the Generate button, the portal will generate a request with random sample data for you. Now, let's test it. Great, we got a response, our API is running and we've gone through the gateway. |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-portal-test1.png) <br/> ![](./images/demoscript-portal-test2.png) <br/> ![](./images/demoscript-portal-test3.png) <br/> ![](./images/demoscript-portal-test4.png) <br/> ![](./images/demoscript-portal-test5.png) <br/> ![](./images/demoscript-portal-test6.png)|
+
+</details>
+
+<details>
+<summary>4.5 - Viewing the API Statistics</summary>
+
+<br/>
+
+| **Viewing the API Statistics** |   |
+| :---         | :--- |
+| **Actions**             | Click **Apps** on top menu (1). Click the **Car Repair APIs** (2). Explore the API stats (3). |
+| **Talking Points**      | We can see our API stats in Portal. We just need to select our APP, and here we can see all API calls, including any possible errros. If you make more calls, you’ll see more stats.|
+| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-statistics1.png) <br/> ![](./images/demoscript-statistics2.png) <br/> ![](./images/demoscript-statistics3.png) |
+
+</details>
