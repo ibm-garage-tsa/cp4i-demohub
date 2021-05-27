@@ -27,6 +27,8 @@
       path: /tutorials/AccessBackendSystems
     - title: Create Engaging Experiences
       path: /tutorials/CreateEngagingExperiences
+    - title: API Lifecycle
+      path: /tutorials/ManageGraphQL
 - title: APIC Labs
   pages:
     - title: APIC DevJam
