@@ -170,4 +170,30 @@ Now, let's configure our Services Endpoints in Cloud Pak for Integration. Let's 
 
 ![](./images/prepare/endpoint-salesforce-created.png)
 
-   Now, it is time to learn how to deliver the demo, by exploring the [300 Demo Script](/salesdemos/carrepair-new/300-demoscript) document.
+  Now, let's copy some test script to be used during the demonstration.
+
+***
+
+## Cloning the Preparation Scripts
+
+To simplify the tests during our demo, there is a pre-created script to consume our APIs.  Let's copy it.
+
+*Note: To copy the script, you will need to have the Git CLI in your machine. If you don't have it, follow the installation steps described in this [page](https://git-scm.com/downloads), based in your operational system.*
+
+
+1.Open your terminal window and execute the command below.
+```
+git clone https://github.com/cp4i-demo/cognitive-api.git
+```
+
+2.Open the **cognitive-api** folder.
+```
+cd cognitive-api
+```
+
+3.Here you see 4 files. *00-variables* file specifies the variables that point to the API, you will change it during the demo script after you create the API.  *car.jpg* is the car image that will be submitted during the demo.  *exportVariables.sh* is the script to export environment variables. *demotestcar.sh* is the demo script. To execute our script files, we need to change the file permission to be able to execute them.
+```
+chmod 755 *
+```
+
+Great! Your demo script is ready to the demo.  Now, it is time to learn how to deliver the demo, by exploring the [300 Demo Script](/salesdemos/carrepair-new/300-demoscript) document.
