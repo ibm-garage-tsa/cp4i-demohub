@@ -20,6 +20,7 @@ export const Title = () => <span>Automate customer interactions using APIs and I
   <AnchorLink>Setting up Watson Tone Analyzer</AnchorLink>
   <AnchorLink>Setting up Salesforce</AnchorLink>
   <AnchorLink>Connecting CP4I to your endpoints</AnchorLink>
+  <AnchorLink>Creating Portal Dev User</AnchorLink>
   <AnchorLink>Cloning the Demo Scripts</AnchorLink>
 </AnchorLinks>
 
@@ -171,7 +172,65 @@ Now, let's configure our Services Endpoints in Cloud Pak for Integration. Let's 
 
 ![](./images/prepare/endpoint-salesforce-created.png)
 
-  Now, let's copy some test script to be used during the demonstration.
+  Now, let's create our Portal Developer user.
+
+***
+
+## Creating Portal Dev User
+
+1.First, let's check if the e-mail server is configured. Back to CP4I *Home* page, click **View capabilities**.
+
+![](./images/prepare/view-capabilities.png)
+
+2.Open **API management admninistration**.
+
+![](./images/prepare/api-management-admin.png)
+
+3.If necessary log in again. On *Cloud Manager Home* page, click **Resources** icon on the left menu.
+
+![](./images/prepare/cloud-manager-resources.png)
+
+4.On the **Notifications** tab, open the **Default Mail Server**.
+
+![](./images/prepare/default-mail-server.png)
+
+5.Here you can check if your e-mail server is configured. If necessary, feel free to change the email server configuration. If you want to test it, scroll down and click **Test email**.
+
+![](./images/prepare/test-email.png)
+
+6.Great, your e-mail server is ready to submit notifications. Now, let's create our Portal Dev User. Open the top left **Menu** and go to **Run > APIs**.
+
+![](./images/prepare/menu-api-manager.png)
+
+7.Click **Manage catalogs**.
+
+![](./images/prepare/manage-catalogs.png)
+
+8.Open **Catalog for Demo use**.
+
+![](./images/prepare/catalog-for-demo-use.png)
+
+9.Open **Catalog settings > Portal**.
+
+![](./images/prepare/catalog-settings-portal.png)
+
+10.Here you can see, your *Portal URL*. Open a new browser tab, and paste your **Portal URL**.
+
+![](./images/prepare/portal-url.png)
+
+11.On the Portal page, click **Create account**.
+
+![](./images/prepare/create-account.png)
+
+12.Go ahead and complete the form. A suggestion is to use **devuser** as username, and you are welcome to use your personal email address.
+
+![](./images/prepare/complete-form.png)
+
+13.To complete your registration, you need to open your email and accept the registration. Note: if you are using mailtrap, you need to open your mailtrop inbox and accept the registration.
+
+![](./images/prepare/mailtrap-inbox.png).
+
+  Congratulations, your portal developer user is created and ready for demo. Now, let's copy some test script to be used during the demonstration.
 
 ***
 
