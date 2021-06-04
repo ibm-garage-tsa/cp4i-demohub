@@ -15,9 +15,16 @@ export const Title = () => <span>Automate customer interactions using APIs and I
 
 </FeatureCard>
 
-This Demo Script has multiple tasks, that have multiple steps. In each step you have the details about what you need to do (**Actions**) and what you can say delivering this demo step (**Talking Points**). This Demo Script is a suggestion, but you are welcome to customize based in your sales opportunity. Enjoy it and good sales!
+This demo shows how to automate customer interactions using APIs and Integrations.  To put this in a context of a business it is based on a car repair scenario.  Most likely this is not an exact scenario for your client.  It is up to you to make the linkage to your customer’s needs to support their customers.
+
+All businesses have customers.  Governments support citizens, B2B businesses have upstream and downstream businesses they deal with and most obviously B2C businesses have customers who need support.  The demo works through a series of steps to: obtain and validate input information from a customer with a concern, open a case in Salesforce, attach the incoming information to the case, analyze the tone of the situation, and respond to the customer with the case number and expected date for resolution.  This should be applicable to almost every business.  Do the planning to understand your customer’s customer and what type of interactions they might have that fit this pattern.
+
+This Demo Script has multiple tasks, that each have multiple steps. In each step you have the details about what you need to do (**Actions**) and what you can say delivering this demo step (**Talking Points**). This Demo Script is a suggestion, but you are welcome to customize based in your sales opportunity. Most importantly practice this demo in advance.  If the demo seems easy for you to execute the customer will notice this.  If it seems difficult for you to execute the customer will notice this as well.
+
+Enjoy it and good sales!
 
 <AnchorLinks>
+  <AnchorLink>0 - Opening Remarks</AnchorLink>
   <AnchorLink>1 - Accessing the Environment</AnchorLink>
   <AnchorLink>2 - Importing the Flow</AnchorLink>
   <AnchorLink>3 - Reviewing the Flow</AnchorLink>
@@ -29,6 +36,34 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 ***
 
+## 0 - Opening Remarks
+
+<details>
+<summary>0.0 - Demo Introduction</summary>
+
+<br/>
+
+| **Demo Introduction** |   |
+| :---         | :--- |
+| **Actions**             | Show Demo Introduction Slides. |
+| **Talking Points**      | Automating customer interactions can provide the difference between a satisfied customer who wants to do more business with you or a disappointed customer who is looking for an alternative option.  In addition, it can remove manual steps, data entry into multiple different applications, and potential errors and delays – all of which are additional costs to your business.  This demo automates a series of steps to: obtain and validate input information from a customer with a concern, open a case in Salesforce, attach the incoming information to the case, analyze the tone of the situation, and respond to the customer with the case number and expected date for resolution.
+
+To automate this customer interaction, we will use both APIs and integrations to back-end applications.  The demo scenario is related to a car repair, but this is just an example.  The same techniques are applicable to your environment in support of your customers.
+
+In the demo we will execute the following steps:
+- Access the Cloud Pak for Integration environment and explore the capabilities
+- Import and review the automated customer interactions integration flow
+- Test the flow
+- Deploy the flow into the Cloud Pak runtime environment
+- Manage access to the flow as an API and set up the security and rate limits
+- Demonstrate how a developer can use the API Portal to perform self-service consumption of the API
+
+Let’s get started!|
+| **Screenshots**         | &nbsp;  <br/> NA |
+
+</details>
+***
+
 ## 1 - Accessing the Environment
 
 <details>
@@ -38,7 +73,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **Log in CP4I** |   |
 | :---         | :--- |
-| **Actions**             | Open CP4I and click **IBM provided credentials (admin only)** and **og in** with your admin user and password. |
+| **Actions**             | Open CP4I and click **IBM provided credentials (admin only)** and **Log in** with your admin user and password. |
 | **Talking Points**      | In the road to digital transformation, every organization seeks to move faster than before. But going fast without the right approach, guided by real-world operational data, has caused 70% of digital transformations to fail. A new approach with automation and continuous improvement fed by AI algorithms is required. IBM Cloud Pak for Integration is a hybrid integration solution that provides an automated and closed-loop lifecycle across multiple styles of enterprise integration. With IBM Cloud Pak for Integration, companies can speed integration development, reduce costs and maintain enhanced security, governance and availability. Let's see IBM Cloud Pak for Integration in action. Here I have a cloud version of the product on IBM Cloud. Let me log in here.|
 | **Screenshots**         | &nbsp;  <br/> ![login1](./images/demoscript-login1.png) <br/> ![login2](./images/demoscript-login2.png) |
 
