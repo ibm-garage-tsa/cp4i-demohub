@@ -2,15 +2,6 @@
 title: APIC Dev Jam Lab 1 - Create and Secure an API
 ---
 
-import Breadcrumb from '../../gatsby-theme-carbon/components/Breadcrumb'
-
-<Breadcrumb>
-  <BreadcrumbItem href="/">Breadcrumb 1</BreadcrumbItem>
-  <BreadcrumbItem href="/">Breadcrumb 2</BreadcrumbItem>
-  <BreadcrumbItem href="/">Breadcrumb 3</BreadcrumbItem>
-</Breadcrumb>
-
-
 
 In this lab, you will get a chance to use the online APIC Developer
 Toolkit and its intuitive interface to create a new API using the
