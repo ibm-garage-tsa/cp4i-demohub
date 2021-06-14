@@ -12,7 +12,7 @@
 - title: Labs
   pages:
     - title: CP4I Labs
-      path: /tutorials/BuildDeployAPIs
+      path: /labs/cp4i
     - title: APIC Labs
       path: /APICDevJam
     - title: Confluent Labs
