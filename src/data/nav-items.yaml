@@ -1,56 +1,20 @@
 - title: Overview
   pages:
     - path: /overview/
-- title: Get Started with CP4I on ROKS
+- title: Environments
   pages:
-    - title: One-click install
+    - title: ROKS
       path: /cp4i-on-roks/
-    - title: Manual install
-      path: /cp4i-install/
-- title: Sales Demos
+- title: Demos
   pages:
-    - title: Integrated Car Repair
-      path: /salesdemos/carrepairdemo/
-    - title: Weather Chatbot
-      path: /salesdemos/chatbot/
-    - title: Driveway Dent Deletion
-      path: /salesdemos/ddd/
-    - title: Mapping Assist
-      path: /salesdemos/mappingassist/
-    - title: Car Repair *new draft*
+    - title: Customer Interactions
       path: /salesdemos/carrepair-new/overview
-- title: CP4I Labs
+- title: Labs
   pages:
-    - title: Build and Deploy APIs
+    - title: CP4I Labs
       path: /tutorials/BuildDeployAPIs
-    - title: Access Backend Systems
-      path: /tutorials/AccessBackendSystems
-    - title: Create Engaging Experiences
-      path: /tutorials/CreateEngagingExperiences
-    - title: API Lifecycle
-      path: /tutorials/ManageGraphQL
-- title: APIC Labs
-  pages:
-    - title: APIC DevJam
+    - title: APIC Labs
       path: /APICDevJam
-    - title: Lab 1 - Create and Secure an API
-      path: /APICDevJam/Lab1
-    - title: Lab 2 - The Developer Portal Experienace
-      path: /APICDevJam/Lab2
-    - title: Lab 3 - Add OAuth Security to your API
-      path: /APICDevJam/Lab3
-    - title: Lab 4 - Use Lifecycle Controls to Version your API
-      path: /APICDevJam/Lab4
-    - title: Lab 5 - Advanced API Assembly
-      path: /APICDevJam/Lab5
-    - title: Lab 6 - Working with API Products
-      path: /APICDevJam/Lab6
-    - title: Lab 7 - The Consumer Experience
-      path: /APICDevJam/Lab7
-    - title: Lab 8 -- Creating GraphQL Proxy API
-      path: /APICDevJam/Lab8
-- title: Confluent Labs
-  pages:
     - title: Confluent Labs
       path: /Confluent
 - title: Resources
