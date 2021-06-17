@@ -21,10 +21,10 @@ import ArticleDetails from '../../../../src/gatsby-theme-carbon/components/Artic
   <AnchorLink>Accessing and starting the environment</AnchorLink>
   <AnchorLink>Receiving vulnerability notifications</AnchorLink>
   <AnchorLink>Getting configuration parameters</AnchorLink>
-  <AnchorLink>Configuring Liberty server v20.0.0.12 to WebSphere Automation</AnchorLink>
-  <AnchorLink>Configuring Liberty server v20.0.0.9 to WebSphere Automation</AnchorLink>
-  <AnchorLink>Configuring traditional WebSphere (tWAS) v9.0.5.6 to WebSphere Automation</AnchorLink>
-  <AnchorLink>Configuring traditional WebSphere (tWAS) v9.0.5.7 to WebSphere Automation</AnchorLink>
+  <AnchorLink>Configuring Liberty server v20.0.0.12</AnchorLink>
+  <AnchorLink>Configuring Liberty server v20.0.0.9</AnchorLink>
+  <AnchorLink>Configuring traditional WebSphere (tWAS) v9.0.5.6</AnchorLink>
+  <AnchorLink>Configuring traditional WebSphere (tWAS) v9.0.5.7</AnchorLink>
   <AnchorLink>Update Liberty server v20.0.0.9 to fix the vulnerability</AnchorLink>
   <AnchorLink>Update tWAS server v9.0.5.7 to fix the vulnerability</AnchorLink>
   <AnchorLink>Update tWAS server v9.0.5.7 to introduce the vulnerability back (optional)</AnchorLink>
@@ -83,7 +83,6 @@ IBM WebSphere Automation is available as a stand-alone offering or as an additio
 You are a WebSphere Administrator part of a WebSphere Operations Team. Today, you subscribe and receive IBM Security Bulletins to be aware about vulnerabilities, its potential impact, severity and recommended solutions. Based on that you check if this CVE applies to your managed inventory. Now, your inventory is a spreadsheet, with all the information about your servers, which versions, which operational system, which iFixes were applied, etc. It is very manual process and you are trying to automate it.
 
 You would like to have:
-
 - **Management dashboard:** Consolidated dashboard increases awareness and response time to common vulnerabilities and exposures (CVEs).
 - **Automated vulnerability tracking:** Let WebSphere Automation track new security bulletins across your existing traditional WebSphere and Liberty environments, on virtual machines or containers.
 - **Contextual notifications:** Receive security bulletin notifications only when new vulnerabilities affect the environment you manage, reducing noise and interruptions to the WebSphere operations team.
@@ -103,19 +102,17 @@ At the end of this lab, you will be able to connect teams with the most relevant
 
   WebSphere Automation is pre-installed in the OCP cluster hosted on the VMs.
 
-2.Start the environment with the Play button in the top-right corner.
+2.Start the environment with the Play button in the top-right corner. It takes about 10-15 minutes for the environment to start and stabilize.
 
   ![](images/skytap-2.png)
-
-  It takes about 10-15 minutes for the environment to start and stabilize
 
 3.You will be working on the Student VM only. This VM is installed with OCP client (oc) and all thee scripts and files you need for the lab.
 
   All the WebSphere images and iFixes required for the lab are pre-installed:
-    - /opt/IBM/WebSphere/Liberty200012/
-    - /opt/IBM/WebSphere/Liberty20009/
-    - /opt/IBM/WebSphere/AppServer9057/
-    - /opt/IBM/WebSphere/AppServer9056/
+    * /opt/IBM/WebSphere/Liberty200012/
+    * /opt/IBM/WebSphere/Liberty20009/
+    * /opt/IBM/WebSphere/AppServer9057/
+    * /opt/IBM/WebSphere/AppServer9056/
 
   Click the screen representing the **STUDENT** VM.
 
@@ -146,12 +143,31 @@ At the end of this lab, you will be able to connect teams with the most relevant
 
 * This is the initial landing page for IBM automation
   * Under Log in to IBM Automation -> Select your authentication type: click OpenShift authentication
-  
+
   ![](images/ibm-auto-login.png)
 
   * Enter the following credentials
     * UserName : ocadmin
     * Password : ibmocp46
+
+### Check GUI content and configure email notification
+
+* Click the Navigation/Hamburger Menu on the left.
+
+  ![](images/hamburger-menu.png)
+
+* Click Operate.
+  * You should now see Application Runtimes. Click that.
+
+  ![](images/app-runtime-nav.png)
+
+* It will take you to the WebSphere Automation GUI.
+  * There should be no data since no WebSphere servers are registered/configured yet.
+
+* On the console, go to Notification Configuration and enter your email address where you want to be notified about CVEs by clicking add email address button
+  * The mail server is pre-configured for this lab. You only need to enter your email address to get notified.
+
+  ![](images/notification-setting.png)
 
 ***
 
@@ -159,19 +175,19 @@ At the end of this lab, you will be able to connect teams with the most relevant
 
 ***
 
-## Configuring Liberty server v20.0.0.12 to WebSphere Automation
+## Configuring Liberty server v20.0.0.12
 
 ***
 
-## Configuring Liberty server v20.0.0.9 to WebSphere Automation
+## Configuring Liberty server v20.0.0.9
 
 ***
 
-## Configuring traditional WebSphere (tWAS) v9.0.5.6 to WebSphere Automation
+## Configuring traditional WebSphere (tWAS) v9.0.5.6
 
 ***
 
-## Configuring traditional WebSphere (tWAS) v9.0.5.7 to WebSphere Automation
+## Configuring traditional WebSphere (tWAS) v9.0.5.7
 
 ***
 
