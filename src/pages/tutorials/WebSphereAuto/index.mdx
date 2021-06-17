@@ -109,10 +109,10 @@ At the end of this lab, you will be able to connect teams with the most relevant
 3.You will be working on the Student VM only. This VM is installed with OCP client (oc) and all thee scripts and files you need for the lab.
 
   All the WebSphere images and iFixes required for the lab are pre-installed:
-    * /opt/IBM/WebSphere/Liberty200012/
-    * /opt/IBM/WebSphere/Liberty20009/
-    * /opt/IBM/WebSphere/AppServer9057/
-    * /opt/IBM/WebSphere/AppServer9056/
+  - /opt/IBM/WebSphere/Liberty200012/
+  - /opt/IBM/WebSphere/Liberty20009/
+  - /opt/IBM/WebSphere/AppServer9057/
+  - /opt/IBM/WebSphere/AppServer9056/
 
   Click the screen representing the **STUDENT** VM.
 
@@ -173,50 +173,64 @@ https://cpd-websphere-automation.apps.ocp.ibm.edu
 
   ![](images/notification-email.png)
 
-  Great! Your email is configured to receive security notifications. Next section, you start to register our servers to WebSphere Automation.   
+  Great! Your email is configured to receive security notifications. Next section, you start to register our servers to WebSphere Automation.
 
 ***
 
 ## Getting configuration parameters
 
-### Log in to OpenShift using OCP client (oc)
+Add each of your WebSphere® Application Server servers and WebSphere Application Server Liberty servers to WebSphere Automation by registering them with the usage metering service.
 
-* Go back to the desktop and open 2 terminals. Log in as root in both:
+To register your application servers with the usage metering service in WebSphere Automation, you must configure the usage metering feature in each application server. To configure the usage metering feature in each of your application servers, you must obtain the following usage metering items:
+- **URL**: The URL of the usage metering service in WebSphere Automation. This service registers WebSphere Application Server servers and Liberty servers with WebSphere Automation so that you can track security vulnerabilities.
+- **API Key**: The token used to authenticate the WebSphere Application Server servers and Liberty servers during the registration process.
+- **Usage metering certificate**: The certificate that contains the public key. This key allows an application server that is registering with WebSphere Automation to do an SSL handshake with the metering service.
 
+In this section, you will get these configuration parameters. Let's start it!
+
+1.Back to the desktop, open a **terminal** window.
+
+  ![](images/open-terminal.png)
+
+2.Log in as **root**.
 ```
 su root
 ```
-
-* Enter the following password when prompted:
-
+  Enter the following password when prompted:
 ```
 1bm2021rhjb
 ```
 
-* Log in to the OCP cluster (in each terminal)
+3.Now, let's log in to the OCP Cluster using the command below:
 ```
 oc login --username=ocadmin --password=ibmocp46 --insecure-skip-tls-verify=true --server=https://api.ocp.ibm.edu:6443
 ```
-* Make sure that the project you are working on is websphere-automation:
 
+  ![](images/oc-login.png)
+
+4.Make sure that the project you are working on is websphere-automation:
 ```
 oc project websphere-automation
 ```
 
 ### Get usageMetering configuration parameters (url, api-key, cert)
 
-* Get the URL for usage-metering and save it in a file:
+5.Now, let's use the oc command to get the URL of the usage metering service in WebSphere Automation and save it in a file:
 ```
 echo https://$(oc get route cpd -n websphere-automation -o jsonpath='{.spec.host}')/websphereauto/meteringapi > /opt/IBM/WebSphere/metering-url.txt
 ```
-* Get the api-key and save it in a file.
+
+6.Let's get the api-key and save it a file too.
 ```
 oc -n websphere-automation get secret automation-secure-metering-apis-encrypted-tokens -o jsonpath='{.data.automation-secure-metering-apis-sa}' | base64 -d > /opt/IBM/WebSphere/api-key.txt; echo >> /opt/IBM/WebSphere/api-key.txt
 ```
-* Get the Server certificate and save it in a file.
+
+7.Finally, let's get the Server certificate and save it in a file.
 ```
 oc get secret external-tls-secret -n websphere-automation -o jsonpath='{.data.cert\.crt}' | base64 -d > /opt/IBM/WebSphere/cacert.pem
 ```
+
+  Great! Now you have all the configuration parameters to register your application servers with the usage metering service in WebSphere Automation. Next section, you register your first server in WebSphere Automation.
 
 ***
 
