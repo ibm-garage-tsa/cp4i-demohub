@@ -187,7 +187,7 @@ su root
 1bm2021rhjb
 ```
 
-* Log in to the OCP cluster (in each terminal) </br>
+* Log in to the OCP cluster (in each terminal) 
 ```
 oc login --username=ocadmin --password=ibmocp46 --insecure-skip-tls-verify=true --server=https://api.ocp.ibm.edu:6443
 ```
@@ -212,7 +212,7 @@ oc -n websphere-automation get secret automation-secure-metering-apis-encrypted-
 ```
 oc get secret external-tls-secret -n websphere-automation -o jsonpath='{.data.cert\.crt}' | base64 -d > /opt/IBM/WebSphere/cacert.pem
 
-``` 
+```
 
 ***
 
