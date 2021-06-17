@@ -130,44 +130,50 @@ At the end of this lab, you will be able to connect teams with the most relevant
 
 ## Receiving vulnerability notifications
 
-### Access the GUI
+### Accessing the WebSphere Automation UI
 
-* WebSphere Automation is pre-installed on an OCP cluster.
-* Each of you have access to your individual WebSphere Automation installation.
-* Click the Student VM.
-* Open a browser and enter the following URL:
-  * `https://cpd-websphere-automation.apps.ocp.ibm.edu`
-  * Accept all the warnings and certificates. Depending on your browser, you might have to scroll down to permit access.
+A WebSphere administrator sets up WebSphere Automation by registering and configuring WebSphere Application Server and WebSphere Application Server Liberty servers for vulnerability tracking and by configuring email notifications. WebSphere administrators can also view the results of vulnerability assessment in WebSphere Automation to plan their response for the WebSphere Application Server and WebSphere Application Server Liberty servers that they manage.
 
-### Log in to the GUI
+For this tutorial, WebSphere Automation is pre-installed on an OCP cluster. You have your individual WebSphere Automation installation. Let's access your environment.
 
-* This is the initial landing page for IBM automation
-  * Under Log in to IBM Automation -> Select your authentication type: click OpenShift authentication
+1.On the *Student VM*, open a browser and enter the following URL:
+```
+https://cpd-websphere-automation.apps.ocp.ibm.edu
+```
 
-  ![](images/ibm-auto-login.png)
+  ![](images/opening-browser.png)
 
-  * Enter the following credentials
-    * UserName : ocadmin
-    * Password : ibmocp46
+  If necessary, accept all the warnings and certificates. Depending on your browser, you might have to scroll down to permit access.
 
-### Check GUI content and configure email notification
+2.On the login page, select the **OpenShift authentication** as the authentication type.
 
-* Click the Navigation/Hamburger Menu on the left.
+  ![](images/openshift-authentication.png)
 
-  ![](images/hamburger-menu.png)
+3.Enter **ocadmin** as username and **ibmocp46** as password. And click **Log In**.
 
-* Click Operate.
-  * You should now see Application Runtimes. Click that.
+  ![](images/ocp-ui-login.png)
 
-  ![](images/app-runtime-nav.png)
+4.The *IBM Automation Welcome page* appears.
 
-* It will take you to the WebSphere Automation GUI.
-  * There should be no data since no WebSphere servers are registered/configured yet.
+  ![](images/welcome-page.png)
 
-* On the console, go to Notification Configuration and enter your email address where you want to be notified about CVEs by clicking add email address button
-  * The mail server is pre-configured for this lab. You only need to enter your email address to get notified.
+5.On the Welcome page, open the **Menu**, click **Operate**, and then click **Application runtimes**.
 
-  ![](images/notification-setting.png)
+  ![](images/welcome-menu.png)
+
+6.The Application runtimes page appears. There should be no data since no WebSphere servers are registered/configured yet.
+
+  ![](images/app-runtime.png)
+
+7.However, before start to register servers to our Dashboard, let's configure your email to received notifications abouts CVEs. Open the **Notification configuration** tab.
+
+  ![](images/notification-config.png)
+
+8.The Email server configuration is pre-configured for this lab. You only need to add your personal email to receive notifications of new security vulnerabilities. Click **Add email address** (1) and enter *your email* and click **Save** (2).
+
+  ![](images/notification-email.png)
+
+  Great! Your email is configured to receive security notifications. Next section, you start to register our servers to WebSphere Automation.   
 
 ***
 
