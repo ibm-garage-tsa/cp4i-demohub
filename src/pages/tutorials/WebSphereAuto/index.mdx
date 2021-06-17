@@ -173,6 +173,47 @@ At the end of this lab, you will be able to connect teams with the most relevant
 
 ## Getting configuration parameters
 
+### Log in to OpenShift using OCP client (oc)
+
+* Go back to the desktop and open 2 terminals. Log in as root in both:
+
+```
+su root
+```
+
+* Enter the following password when prompted:
+
+```
+1bm2021rhjb
+```
+
+* Log in to the OCP cluster (in each terminal) </br>
+```
+oc login --username=ocadmin --password=ibmocp46 --insecure-skip-tls-verify=true --server=https://api.ocp.ibm.edu:6443
+```
+* Make sure that the project you are working on is websphere-automation:</br>
+
+```
+oc project websphere-automation
+```
+
+### Get usageMetering configuration parameters (url, api-key, cert)
+
+* Get the URL for usage-metering and save it in a file:
+```
+echo https://$(oc get route cpd -n websphere-automation -o jsonpath='{.spec.host}')/websphereauto/meteringapi > /opt/IBM/WebSphere/metering-url.txt
+```
+* Get the api-key and save it in a file.
+```
+oc -n websphere-automation get secret automation-secure-metering-apis-encrypted-tokens -o jsonpath='{.data.automation-secure-metering-apis-sa}' | base64 -d > /opt/IBM/WebSphere/api-key.txt; echo >> /opt/IBM/WebSphere/api-key.txt
+
+```
+* Get the Server certificate and save it in a file.
+```
+oc get secret external-tls-secret -n websphere-automation -o jsonpath='{.data.cert\.crt}' | base64 -d > /opt/IBM/WebSphere/cacert.pem
+
+``` 
+
 ***
 
 ## Configuring Liberty server v20.0.0.12
