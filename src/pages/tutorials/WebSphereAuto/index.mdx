@@ -236,62 +236,71 @@ oc get secret external-tls-secret -n websphere-automation -o jsonpath='{.data.ce
 
 ## Configuring Liberty server v20.0.0.12
 
-* Create the Liberty server version 20.0.0.12:
+In this section, you configure Liberty Server version 20.0.0.12 to register to WebSphere Automation.
+
+1.Let's create a Liberty server version 20.0.0.12, using the command below:
 ```
 /opt/IBM/WebSphere/Liberty200012/bin/server create Liberty_200012_server
 ```
-* Configure the server to use TLS/SSL using the provided server_tls.xml file:
+
+  ![](images/2012-server-created.png)
+
+2.Now you need to configure the server to use TLS/SSL using the provided server_tls.xml file:
 ```
 \cp -f /home/ibmuser/Desktop/lab_backup/liberty200012/server_tls.xml /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml
-
 ```
 
-* Note the above command occasionally fails on the VM. Ensure that the two files are the same.
-```
-cmp /home/ibmuser/Desktop/lab_backup/liberty200012/server_tls.xml /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml && echo "files are the same, proceed to the next step"
-```
-
-* Start the Liberty server
+3.Let's start the Liberty server:
 ```
 /opt/IBM/WebSphere/Liberty200012/bin/server start Liberty_200012_server
 ```
 
-* Update the DefaultKeyStore with the server certificate to trust the server for https connection:
+  ![](images/starting-server-200012.png)
+
+4.Now, you need to update the DefaultKeyStore with the server certificate to trust the server for https connection:
 ```
 keytool -import -trustcacerts -file /opt/IBM/WebSphere/cacert.pem -keystore /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/resources/security/key.p12 -storetype PKCS12 -storepass th1nkpassword -noprompt
 ```
 
-* Edit the server.xml file (using vi, vim, or gedit) to add the `usageMetering-1.0` feature to the existing features in the `<featureManager>` element:
+  ![](images/certificate-store.png)
+
+5.It's time to configure the usage metering in the new server. Edit the **server.xml** file.
 ```
 vi /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml
 ```
+
+6.Add the **usageMetering-1.0** feature to the existing features in the `<featureManager>` element (check the picture below)
 ```
 <feature>usageMetering-1.0</feature>
 ```
 
-* Add the usageMetering element and replace the `<metering-url>` and the `<api-key>` values as shown below:
+  ![](images/vi-server-200012.png)
+
+7.Add the **usageMetering** element below:
 ```
 <usageMetering url="<metering-url>" apiKey="<api-key>" sslRef="defaultSSL"/>
 ```
-* Replace `<metering-url>` above with the output of the  following cat command.Use the second terminal to run the cat command:
+
+  ![](images/usage-metering-200012.png)
+
+8.You need to replace the `<metering-url>` with the output of the following command. Open another terminal window, and run the cat command below:
 ```
 cat /opt/IBM/WebSphere/metering-url.txt
 ```
-* Replace `<api-key>` above with the output of the following cat command.Use the second terminal to run the cat command:
+
+9.Replace `<api-key>` above with the output of the following cat command. Use the second terminal to run the cat command:
 ```
 cat /opt/IBM/WebSphere/api-key.txt
 ```
 
-* Save the server.xml file.
+10.**Save** and **Close** the server.xml file.
 
-* Confirm that the Liberty server is registered to WebSphere Automation:
+11.Back to the WebSphere Automation Dashboard on your browser, open the **Servers** view.
 
-  ```
-  https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
-  ```
+12.Confirm that the Liberty server is registered to WebSphere Automation Application runtimes page.
 
-* This version of Liberty server is not vulnerable to any known CVEs
-  * No email will be sent because there are no vulnerabilities
+
+  Maybe your server vulnerability is a little bit different of the picture above, because maybe new vulnerability was discovered.
 
 ***
 
