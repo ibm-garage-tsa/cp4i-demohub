@@ -213,14 +213,12 @@ oc login --username=ocadmin --password=ibmocp46 --insecure-skip-tls-verify=true 
 oc project websphere-automation
 ```
 
-### Get usageMetering configuration parameters (url, api-key, cert)
-
 5.Now, let's use the oc command to get the URL of the usage metering service in WebSphere Automation and save it in a file:
 ```
 echo https://$(oc get route cpd -n websphere-automation -o jsonpath='{.spec.host}')/websphereauto/meteringapi > /opt/IBM/WebSphere/metering-url.txt
 ```
 
-6.Let's get the api-key and save it a file too.
+6.Let's get the api-key and save it in a file too.
 ```
 oc -n websphere-automation get secret automation-secure-metering-apis-encrypted-tokens -o jsonpath='{.data.automation-secure-metering-apis-sa}' | base64 -d > /opt/IBM/WebSphere/api-key.txt; echo >> /opt/IBM/WebSphere/api-key.txt
 ```
@@ -313,270 +311,237 @@ cat /opt/IBM/WebSphere/api-key.txt
 
 ## Configuring Liberty server v20.0.0.9
 
-* Create the Liberty server version 20.0.0.9:
+In this section, you configure another Liberty Server to your WebSphere Automation dashboard. The process is the same (using the usage metering service in WebSphere Automation). However, to simplify tha lab we have pre-created the configuration files to make the configuration simpler.
 
+1.First, you need to create the Liberty server version 20.0.0.9, using the command below:
 ```
 /opt/IBM/WebSphere/Liberty20009/bin/server create Liberty_20009_server
 ```
 
-* Since you have already configured usageMetering feature for Liberty version 20.0.0.12, we have a provided couple of server.xml files to make the configuration simpler. First copy the tls configuration:
-
+2.Since you have already configured usageMetering feature for Liberty version 20.0.0.12, we have a provided couple of server.xml files to make the configuration simpler. First copy the tls configuration:
 ```
 \cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_tls.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
-
 ```
 
-* Note the above command occasionally fails on the VM. Ensure that the two files are the same.
-
-```
-cmp /home/ibmuser/Desktop/lab_backup/liberty20009/server_tls.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml && echo "files are the same, proceed to the next step"
-```
-
-* Start the Liberty server:
+3.Start the Liberty server:
 
 ```
 /opt/IBM/WebSphere/Liberty20009/bin/server start Liberty_20009_server
 ```
 
-* Update the DefaultKeyStore with the server certificate to trust the server for https connections:
+4.Update the DefaultKeyStore with the server certificate to trust the server for https connections:
 
 ```
 keytool -import -trustcacerts -file /opt/IBM/WebSphere/cacert.pem -keystore /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/resources/security/key.p12 -storetype PKCS12 -storepass th1nkpassword -noprompt
-
 ```
 
-* Copy the server.xml that contains the usageMetering feature and properties (url, api-key):
+5.Copy the server.xml that contains the usageMetering feature and properties (url, api-key):
 
 ```
 \cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_configured.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
-
 ```
+6.Back to the WebSphere Automation dashboard, confirm that the new Liberty server is registered.
 
-* Note the above command occasionally fails on the VM. Ensure that the two files are the same.
+   ![](images/dashboard-server2.png)
 
-```
-cmp /home/ibmuser/Desktop/lab_backup/liberty20009/server_configured.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml && echo "files are the same, proceed to the next step"
-```
+  The dashboard shows that this server is vulnerable for some CVEs, including the CVE-2020-10693.
 
-* Confirm that the Liberty server is registered to WebSphere Automation
+    ![](images/dashboard-CVE-2020-10693.png)
 
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
+7.Check your email. A mail notification was sent indicating the vulnerability. In the email message, there will be a link that would redirect to the console to show more details on the vulnerability. Because of network restrictions in the lab environment, this link will not work.
 
-```
-
-* The console shows that this server is vulnerable for CVE-2020-10693
-
-* Check your email. A mail notification (if configured) will be sent indicating the vulnerability:
-
-  * In the email message, there will be a link that would redirect to the console to show more details on the vulnerability. Because of network restrictions in the lab environment, this link will not work.
-
-   * The image below is where the link would have redirected to.
-
-   ![](images/liberty-cve.png)
+   ![](images/vulnerability-email.png)
 
 
 ***
 
 ## Configuring traditional WebSphere (tWAS) v9.0.5.6
 
-* Start the tWAS 9.0.5.6 server:
+In this section, you configure a traditional WebSphere Application Server to your WebSphere Automation dashboard. Here you use the wsadmin script to configure the usage metering service. Let's do it!
 
+1.First, let's start the tWAS 9.0.5.6 server. Back to the terminal window, execute the command below:
 ```
 /opt/IBM/WebSphere/AppServer9056/bin/startServer.sh tWAS_9056_server
-
 ```
 
-* Configure usage-metering:
-
+2.Now, you need to configure usage-metering using the wsadmin script below:
 ```
 /opt/IBM/WebSphere/AppServer9056/bin/wsadmin.sh -f /api-usagemetering/scripts/configuretWasUsageMetering.py url=$(cat /opt/IBM/WebSphere/metering-url.txt) apiKey=$(cat /opt/IBM/WebSphere/api-key.txt) trustStorePassword=th1nkpassword
-
 ```
 
-* Confirm that the tWAS server is registered to WebSphere Automation
+3.Great, you first traditional WAS server is configured. Let's check our WebSphere Automation dashboard. Back to the browser, dashboard, confirm that the tWAS v9.0.5.6 is registered.
 
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
-```
+  ![](images/dashboard-tWAS1.png)
 
-* You should see that this server is vulnerable to 8 CVEs
+  You should see that this server is vulnerable to 15 or more CVEs (new vulnerabilities are discovered constantly, so the number of CVEs depends when you run this lab).
 
-* Check your email. A mail notification (if configured) will be sent showing the vulnerability
+4.Check your email. A mail notification was sent showing the vulnerabilitiy.
+
+  ![](images/email-vulnerability2.png)
 
 ***
 
 ## Configuring traditional WebSphere (tWAS) v9.0.5.7
 
-* Start the tWAS 9.0.5.7 server:
+In this section, you configure another version of a traditional WebSphere Application Server to your WebSphere Automation dashboard. The steps here are the same of the last section.
 
+1.First, you just need to start the tWAS 9.0.5.7 server. On the terminal window, execute the command below:
 ```
 /opt/IBM/WebSphere/AppServer9057/bin/startServer.sh tWAS_9057_server
 ```
 
-* Configure usage-metering:
-
+2.Again, you need to configure the usage-metering.
 ```
 /opt/IBM/WebSphere/AppServer9057/bin/wsadmin.sh -f /api-usagemetering/scripts/configuretWasUsageMetering.py url=$(cat /opt/IBM/WebSphere/metering-url.txt) apiKey=$(cat /opt/IBM/WebSphere/api-key.txt) trustStorePassword=th1nkpassword
 ```
 
-* Confirm that the tWAS server is registered to WebSphere Automation:
+3.Great, you second traditional WAS server is configured. Let's check our WebSphere Automation dashboard. Back to the browser, dashboard, confirm that the tWAS v9.0.5.7 is registered.
 
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
-```
+  ![](images/dashboard-tWAS2.png)
 
-* You should see that this server is vulnerable to 1 CVE (CVE-2021-26296)
+  You should see that this server is vulnerable to CVE-2021-26296. As explained before, maybe your server has more vulnerability than displayed in the picture, because it depends when you execute your lab, since new vulnerabilities are discovered constantly.
 
-* Check your email. A mail notification (if configured) will be sent showing the vulnerability
+4.Again, check your email. A mail notification was sent showing the vulnerability.
 
+  ![](images/email-inbox.png)
 
 ***
 
 ## Update Liberty server v20.0.0.9 to fix the vulnerability
 
-### By updating configuration
+In this section, you will fix one vulnerability in our Liberty Server v20.0.0.9 using two different approaches. First, you fix only updating configuraiton. Later, you apply an iFix to solve the vulnerability. Let's see how to do it.
 
-* Liberty 20.0.0.9 is impacted by CVE-2020-10693. This is because it configures the beanValidation-2.0 feature.
+### Updating configurations
 
-See [CVE-2020-10693](https://www.ibm.com/support/pages/node/6348216) for more info.
+Liberty 20.0.0.9 is impacted by CVE-2020-10693. This is because it configures the beanValidation-2.0 feature. See [CVE-2020-10693](https://www.ibm.com/support/pages/node/6348216) for more info.
 
-* We should resolve this by applying the iFix. However, for the lab, we can also do a quick test by unconfiguring this feature:
+We should resolve this by applying the iFix. However, for the lab, we can also do a quick test by unconfiguring this feature:
 
+1.Edit the server.xml, using the command below:
 ```
 vi /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
 ```
-or
 
+2.Comment out the feature:
 ```
-gedit /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
+<!-- <feature>beanValidation-2.0</feature> -->
 ```
-  * Comment out the feature:
-  ```
-  <!-- <feature>beanValidation-2.0</feature> -->
-  ```
 
-* Save the server.xml file.
+  ![](images/edit-beanvalidation.png)
 
-* Go to console to make sure that the Liberty 20.0.0.9 server does not show any vulnerabilities. The update is picked up automatically.
+3.**Save** and **close** the *server.xml* file.
 
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
-```
+4.Back to your browser, check that the Liberty 20.0.0.9 server does not show the CVE-2020-10693 vulnerability. The update is picked up automatically.
+
+  ![](images/no-CVE-2020-10693.png)
+
+  Great, you removed the vulnerability by updating the configuration.
 
 ### By Applying an IFIX
 
-* Instead of removing the beanValidationFeature-2.0, the correct process is to apply the appropriate iFix to get rid of the vulnerability:
+However, instead of remove the beanValidationFeature-2.0, the correct process is to apply the appropriate iFix to get rid of the vulnerability. Let's do it in this part.
+
+5.First, let's add back the beanValidation feature:
 
 ```
 vi /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
-
 ```
 
-or
-
+6.Uncomment out the feature:
 ```
-gedit /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
-
-```
-  * Uncomment out the feature:
-  ```
-  <feature>beanValidation-2.0</feature>
-  ```
-
-* Save the server.xml file.
-
-* Make sure the vulnerability shows up again. An email will also be sent out.
-
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul
+<feature>beanValidation-2.0</feature>
 ```
 
-* Stop the server:
+  ![](images/uncomment.png)
 
+7.**Save** and **Close** the server.xml file.
+
+8.Back to the browser, make sure the vulnerability shows up again.
+
+  ![](images/cve-back.png)
+
+9.An email will also be sent out.
+
+  ![](images/email-again.png)
+
+10.You need to stop the server, before apply the iFix. Back to the terminal window, run the command below:
 ```
 /opt/IBM/WebSphere/Liberty20009/bin/server stop Liberty_20009_server
 ```
 
-* Apply the iFix:
-
+11.Now, let's apply the iFix.
 ```
 /iFix/PH29942/imcl_ifix_install.sh 20009
 ```
 
-* Start the server:
+  ![](images/apply-fix.png)
 
+12.Great, you iFix was applied. Now, start the server again:
 ```
 /opt/IBM/WebSphere/Liberty20009/bin/server start Liberty_20009_server
 ```
 
-* Now, in your console you should notice that the CVE was removed:
+13.Now, in your WebSphere Automation Dashboard you should notice that the CVE was removed:
 
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
-```
-
+  ![](images/no-CVE-2020-10693.png)
 
 ***
 
 ## Update tWAS server v9.0.5.7 to fix the vulnerability
 
-* Notice in the console that tWAS 9.0.5.7 is vulnerable to CVE-2021-26296. We will fix it by applying the appropriate iFix.
+In this section, you will apply an iFix in tWAS 9.0.5.7 to remove the CVE-2021-26296 vulnerability.
 
-* First, stop the server, wait until it has stopped:
+1.Notice in the console that tWAS 9.0.5.7 is vulnerable to CVE-2021-26296.
 
+  ![](images/CVE-2021-26296.png)
+
+  We will fix it by applying the appropriate iFix.
+
+2.First, stop the server, wait until it has stopped:
 ```
 /opt/IBM/WebSphere/AppServer9057/bin/stopServer.sh tWAS_9057_server
 ```
 
-* Run the following script to install the iFix:
-
+3.Run the following script to install the iFix:
 ```
 /iFix/PH34711/imcl_ifix_install.sh 9057
 ```
 
-* Start the server once the installation has completed:
-
+4.Start the server once the installation has completed:
 ```
 /opt/IBM/WebSphere/AppServer9057/bin/startServer.sh tWAS_9057_server
 ```
-* Go back to the console. Notice that there are no more CVEs under tWAS 9.0.5.7.Also, you can see on the right under "Applied iFixes" there are 4 applied fixes.
 
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
-```
+5.Go back to the WebSphere Automation dashboard. Notice that the CVE-2021-26296 was removed from tWAS 9.0.5.7.  Also, you can see on the right under "Applied iFixes" there are 4 applied fixes.
 
+  ![](images/ifix-applied.png)
 
 ***
 
 ## Update tWAS server v9.0.5.7 to introduce the vulnerability back (optional)
 
-* You can remove the iFix that was applied to confirm that the CVE-2021-26296 shows up in the unresolved CVE list
+You can remove the iFix that was applied to confirm that the CVE-2021-26296 shows up in the unresolved CVE list
 
-* Stop the server:
-
+1.Stop the server:
 ```
 /opt/IBM/WebSphere/AppServer9057/bin/stopServer.sh tWAS_9057_server
 ```
 
-* Uninstall the iFix:
+2.Uninstall the iFix:
 ```
 /iFix/PH34711/imcl_ifix_uninstall.sh 9057
 ```
 
-* Start the server:
-
+3.Start the server:
 ```
 /opt/IBM/WebSphere/AppServer9057/bin/startServer.sh tWAS_9057_server
 ```
 
-* Go back to the console. Notice that there is now again 1 CVE under the tWAS 9.0.5.7 server:
+4.Go back to the WebSphere Automation Dashboard on your browser. Notice that CVE-2021-26296 is now again in the tWAS 9.0.5.7 server:
 
-```
-https://cpd-websphere-automation.apps.ocp.ibm.edu/websphereauto/secvul/
-```
+  ![](images/CVE-2021-26296.png)
 
-* Check your email. A mail notification (if configured) will be sent showing the vulnerability.
+  Check your email. A mail notification was sent showing the vulnerability.
 
 ***
 
