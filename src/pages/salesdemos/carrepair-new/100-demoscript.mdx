@@ -15,7 +15,13 @@ export const Title = () => <span>Automate customer interactions using APIs and I
 
 </FeatureCard>
 
-This Demo Script has multiple tasks, that have multiple steps. In each step you have the details about what you need to do (**Actions**) and what you can say delivering this demo step (**Talking Points**). This Demo Script is a suggestion, but you are welcome to customize based in your sales opportunity. Enjoy it and good sales!
+This demo shows how to automate customer interactions using APIs and Integrations. To put this in a context of a business it is based on a car repair scenario. Most likely this is not an exact scenario for your client. It is up to you to make the linkage to your customer’s needs to support their customers.
+
+All businesses have customers. Governments support citizens, B2B businesses have upstream and downstream businesses they deal with and most obviously B2C businesses have customers who need support. The demo works through a series of steps to: obtain and validate input information from a customer with a concern, open a case in Salesforce, attach the incoming information to the case, analyze the tone of the situation, and respond to the customer with the case number and expected date for resolution. This should be applicable to almost every business. Do the planning to understand your customer’s customer and what type of interactions they might have that fit this pattern.
+
+This Demo Script has multiple tasks, that each have multiple steps. In each step you have the details about what you need to do (**Actions**) and what you can say delivering this demo step (**Talking Points**). The Demo Talking Points are a suggestion, but you are welcome to customize based in your sales opportunity. Most importantly practice this demo in advance. If the demo seems easy for you to execute the customer will notice this. If it seems difficult for you to execute the customer will notice this as well.
+
+**IMPORTANT NOTE:** *YOU ARE USING A SHARED DEMO ENVIRONMENT, PLEASE DON'T CREATE CUSTOM FLOWS OR APIS IN THIS ENVIRONMENT. DON'T DO ANY CUSTOMIZATION (INCLUDING CUSTOMER NAMES). MULTIPLE SELLERS ARE USING THIS ENVIRONMENT AT THE SAME TIME. PLEASE JUST FOLLOW THE SCRIPT. IF YOU NEED TO DO A CUSTOM DEMO, PLEASE VISIT THE [DELIVER PAGE](/salesdemos/carrepair-new/300-demoscript) AND SELECT 300 DEMO OPTION.*
 
 <AnchorLinks>
   <AnchorLink>1 - Accessing the Environment</AnchorLink>
@@ -35,9 +41,9 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **Log in CP4I** |   |
 | :---         | :--- |
-| **Actions**             | Open CP4I and click **IBM provided credentials (admin only)** and **og in** with your admin user and password. |
-| **Talking Points**      | In the road to digital transformation, every organization seeks to move faster than before. But going fast without the right approach, guided by real-world operational data, has caused 70% of digital transformations to fail. A new approach with automation and continuous improvement fed by AI algorithms is required. IBM Cloud Pak for Integration is a hybrid integration solution that provides an automated and closed-loop lifecycle across multiple styles of enterprise integration. With IBM Cloud Pak for Integration, companies can speed integration development, reduce costs and maintain enhanced security, governance and availability. Let's see IBM Cloud Pak for Integration in action. Here I have a cloud version of the product on IBM Cloud. Let me log in here.|
-| **Screenshots**         | &nbsp;  <br/> ![login1](./images/demoscript-login1.png) <br/> ![login2](./images/demoscript-login2.png) |
+| **Actions**             | Open CP4I and click **Enterprise LDAP** and **Log in** with your user and password. |
+| **Talking Points**      | As businesses execute a digital transformation, every organization seeks to move faster than before. But going fast without the right approach, guided by real-world operational data, has caused 70% of digital transformations to fail. A new approach with automation and continuous improvement fed by AI algorithms is required. IBM Cloud Pak for Integration is a hybrid integration solution that provides an automated and closed-loop lifecycle across multiple styles of enterprise integration. With IBM Cloud Pak for Integration, companies can speed integration development, reduce costs and maintain enhanced security, governance and availability. Let’s see IBM Cloud Pak for Integration in action. Here I have a cloud version of the product on IBM Cloud. Let me log in here.|
+| **Screenshots**         | &nbsp;  <br/> ![login1](./images/outcomes-login.png) <br/> ![login2](./images/outcomes-username.png) |
 
 </details>
 
@@ -48,9 +54,9 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **CP4I Home** |   |
 | :---         | :--- |
-| **Actions**             | Show the Home Page and click on **Integration Capabilities**. |
-| **Talking Points**      | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the pak, brought together in one place.  Specialized integration capabilities —for API management, application integration, messaging and more —are built on top of powerful automation services. Let's see the Integration Capabilities available in this Cloud Pak for Integration.|
-| **Screenshots**         | &nbsp;  <br/> ![home](./images/demoscript-home.png) |
+| **Actions**             | Show the Home Page and open the **menu**, click on **Administration > Integration Capabilities**. |
+| **Talking Points**      | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the pak, brought together in one place. Specialized integration capabilities —for API management, application integration, messaging and more —are built on top of powerful automation services. Let’s see the Integration Capabilities available in this Cloud Pak for Integration.|
+| **Screenshots**         | &nbsp;  <br/> ![home](./images/demoscript-int-capabilities.png) |
 
 </details>
 
@@ -62,7 +68,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Integration Capabilities** |   |
 | :---         | :--- |
 | **Actions**             | Show the Integration Capabilities page and open the Designer (**ace-designer-demo**). |
-| **Talking Points**      | As you can see, through a single interface you are able to access all the integration capabilities your team needs. Including API Lifecycle Management, Application & Data Integration, Enterprise Messaging, Events and High Speed Transfer. In this Demo, we will explore App Connect for Application Integration, API Connect for API Management and Asset Repository as our centralized hub for allowing our teams to work together with Integration assets. Let's open our App Connect Designer. |
+| **Talking Points**      | As you can see, through a single interface you are able to access all the integration capabilities your team needs. Including API Management, Application Integration, Enterprise Messaging, Events, and High-Speed Transfer. In this demo to automate customer interactions with our company we will use App Connect for Application Integration, API Connect for API Management, and the Asset Repository as our centralized hub for allowing our teams to work together with Integration assets. Let’s open our App Connect Designer. |
 | **Screenshots**         | &nbsp; <br/> ![integration capabilities](./images/demoscript-integration.png) |
 
 </details>
@@ -72,15 +78,15 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 ## 2 - Reviewing the Flow
 
 <details>
-<summary>2.1 - Review properties</summary>
+<summary>2.1 - Select Flow and review properties</summary>
 
 <br/>
 
 | **Review properties** |   |
 | :---         | :--- |
-| **Actions**             | Show the **Properties view** and click on **Operations** |
-| **Talking Points**      | Designer builds your API for you – you don’t need to worry about OpenAPI specs or Swagger editors – it’s all built in.  These are the fields we are going to use for our API. Note that we tell our API which field is the key – in our case, CaseReference.|
-| **Screenshots**         | &nbsp;  <br/> ![review1](./images/demoscript-review-props.png) |
+| **Actions**             | Select **Car Insurance Cognitive API Lab Short V2** flow. Show the **Properties view** and click on **Operations** |
+| **Talking Points**      | Here we are in the designer tooling. This is where we can create all our API integration flows and manage our connectivity to our services and endpoints. We have a pre-created flow about a Customer Interaction scenario, let’s use it to simplify our demonstration.<br/> These are the fields we are going to use for our API. Note that we tell our API which field is the key – in our case, CaseReference. Let's check the Operations.|
+| **Screenshots**         | &nbsp;  <br/> ![review1](./images/car-insurance-flow.png) <br/> ![review1](./images/demoscript-review-props.png) |
 
 </details>
 
@@ -92,7 +98,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Review operations** |   |
 | :---         | :--- |
 | **Actions**             | Show the **Operations view** and click on **Edit flow** |
-| **Talking Points**      | On Operations view are the actions that the API exposes with the data. In this demo, we’re going to build just one operation – we can add more if we wish. Let's check the flow logic.|
+| **Talking Points**      | In the Operations view are the actions that the API exposes along with the data. In this demo, we’re going to build just one operation – “Create Car Repair Claim”. We can add more later if we wish. Let’s check the flow logic.|
 | **Screenshots**         | &nbsp;  <br/> ![review2](./images/demoscript-operations.png) |
 
 </details>
@@ -105,7 +111,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Review the flow** |   |
 | :---         | :--- |
 | **Actions**             | Initially **close** the Request dialog. Explain the Flow and Scroll through all of the connectors in the flow. After that, open the **Request** again, by clicking the first step of the flow. |
-| **Talking Points**      | Here we have our demo flow. In the designer flow editor, we are able to edit and change our flow.   We are a Car Repair company: We take in vehicles with problems and repair them. We want to create an API which enables customers to send us photos of their cars along with descriptions of what needs to be done. With this information, we will create a case in Salesforce and use Watson to analyze if the customer is angry or upset. Let's explore our flow in details.|
+| **Talking Points**      | Here we have our demo flow. In the designer flow editor, we can edit and change our flow. We are a Car Repair company: We take in vehicles with problems and repair them. We want to create an API which enables customers to send us photos of their cars along with descriptions of what needs to be done. With this information, we will create a case in Salesforce and use Watson to analyze if the customer is angry or upset. Let’s explore our flow in detail. |
 | **Screenshots**         | &nbsp;  <br/> ![review2](./images/demoscript-review-flow.png) |
 
 </details>
@@ -118,7 +124,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Review Request** |   |
 | :---         | :--- |
 | **Actions**             | Show the *Request* dialog (1). Click to *open* the **if** step (2). |
-| **Talking Points**      | Our flow start by receiving the customer's car repair request with photo via an API.  Designer automatically creates an API “Request” and “Response” node for your API flow.|
+| **Talking Points**      | Our flow starts by receiving the customer’s car repair request with photo via an API. Designer automatically creates an API “Request” and “Response” for your API flow.|
 | **Screenshots**         | &nbsp;  <br/> ![review3](./images/demoscript-review-request.png) |
 
 </details>
@@ -131,7 +137,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Checking the Photo** |   |
 | :---         | :--- |
 | **Actions**             | Explore the *if* step (1) and click on **Salesforce Connector - Retrieve contacts** (2). |
-| **Talking Points**      | Second, we validate the photo. Here, we have a really simple if statement, that check if the PhotoOfCar is empty. |
+| **Talking Points**      | Second, we validate the photo. Here, we have a simple if statement, that check if the PhotoOfCar is empty. If it is not empty, we move forward to retrieve contacts by connecting to Salesforce. |
 | **Screenshots**         | &nbsp;  <br/> ![review5](./images/demoscript-review-if.png) |
 
 </details>
@@ -143,9 +149,9 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **Retrieve contacts** |   |
 | :---         | :--- |
-| **Actions**             | Explore the *Salesforce Connector - Retrieve contacts* (1). Change the *Contact name* to **Andrew Young** (2). And **test** the connection (3). Change back the *Contact Full name* to **Andy Young** (4) and **test** again (5). Open **View details** (6). On the *Output*, open the **Contact1** object (7). **Close** all the dialog tabs. Click on the **Salesforce – Create case node** (8). |
-| **Talking Points**      | Third, we use a connector to create a case in Salesforce with the date from the API. This Case is where we store the details and progress of our repair. We are using a hard-code contact: 'Andy Young'.  He's the contact for the insurance company that sends customers. Salesforce Developer Accounts have a prepopulated set of data that you can use to test. ‘Andy Young’ is one of those prepopulated contacts. Let's test our connection with Salesforce. Let me change here the contact to Andrew Young, and test the connection. Ok, the test shows that we don't have Andrew Young. Let's change back to Andy Young and test again. Great, now we received a success response. That prove that our connection is working. Let's check  the details. Here we can see the Output returned from SalesForce, including the Contact ID.  |
-| **Screenshots**         | &nbsp;  <br/> ![contacts1](./images/demoscript-contacts1.png) <br/> ![contacts2](./images/demoscript-contacts2.png) <br/> ![contacts3](./images/demoscript-contacts3.png) <br/> ![contacts4](./images/demoscript-contacts4.png) <br/> ![contacts5](./images/demoscript-contacts5.png)|
+| **Actions**             | Explore the *Salesforce Connector - Retrieve contacts* (1). Show the *Contact Full name* (4) and click **test** (5) to verify connection with SalesForce. Open **View details** (6). On the *Output*, open the **Contact1** object (7). **Close** all the dialog tabs. Click on the **Salesforce – Create case node** (8). |
+| **Talking Points**      | Third, we use a connector to create a case in Salesforce with the data from the API. This Case is where we store the details and progress of our repair. We are using a hard-coded contact name: ‘Andy Young’. He’s the contact for the insurance company that sends customers. Salesforce Developer Accounts have a prepopulated set of data that you can use to test. ‘Andy Young’ is one of those prepopulated contacts. Let’s test our connection with Salesforce. The test shows that we received a successful response. This proves that our connection is working. Let’s check the details. Here we can see the output returned from SalesForce, including the Contact ID.  |
+| **Screenshots**         | &nbsp;  <br/> ![contacts1](./images/demoscript-contacts1.png) <br/> ![contacts3](./images/demoscript-contacts3.png) <br/> ![contacts4](./images/demoscript-contacts4.png) <br/> ![contacts5](./images/demoscript-contacts5.png)|
 
 </details>
 
@@ -157,7 +163,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Create Case** |   |
 | :---         | :--- |
 | **Actions**             | Explore the *Salesforce – Create case node*. **Close** the Salesforce connector dialog. Open the **Salesforce - Create Attachment** node. |
-| **Talking Points**      | Now we have the ID that we need, let’s create our Salesforce case. Note that we just re-use the same connector but with a different operation and data. Here we can see that our contact ID comes from the previous ‘retrieve contact’ Salesforce Call. The Name and email come from the API Request. The connector ‘knows’ that fields like ‘Case Type’ have a limited number of values in Salesforce – so it automatically converts them into pull-down lists of values for you to choose from. |
+| **Talking Points**      | Now we have the ID that we need, let’s create our Salesforce case. Note that we just re-use the same Salesforce connector but with a different operation and data. Here we can see that our contact ID comes from the previous ‘retrieve contact’ Salesforce Call. The Name and email come from the API Request. The connector ‘knows’ that fields like ‘Case Type’ have a limited number of values in Salesforce – so it automatically converts them into pull-down lists of values you can choose. |
 | **Screenshots**         | &nbsp;  <br/> ![review7](./images/demoscript-review-salesforce-createcase.png) |
 
 </details>
@@ -170,7 +176,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Create Attachment** |   |
 | :---         | :--- |
 | **Actions**             | Explore the *Salesforce – Create Attachment node* (1). **Close** the Salesforce connector dialog. Open the **IBM Watson Tone Analyzer** node (2). |
-| **Talking Points**      | To add a photograph, we need to create a salesforce attachment – that’s easy, just use the connector again. Note that we use the Case ID that is a returned value from the ‘Create Case’ connector call – it’s been kept in the flow automatically. We send the PhotoOfCar as a base64 string and we tell Salesforce that the content Type is image/jpeg. |
+| **Talking Points**      | To add a photograph, we need to create a salesforce attachment – that’s easy, just use the connector again. Note that we use the Case ID that is a returned value from the ‘Create Case’ connector call – it’s been kept in the flow automatically. We send the PhotoOfCar as a base64 string and we tell Salesforce that the content Type is image/jpeg. Moving forward to the next step we want to understand the tone of the request. Is the customer angry? We will use the IBM Watson Tone Analyzer node to understand the situation better. |
 | **Screenshots**         | &nbsp;  <br/> ![review8](./images/demoscript-review-attachment.png) |
 
 </details>
@@ -183,7 +189,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Analyze the description** |   |
 | :---         | :--- |
 | **Actions**             | Explore the *Watson Tone Analyzer* connector (1). **Close** the Tone Analyzer connector dialog. Open the **Salesforce - Create case comment** (2). |
-| **Talking Points**      | Here, the Watson Tone Analyzer services, analyse the description shared by the customer, to identify if the customer is angry or upset, that demands further action or treat them more carefully. |
+| **Talking Points**      | Here, the Watson Tone Analyzer service analyzes the description shared by the customer, to identify if the customer is angry or upset, that demands further action or the need to treat them more carefully. |
 | **Screenshots**         | &nbsp;  <br/> ![review9](./images/demoscript-review-analyzer.png) |
 
 </details>
@@ -196,7 +202,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Create case comment** |   |
 | :---         | :--- |
 | **Actions**             | Explore the **Salesforce – Create case comment** node (1). Close the Salesforce connector dialog. Open the **Response**. (2) |
-| **Talking Points**      | Then we’ll add a comment to the case with the Salesforce connector and give it the tone name from Watson. |
+| **Talking Points**      | Then we’ll add a comment to the case with the Salesforce connector and supply the tone name returned from Watson into the body of the comment. |
 | **Screenshots**         | &nbsp;  <br/> ![review10](./images/demoscript-review-comment.png) |
 
 </details>
@@ -209,7 +215,7 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 | **Response** |   |
 | :---         | :--- |
 | **Actions**             | Explore the *Response* dialog (1). Click **Done** (2). |
-| **Talking Points**      | Here, we have the response that we submit back to the customer after the API call. This response incluse their Salesforce case reference for future enquiries and also an estimate of how long it will take to repair and how much it will cost.  <br/>Great. we've built the flow, let's start it! |
+| **Talking Points**      | Here, we have the response that we submit back to the customer after the API call. This response includes their Salesforce case reference for future enquiries and also an estimate of how long it will take to repair and how much it will cost. Great. we’ve reviewed the flow, now let's see our API running in our Integration Runtime |
 | **Screenshots**         | &nbsp;  <br/> ![review11](./images/demoscript-review-response.png) |
 
 </details>
@@ -221,9 +227,9 @@ This Demo Script has multiple tasks, that have multiple steps. In each step you 
 
 | **Verify the Server** |   |
 | :---         | :--- |
-| **Actions**             | Click on our **Integration Server** (1). Open our **API Flow** (2). Explore the API detais (3). |
-| **Talking Points**      | Great, here we have our new Integration server. We need to wait some time to start the pods. At this point, the integration is running on the cloud pak. Opening the server, we can see our API Flow. And click again, we'll drill down further and see our API details. We can see the REST operation, the base URL and we can even download the OpenAPI document.|
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-verify-server1.png) <br/> ![](./images/demoscript-verify-server2.png) <br/> ![](./images/demoscript-verify-server3.png) |
+| **Actions**             | Open the **Menu** and select **Run > Integration**. Click on **Servers**. Select **carrepair-server**. Open our **API Flow** (2). Explore the API detais (3). |
+| **Talking Points**      | Great, now let's check the API running in Integration Runtime. Here we have our Integration server. At this point, the integration is running on the cloud pak. Opening the server, we can see our API Flow. And click again, we'll drill down further and see our API details. We can see the REST operation, the base URL and we can even download the OpenAPI document. Great. our API is running in our Integration Runtime, but now let's check our API running in an API Manager, and see the benefits to have an API Manager to control our API lifecycle!|
+| **Screenshots**         | &nbsp; <br/> ![](./images/integration-runtime.png) <br/> ![](./images/integration-servers.png) <br/> ![](./images/carrepair-server.png) <br/> ![](./images/demoscript-verify-server2.png) <br/> ![](./images/demoscript-verify-server3.png) |
 
 </details>
 
