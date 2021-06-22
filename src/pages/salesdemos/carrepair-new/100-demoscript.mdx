@@ -228,7 +228,7 @@ This Demo Script has multiple tasks, that each have multiple steps. In each step
 | **Verify the Server** |   |
 | :---         | :--- |
 | **Actions**             | Open the **Menu** and select **Run > Integration**. Click on **Servers**. Select **carrepair-server**. Open our **API Flow** (2). Explore the API detais (3). |
-| **Talking Points**      | Great, now let's check the API running in Integration Runtime. Here we have our Integration server. At this point, the integration is running on the cloud pak. Opening the server, we can see our API Flow. And click again, we'll drill down further and see our API details. We can see the REST operation, the base URL and we can even download the OpenAPI document. Great. our API is running in our Integration Runtime, but now let's check our API running in an API Manager, and see the benefits to have an API Manager to control our API lifecycle!|
+| **Talking Points**      | Great, now let's check the API running in Integration Runtime. Here we have our Integration server. At this point, the integration is running on the cloud pak. Opening the server, we can see our API Flow. And click again, we'll drill down further and see our API details. We can see the REST operation, the base URL and we can even download the OpenAPI document. Great, our API is running in our Integration Runtime. Later, we will test this API using the Developer Portal. But now let's explore another great capability API Manager. Let's see the benefits to have an API Manager to control our API lifecycle!|
 | **Screenshots**         | &nbsp; <br/> ![](./images/integration-runtime.png) <br/> ![](./images/integration-servers.png) <br/> ![](./images/carrepair-server.png) <br/> ![](./images/demoscript-verify-server2.png) <br/> ![](./images/demoscript-verify-server3.png) |
 
 </details>
@@ -238,15 +238,15 @@ This Demo Script has multiple tasks, that each have multiple steps. In each step
 ## 3 - Managing API
 
 <details>
-<summary>3.1 - Download OpenAPI Document</summary>
+<summary>3.1 - Accessing API Connect</summary>
 
 <br/>
 
-| **Download OpenAPI Document** |   |
+| **Accessing API Connect** |   |
 | :---         | :--- |
-| **Actions**             | Click **Download OpenAPI Document** link (1). Open your YAML file with any editor and manually add **x-ibm-configuration: gateway: datapower-api-gateway** (2).|
-| **Talking Points**      | You’ve created an application integration flow and successfully called it via a REST API call! Now, to make it accessible to the rest of the world, it’s important to add security around it. Let's export our API to API Connect by downloading the OpenAPI Document. |
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-download-openapi.png) <br/> ![](./images/demoscript-download-openapi2.png) |
+| **Actions**             | Open the **Menu** (1) and on **Run** (2) section, select **APIs** (3). If necessary, select the **ademo** instance (4). In the *API Connect* page, click **LDAP User Registry for Outcomes** (5). **Log in** with your Outcomes user and password (6). |
+| **Talking Points**      | Now, let's open API Connect. IBM® API Connect is an integrated API management offering, with capabilities and tooling for all phases of the API lifecycle. Key steps of the API lifecycle include create, secure, manage, socialize, and analyze.  API Connect has four major components: API Manager, Analytics, Developer Portal, and Gateway. Now, let's explore the API Manager. |
+| **Screenshots**         |  &nbsp;  <br/> ![](./images/demoscript-develop-api1.png) <br/> ![](./images/demoscript-develop-api2.png) <br/> ![](./images/apic-ldap.png) <br/> ![](./images/apic-outcomes-login.png) |
 
 </details>
 
@@ -257,62 +257,22 @@ This Demo Script has multiple tasks, that each have multiple steps. In each step
 
 | **Develop API** |   |
 | :---         | :--- |
-| **Actions**             | Open the **Menu** (1) and on **Run** (2) section, select **APIs** (3). If necessary, select the **ademo** instance (4). In the *API Connect* page, click **Common Services user registry** (5). Click **Develop APIs and Products** (6). Click **Add**, then choose **API (from REST, GraphQL or SOAP)** from the drop-down menu (7). Choose **From an existing OpenAPI service** (8) and click **Next** (9). Upload our **Car_Insurance..** YAML file (10) and click **Next** (11). Confirm the Info about API and click **Next** (12). Keep the security settings and click **Next** (13). |
-| **Talking Points**      | Now, let's open our API Manager. Here, we add our API from an existing OpenAPI service by selecting our YAML file. We just confirme the Info about API. And keep the security settings. Great our API with Client ID is created!  |
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-develop-api1.png) <br/> ![](./images/demoscript-develop-api2.png) <br/> ![](./images/demoscript-develop-api3.png) <br/> ![](./images/demoscript-develop-api4.png) <br/> ![](./images/demoscript-develop-api5.png) <br/> ![](./images/demoscript-develop-api6.png) <br/> ![](./images/demoscript-develop-api7.png) <br/> ![](./images/demoscript-develop-api8.png) <br/> ![](./images/demoscript-develop-api9.png) <br/> ![](./images/demoscript-develop-api10.png)|
+| **Actions**             | Click **Develop APIs and Products** (1). Click **Car_Insurance_Cognitive_API_Lab_Short_V2** (2), then open **Security definitions** (3). Explore the *Security definitions* page (4). Click **Develop** on breadcrumbs (5). |
+| **Talking Points**      | Now, let's check our API here in API Manager. To simplify the demo, our API is pre-assembled here in the API Manager. In the Develop page, we are able to edit, assemble, secure and test APIs. In the Security definitions, we can control client access to API endpoints, for example using API key validation.  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/develop-api-1.png) <br/> ![](./images/develop-api-2.png) <br/> ![](./images/develop-api-3.png) |
 
 </details>
 
 <details>
-<summary>3.3 - Edit API</summary>
+<summary>3.3 - Develop Product</summary>
 
 <br/>
 
-| **Edit API** |   |
+| **Develop Product** |   |
 | :---         | :--- |
-| **Actions**             | Click **Edit API** (1). Change to **Online** (2). scroll down to *Base Path*. You’ll see the base path has a trailing slash, at the
-end, **remove** this (3). Click **Save** (4). Click **Test** (5).|
-| **Talking Points**      | Let's check our new API in API Manager. Here we put our API Online, change the Base Path and test it. |
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-edit-api1.png) <br/> ![](./images/demoscript-edit-api2.png) <br/> ![](./images/demoscript-edit-api3.png)|
-
-</details>
-
-<details>
-<summary>3.4 - Test API</summary>
-
-<br/>
-
-| **Test API** |   |
-| :---         | :--- |
-| **Actions**             | Copy the **POST URL** (remove */CarRepairClaim*) (1). Copy the **X-IBM-Client-Id** (2).  In your script folder, on *terminal* window, *edit* the **00-variables** file and update the **BASEPATH** and **CLIENTID** (3). Execute **source exportVariables.sh** (4). Execute **./demotestcar.sh** (5). Check the **new case** in *Salesforce*.|
-| **Talking Points**      | We can use this page to test the api, but we will need to include all the JSON body. Let's use all test script, that is ready. We just need to copy the new URL and the Client ID and update our script variables.  |
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-test-apic1.png) <br/> ![](./images/demoscript-test-apic2.png) <br/> ![](./images/demoscript-test-apic3.png) <br/> ![](./images/demoscript-test-apic4.png) |
-
-</details>
-
-<details>
-<summary>3.5 - Publish API</summary>
-
-<br/>
-
-| **Publish API** |   |
-| :---         | :--- |
-| **Actions**             | Open the **Menu** (1) and click **Publish** (2). Enter **Car Repair APIs** as *Product Title* (3). Select **Catalog for Demo use (ddd-demo-test-catalog)** and click **Publish** (4). |
-| **Talking Points**      | We will make the API available to developers. In order to do so, the API must be first put into a product and then published to the catalog. A product dictates rate limits and API throttling.  |
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-publish-api1.png) <br/> ![](./images/demoscript-publish-api2.png) <br/> ![](./images/demoscript-publish-api3.png) <br/> ![](./images/demoscript-publish-api4.png) |
-
-</details>
-
-<details>
-<summary>3.6 - Adding a Rate Limiting Plan</summary>
-
-<br/>
-
-| **Rate Limiting Plan** |   |
-| :---         | :--- |
-| **Actions**             | Open the **Products** tab (1). Click on the **Car Repair APIs** product (2). Click on **Plans** (3). Click **Add** (4). Enter **Gold Plan** as *Title* (5). Change the *Rate Limits* to **100 Calls Per 1 minute** (6). Click **Save** (7). Open the **Develop** page (8). Back to the **Products** tab (9). Open the **Menu** and **Publish** the Product (10). Select the *Catalog for Demo use* (11). Click **Publish** (12).  Open the **Manage** (13), open the **Catalog for Demo use** (14) and check the Products state and plans (15).|
-| **Talking Points**      | Security is applied to APIs. Rate limiting is applied to products.  Let's do it! We just need to open our new product. Rate Limiting is done using plans. Let's create a new Gold Plan with a specific Rate Limits. Great we have now two plans, the Gold and the default plan. We can have multiple plans for different consumers, for example we can add approval steps for consumers when they sign up or we can allocate them plans as a provider. Ok, now we need to republish our product. You’ll be prompted for a catalog to publish to. We only have one gateway installed so we don't need to worry about that. Just Publish. |
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-rate-limit1.png) <br/> ![](./images/demoscript-rate-limit2.png) <br/> ![](./images/demoscript-rate-limit3.png) <br/> ![](./images/demoscript-rate-limit4.png) <br/> ![](./images/demoscript-rate-limit5.png) <br/> ![](./images/demoscript-rate-limit6.png) <br/> ![](./images/demoscript-rate-limit7.png) |
+| **Actions**             | Click **Products** (1). Click **Car Repair APIs** product (2).  Open the **Plans** (3) tab. And on the context menu of *Gold Plan* and select **Edit** (4).  Explore the **Rate Limits** section (5). Just show, how simple is to publish the Product and API, clicking **Menu > Publish** (6) (Note: you don't need to publish, because the product is already published). |
+| **Talking Points**      | Now, let's see how we package our APIs using products for publishing to consumers. To simplify the demo, our Product is already created here in the API Manager. Products are packages that contain both the APIs and the accompanying Plans. The providers use Plans to control access to APIs and to manage API usage. Plans can use differing rate limits to provide different levels of service to API consumers. In our product, we already have two plans, the Gold and the default plan. We can have multiple plans for different consumers, for example we can add approval steps for consumers when they sign up or we can allocate them plans as a provider. For example, our Gold Plan permit up to 100 calls per minute. Great our API and Projects are ready to be published for our API consumers.  |
+| **Screenshots**         | &nbsp;  <br/> ![](./images/develop-product-1.png) <br/> ![](./images/develop-product-2.png) <br/> ![](./images/develop-product-3.png) <br/> ![](./images/develop-product-4.png)|
 
 </details>
 
@@ -327,9 +287,9 @@ end, **remove** this (3). Click **Save** (4). Click **Test** (5).|
 
 | **Accessing Portal** |   |
 | :---         | :--- |
-| **Actions**             | Open the **Catalog settings** (1). Click **Portal** (2). Copy the **Portal URL** (3). Open a new Browser tab and access the Portal URL. If you don't have a developer account click **Create account** to create it (4). As soon as you complete the registration (5), just **Sign in** (6). |
-| **Talking Points**      | Now that we’ve published our API, we need to make sure that our API consumers can discover it and use it. Our Portal will allow customers to view the APIs, sign up and subscribe to plans in a self-service manner, test the APIs, download the OpenAPI - Swagger documents and more. Let's get our portal URL and sign up as a Consumer of our API using Portal Self-Service.|
-| **Screenshots**         | &nbsp;  <br/> ![](./images/demoscript-access-portal1.png) <br/> ![](./images/demoscript-access-portal2.png) <br/> ![](./images/demoscript-access-portal3.png) <br/> ![](./images/demoscript-access-portal4.png)|
+| **Actions**             | On the left navigator menu, open **Manage** page. Open the **Sandbox** catalog. Open the **Catalog settings** (1). Click **Portal** (2). Copy the **Portal URL** (3). Open a new Browser tab and access the Portal URL. Create a developer account by clicking **Create account** (4). Use your personal email to complete the registration (5). You need to access your email to accept the invitation, after that, you just need to **Sign in** (6). |
+| **Talking Points**      | For this demo, our API is already published. Now we need to make sure that our API consumers can discover it and use it. Our Portal allows potential API consumers to view the APIs, sign up and subscribe to plans in a self-service manner, test the APIs, download the OpenAPI - Swagger documents and more. Let’s get our portal URL and sign up as a Consumer of our API using Portal Self-Service. |
+| **Screenshots**         | &nbsp; <br/> ![](./images/manage-sandbox.png) <br/> ![](./images/demoscript-access-portal1.png) <br/> ![](./images/demoscript-access-portal2.png) <br/> ![](./images/demoscript-access-portal3.png) <br/> ![](./images/demoscript-access-portal4.png)|
 
 </details>
 
