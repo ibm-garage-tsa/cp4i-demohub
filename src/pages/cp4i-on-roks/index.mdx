@@ -18,7 +18,6 @@ You will complete the following high level tasks:
 <AnchorLinks>
   <AnchorLink>Create a ROKS cluster in IBM Cloud</AnchorLink>
   <AnchorLink>Install Cloud Pak for Integration on ROKS Cluster</AnchorLink>
-  <AnchorLink>Access your ROKS cluster by Command Line</AnchorLink>
 </AnchorLinks>
 
 ***
@@ -28,34 +27,43 @@ You will complete the following high level tasks:
 
 Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo purposes, self-learning or Proof of Concept projects. If you have not already provisioned a cluster, follow these steps.
 
-1.Access the [IBM Asset Repo site](https://assetrepo.ibm.com/) and log in using your IBM credentials.
+1.Access the [IBM Tech Zone site](https://techzone.ibm.com/) and log in using your IBM credentials.
 
-2.On the home page, scroll down and open the **Cloud Pak for Integration Activation Kit**.
+2.On the home page, open the **Activation Kit** tab.
+
+  ![](images/request-environment-2.png)
+
+3.Open the **Cloud Pak for Integration Activation Kit**.
 
   ![](images/cp4i-ak.png)
 
-3.Open the **Environments** tab.
+4.Open the **Environments** tab.
 
   ![](images/environments.png)
 
-4.Select the ROKS cluster that you want (the simplest way is to select the latest version of the Express instalation).
+5.Select the ROKS cluster that you want (the simplest way is to select the latest version of the Express instalation).
 
   ![](images/express.png)
 
-5.Follow the **Create a reservation** form to define the details of your ROKS Reservation.
+6.Follow the **Create a reservation** form to define the details of your ROKS Reservation.
 
   ![](images/reservation-form.png)
 
-  After few minutes, your ROKS environment is ready. Now you are ready to move to the next step and install Cloud Pak for Integration!
+  Note: If you have any problem in Express instalation about **No Cluster available**, go ahead with the Custom instalation (the process is the same, however Express is a 5 minute request, because you will receive a pre-created ROKS cluster from a queue, and custom is a 2 hour provisioning, because the ROKS cluster will be installed, behind the scenes, from scratch for you).
+
+7.After few minutes, your ROKS environment is ready. If it is the first time that you are requesting a ROKS environment, you will receive an email to accept the invitation to join the ITZ IBM cloud account. Open the email, click **Join now** and follow the steps to accept the invitation. Your new cluster is available in this ITZ account, take note of the account name, you will use it later to install CP4I.
+
+  ![](images/itz-account-invitation.png)
+
+  Now you are ready to move to the next step and install Cloud Pak for Integration!
 
 ***
 
 ## Install Cloud Pak for Integration on ROKS cluster
 
-
 1.Login to <https://cloud.ibm.com/catalog> if have not already
 
-2.Confirm that you are using the DTE organization.
+2.Confirm that you are using the **ITZ** account.
 
   ![](images/dte_org.png)
 
@@ -63,25 +71,29 @@ Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo
 
   ![](images/cp4i_catalog.png)
 
-4.Select the Redhat Openshift Cluster that you just created from the list. The DTE provisioned cluster name starts with dteroks or playgrowth.
+4.On *Select a deployment method*, go ahead and select the version of Cloud Pak for Integration that you to install. Some demos are ready for a specific version of Pak, please check in the demo page what the version is necessary.
 
-  ![](images/roks-cluster.png)
+  ![](images/cp4i-version.png)
 
-5.Click **Add project** Enter a project name, and a tag name to identify your cluster.
+5.Scroll down the page, and you should see the *Select your cluster* section. Select the Redhat Openshift Cluster that you just created from the list.
+
+  ![](images/roks-cluster2.png)
+
+6.Click **Add project** Enter a project name, and a tag name to identify your cluster.
 
   ![](images/add-project.png)
 
-6.Enter **cp4i** as Project name and click **Add**.
+7.Enter **cp4i** as Project name and click **Add**.
 
   ![](images/cp4i-project.png)
 
-7.Scroll down. On *Set the deployment values* section. Unmark the **Use an existing secret?** to define a new password and enter a value for csDefaultAdminPassword. It is important that you choose a password that is 32 characters in length and it conforms to the password rule - number, letter, -.
+8.Scroll down. On *Set the deployment values* section. Unmark the **Use an existing secret?** to define a new password and enter a value for csDefaultAdminPassword. It is important that you choose a password that is 32 characters in length and it conforms to the password rule - number, letter, -.
 
   *Note: Currently password validation is not enforced on this page. If you proceed with an invalid password you will be able to start the installation but it will fail. There is no way to recover from this error other than provisioning a new cluster.*
 
   ![](images/password.png)
 
-8.Scroll down to see 'Parameters with default values' and click on the 'twisty' to open them. There is no need to change the default values except for the parameters that start with demo.
+9.Scroll down to see 'Parameters with default values' and click on the 'twisty' to open them. There is no need to change the default values except for the parameters that start with demo.
 
   ![](images/cp4i-install-param.png)
 
@@ -99,17 +111,15 @@ Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo
 
   demoAPICMailServerPassword: Set this to your mailtrap password.
 
-  You are welcome to set true in drivewayDentDeletionDemo and eventEnabledInsuranceDemo, if you desire.
-
-9.Accept the license agreement and click **Install** to install Cloud Pak for Integration. The installation will take up to 90 minutes.
+10.Accept the license agreement and click **Install** to install Cloud Pak for Integration. The installation will take up to 90 minutes.
 
   ![](images/license.png)
 
-10.You can view the progress in the Schematics progress bar or check the details in view log.
+11.You can view the progress in the Schematics progress bar or check the details in view log.
 
   ![](images/progress-bar.png)
 
-11.When you see the **Active** status, you will be able to access Cloud Pak for Integration Platform Navigator by selecting **Offering Dashboard** on the upper right corner of the page.
+12.When you see the **Active** status, you will be able to access Cloud Pak for Integration Platform Navigator by selecting **Offering Dashboard** on the upper right corner of the page.
 
   ![](images/offering_dashboard.png)
 
@@ -132,29 +142,3 @@ Cloud Pak for Integration ROKS cluster can be provisioned from IBMDemos for demo
   ![](images/instances.png)
 
   You have successfully completed cluster provisioning, Cloud Pak for Integration installation and deployment of API Connect and App Connect. You are ready to proceed to Sales Demos or CP4I Labs that are supported on Cloud Pak for Integration on ROKS.
-
-***
-
-## Access your ROKS cluster by Command Line
-
-Some demos and labs requires access to ROKS cluster by command line. Follow the steps below to log in your cluster.
-
-1.On a browser tab, open your ROKS cluster console (you should have an email with a link to OpenShift Console, you received this e-mail when you requested the ROKS environment).
-
-  ![](images/roks-console.png)
-
-2.On the top right of the screen, click on your **username** and select **Copy Login Command**.
-
-  ![](images/copy-login-cmd.png)
-
-3.On the new page, click **Display Token**.
-
-  ![](images/display-token.png)
-
-4.Copy the **log in** command.
-
-  ![](images/login-token.png)
-
-5.On a terminal window, **paste** and **run** the log in command.
-
-  ![](images/cli-login.png)
